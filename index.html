@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>平煤机生产绩效考核负分交易系统</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#1a4f8b;--primary-light:#2a6faf;--danger:#e74c3c;--success:#27ae60;--warning:#f39c12;--bg:#f0f2f5;--card:#fff;--text:#333;--text-secondary:#666;--text-light:#999;--border:#e8e8e8;--radius:12px;--shadow:0 2px 12px rgba(0,0,0,.08)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;max-width:480px;margin:0 auto;min-height:100vh;position:relative}
+.screen{display:none;padding:16px;padding-bottom:80px}
+.screen.active{display:block}
+.header{background:var(--primary);color:#fff;padding:16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header h1{font-size:18px;font-weight:600}
+.header .back{width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px}
+.header .right-btn{font-size:14px;cursor:pointer;padding:6px 12px;border-radius:6px;background:rgba(255,255,255,.15)}
+.card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card-title{font-size:16px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.stat-card{background:var(--card);border-radius:var(--radius);padding:14px;text-align:center;box-shadow:var(--shadow)}
+.stat-card .num{font-size:28px;font-weight:700;color:var(--primary)}
+.stat-card .label{font-size:12px;color:var(--text-secondary);margin-top:4px}
+.stat-card.danger .num{color:var(--danger)}
+.stat-card.warning .num{color:var(--warning)}
+.stat-card.success .num{color:var(--success)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:10px 20px;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-light)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-success{background:var(--success);color:#fff}
+.btn-warning{background:var(--warning);color:#fff}
+.btn-outline{background:transparent;border:1.5px solid var(--primary);color:var(--primary)}
+.btn-block{display:flex;width:100%}
+.btn-sm{padding:6px 14px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-group{display:flex;gap:10px;margin-top:12px}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500}
+.tag-red{background:#fde8e8;color:var(--danger)}
+.tag-green{background:#def7ec;color:var(--success)}
+.tag-blue{background:#e1effe;color:var(--primary)}
+.tag-orange{background:#fef3c7;color:var(--warning)}
+.tag-gray{background:#f3f4f6;color:var(--text-secondary)}
+.list-item{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
+.list-item:last-child{border-bottom:none}
+.list-item .info{flex:1;min-width:0}
+.list-item .title{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-item .sub{font-size:13px;color:var(--text-secondary);margin-top:2px}
+.list-item .extra{text-align:right;margin-left:12px;flex-shrink:0}
+.list-item .score{font-size:22px;font-weight:700;color:var(--primary)}
+.list-item .score.low{color:var(--danger)}
+.list-item .score.mid{color:var(--warning)}
+.list-item .arrow{color:var(--text-light);font-size:20px;margin-left:8px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text)}
+.form-group .required{color:var(--danger);margin-left:2px}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;font-family:inherit;background:#fff;transition:border-color .2s}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--primary)}
+.form-textarea{resize:vertical;min-height:80px}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.empty{text-align:center;padding:40px 20px;color:var(--text-light)}
+.empty .icon{font-size:48px;margin-bottom:12px}
+.alert{padding:12px 16px;border-radius:8px;font-size:14px;margin-bottom:12px}
+.alert-info{background:#e1effe;color:var(--primary)}
+.alert-warning{background:#fef3c7;color:#92400e}
+.alert-danger{background:#fde8e8;color:var(--danger)}
+.alert-success{background:#def7ec;color:var(--success)}
+.tabs{display:flex;gap:0;margin-bottom:16px;background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.tab{flex:1;text-align:center;padding:12px 0;font-size:14px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;color:var(--text-secondary)}
+.tab.active{border-bottom-color:var(--primary);color:var(--primary);font-weight:600}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:13px;background:#f3f4f6;color:var(--text-secondary)}
+.chip.active{background:var(--primary);color:#fff}
+.picker{position:relative}
+.picker-value{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.picker-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:10;max-height:200px;overflow-y:auto;display:none}
+.picker-dropdown.show{display:block}
+.picker-option{padding:10px 12px;cursor:pointer;border-bottom:1px solid var(--border)}
+.picker-option:last-child{border-bottom:none}
+.picker-option:hover{background:#f0f2f5}
+.picker-option.selected{background:#e1effe;color:var(--primary);font-weight:600}
+.role-card{border:2px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.role-card.selected{border-color:var(--primary);background:#f0f7ff}
+.role-card .icon-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.role-card .icon-circle.admin{background:#fde8e8;color:var(--danger)}
+.role-card .icon-circle.unit{background:#e1effe;color:var(--primary)}
+.role-card .icon-circle.expert{background:#def7ec;color:var(--success)}
+.user-select-card{border:1.5px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px;cursor:pointer;transition:all .2s}
+.user-select-card.selected{border-color:var(--primary);background:#f0f7ff}
+.user-select-card .name{font-weight:500;font-size:15px}
+.user-select-card .desc{font-size:13px;color:var(--text-secondary)}
+.vote-result{margin-top:12px;padding:12px;background:#f9fafb;border-radius:8px}
+.vote-bar{display:flex;height:24px;border-radius:12px;overflow:hidden;margin:8px 0}
+.vote-agree{background:var(--success);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;transition:width .3s}
+.vote-disagree{background:var(--danger);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;transition:width .3s}
+.vote-info{display:flex;justify-content:space-between;font-size:13px;color:var(--text-secondary)}
+.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:200;display:none}
+.modal.show{display:flex}
+.modal-content{background:#fff;border-radius:var(--radius);padding:24px;width:90%;max-width:400px;max-height:80vh;overflow-y:auto}
+.modal-title{font-size:18px;font-weight:600;margin-bottom:16px}
+.quarterly-card{padding:16px;margin-bottom:10px}
+.quarterly-card .months{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.quarterly-card .month-item{text-align:center;padding:8px;background:#f9fafb;border-radius:6px}
+.quarterly-card .month-item .m-score{font-size:20px;font-weight:700;color:var(--primary)}
+.quarterly-card .month-item .m-label{font-size:11px;color:var(--text-light)}
+.quarterly-card .result{text-align:center;padding:12px;background:var(--primary);color:#fff;border-radius:8px;margin-top:8px}
+.quarterly-card .result .big{font-size:32px;font-weight:700}
+.quarterly-card .result .small{font-size:12px;opacity:.8}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:#fff;padding:10px 24px;border-radius:8px;font-size:14px;z-index:300;display:none;white-space:nowrap}
+.toast.show{display:block;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0;transform:translateX(-50%) translateY(-10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.navbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;display:flex;border-top:1px solid var(--border);z-index:100;box-shadow:0 -2px 8px rgba(0,0,0,.05)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0;font-size:11px;color:var(--text-light);cursor:pointer;transition:color .2s}
+.nav-item.active{color:var(--primary)}
+.nav-item .nav-icon{font-size:20px;margin-bottom:2px}
+.badge{position:relative}
+.badge::after{content:attr(data-count);position:absolute;top:-4px;right:-8px;background:var(--danger);color:#fff;font-size:10px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.section-title{font-size:16px;font-weight:600;margin:20px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--primary)}
+.deduction-item{padding:12px;background:#f9fafb;border-radius:8px;margin-bottom:8px;border-left:3px solid var(--danger)}
+.deduction-item .d-title{font-weight:500;margin-bottom:4px}
+.deduction-item .d-meta{font-size:12px;color:var(--text-light)}
+.deduction-item .d-score{font-size:18px;font-weight:700;color:var(--danger)}
+</style>
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+
+<!-- ======================== LOGIN SCREEN ======================== -->
+<div id="screen-login" class="screen active">
+  <div style="text-align:center;padding:40px 0 24px">
+    <img src="logo.png" style="width:64px;height:64px;margin-bottom:12px;object-fit:contain" alt="平煤机">
+    <h2 style="font-size:22px;color:var(--primary)">平煤机生产绩效考核负分交易系统</h2>
+    <p style="color:var(--text-secondary);font-size:14px;margin-top:4px">请选择身份登录</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">选择角色</div>
+    <div id="role-options"></div>
+  </div>
+
+  <div id="unit-selector" class="card" style="display:none">
+    <div class="card-title">选择单位</div>
+    <select class="form-select" id="select-unit"><option value="">请选择单位</option></select>
+  </div>
+
+  <div id="user-selector" class="card" style="display:none">
+    <div class="card-title">选择账号</div>
+    <div id="user-options"></div>
+  </div>
+
+  <div id="pwd-area" class="card" style="display:none">
+    <div class="card-title">输入密码</div>
+    <input class="form-input" type="password" id="login-password" placeholder="请输入4位数字密码" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" style="text-align:center;font-size:24px;letter-spacing:12px">
+  </div>
+  <div id="login-btn-area" style="display:none;margin-top:16px">
+    <button class="btn btn-primary btn-block" onclick="doLogin()">登录进入系统</button>
+  </div>
+</div>
+
+<!-- ======================== DASHBOARD SCREEN ======================== -->
+<div id="screen-dashboard" class="screen">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+    <div>
+      <div style="font-size:20px;font-weight:700" id="dash-greeting">欢迎</div>
+      <div style="font-size:13px;color:var(--text-light);margin-top:2px" id="dash-role-tag"></div>
+    </div>
+    <button class="btn btn-outline btn-sm" onclick="doLogout()">退出</button>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num" id="stat-score">--</div><div class="label" id="stat-label1">本月得分</div></div>
+    <div class="stat-card warning"><div class="num" id="stat-qscore">--</div><div class="label" id="stat-label2">季度考核分</div></div>
+  </div>
+
+    <div id="admin-dash" style="display:none">
+      <div class="card">
+        <div class="card-title">⚡ 快捷操作</div>
+        <div class="btn-group" style="flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="navTo('deduction-create')">➕ 新建扣分</button>
+          <button class="btn btn-outline" onclick="navTo('members')">👥 人员管理</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔧 系统管理（数据备份）</div>
+        <div style="margin-bottom:8px;font-size:13px;color:var(--text-secondary)">定期备份数据，防止浏览器清缓存导致数据丢失。</div>
+        <div class="btn-group">
+          <button class="btn btn-outline btn-block" onclick="exportData()">📥 导出数据备份</button>
+          <button class="btn btn-outline btn-block" onclick="document.getElementById('import-file-input').click()">📤 导入数据恢复</button>
+        </div>
+        <input type="file" id="import-file-input" accept=".json" style="display:none" onchange="importData(this)">
+      </div>
+    <div id="admin-appeal-reminder" class="alert alert-warning" style="display:none;cursor:pointer" onclick="navTo('appeal-list')"></div>
+  </div>
+
+  <div id="unit-dash" style="display:none">
+    <div class="card">
+      <div class="card-title">📋 本月扣分明细</div>
+      <div id="unit-deductions"></div>
+    </div>
+    <button class="btn btn-warning btn-block" onclick="navTo('appeal-create')">📢 发起申诉</button>
+  </div>
+
+  <div id="expert-dash" style="display:none">
+    <div id="expert-appeal-reminder" class="alert alert-warning" style="display:none;cursor:pointer" onclick="navTo('appeal-list')"></div>
+    <div class="card">
+      <div class="card-title">📊 我的评议统计</div>
+      <div style="text-align:center;padding:12px">
+        <span style="font-size:36px;font-weight:700;color:var(--primary)" id="expert-voted">0</span>
+        <span style="color:var(--text-secondary)"> 条已评议</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">📊 数据入口</div>
+    <div class="list-item" onclick="navTo('monthly-score')">
+      <div class="info"><div class="title">月度评分</div><div class="sub">查看各单位每月得分</div></div>
+      <div class="arrow">›</div>
+    </div>
+    <div class="list-item" onclick="navTo('quarterly-score')">
+      <div class="info"><div class="title">季度评分</div><div class="sub">季度加权20%分值</div></div>
+      <div class="arrow">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== MONTHLY SCORES SCREEN ======================== -->
+<div id="screen-monthly-score" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>月度评分</h1><span></span></div>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between">
+    <span style="font-weight:600" id="ms-year-month">--</span>
+  </div>
+  <div id="monthly-score-list"></div>
+</div>
+
+<!-- ======================== MONTHLY DETAIL SCREEN ======================== -->
+<div id="screen-monthly-detail" class="screen">
+  <div class="header"><span class="back" onclick="navTo('monthly-score')">←</span><h1 id="md-title">月度详情</h1><span></span></div>
+  <div class="card" style="text-align:center">
+    <div style="font-size:48px;font-weight:700;color:var(--primary)" id="md-score">--</div>
+    <div style="color:var(--text-secondary);font-size:14px">月度得分（满分100）</div>
+    <div style="margin-top:8px;font-size:13px;color:var(--text-light)">总扣分: <span id="md-total-deduct" style="color:var(--danger);font-weight:600">0</span></div>
+  </div>
+  <div class="section-title">扣分明细</div>
+  <div id="md-deduction-list"></div>
+</div>
+
+<!-- ======================== QUARTERLY SCORES SCREEN ======================== -->
+<div id="screen-quarterly-score" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>季度评分</h1><span></span></div>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between">
+    <span style="font-weight:600" id="qs-year-quarter">--</span>
+  </div>
+  <div id="quarterly-score-list"></div>
+</div>
+
+<!-- ======================== QUARTERLY DETAIL SCREEN ======================== -->
+<div id="screen-quarterly-detail" class="screen">
+  <div class="header"><span class="back" onclick="navTo('quarterly-score')">←</span><h1 id="qd-title">季度详情</h1><span></span></div>
+  <div id="qd-content"></div>
+</div>
+
+<!-- ======================== DEDUCTION LIST SCREEN ======================== -->
+<div id="screen-deduction-list" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>扣分管理</h1><span class="right-btn" id="dl-create-btn" onclick="navTo('deduction-create')">新建</span></div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchDeductionTab('all')">全部</div>
+    <div class="tab" onclick="switchDeductionTab('mine')">本单位</div>
+  </div>
+  <div id="deduction-list-content"></div>
+</div>
+
+<!-- ======================== DEDUCTION CREATE SCREEN ======================== -->
+<div id="screen-deduction-create" class="screen">
+  <div class="header"><span class="back" onclick="navTo('deduction-list')">←</span><h1>新建扣分</h1><span></span></div>
+  <div class="card">
+    <div class="form-group"><label>被扣分单位 <span class="required">*</span></label><select class="form-select" id="dc-unit"></select></div>
+    <div class="form-group"><label>扣分值 <span class="required">*</span></label><input class="form-input" type="number" id="dc-score" placeholder="请输入扣分值" min="0.1" max="100" step="0.1"></div>
+    <div class="form-group"><label>扣分原因 <span class="required">*</span></label><textarea class="form-textarea" id="dc-reason" placeholder="请填写具体扣分原因"></textarea></div>
+    <div class="form-group"><label>考核月份</label><input class="form-input" type="month" id="dc-month"></div>
+    <button class="btn btn-primary btn-block" onclick="createDeduction()">提交扣分</button>
+  </div>
+</div>
+
+<!-- ======================== DEDUCTION DETAIL SCREEN ======================== -->
+<div id="screen-deduction-detail" class="screen">
+  <div class="header"><span class="back" onclick="navTo('deduction-list')">←</span><h1>扣分详情</h1><span></span></div>
+  <div id="dd-content"></div>
+</div>
+
+<!-- ======================== APPEAL LIST SCREEN ======================== -->
+<div id="screen-appeal-list" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>申诉管理</h1><span></span></div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchAppealTab('all')">全部</div>
+    <div class="tab" onclick="switchAppealTab('mine')">本单位</div>
+    <div class="tab" onclick="switchAppealTab('pending')">待评议</div>
+  </div>
+  <div id="appeal-list-content"></div>
+</div>
+
+<!-- ======================== APPEAL CREATE SCREEN ======================== -->
+<div id="screen-appeal-create" class="screen">
+  <div class="header"><span class="back" onclick="navTo('appeal-list')">←</span><h1>发起申诉</h1><span></span></div>
+  <div class="card">
+    <div class="form-group"><label>选择扣分记录 <span class="required">*</span></label><select class="form-select" id="ac-deduction" onchange="onAppealDeductionChange()"></select></div>
+    <div id="ac-deduction-info" class="alert alert-info" style="display:none"></div>
+    <div class="form-group"><label>申诉理由 <span class="required">*</span></label><textarea class="form-textarea" id="ac-reason" placeholder="请说明为什么要申诉这个扣分"></textarea></div>
+    <div class="form-group"><label>责任单位 <span class="required">*</span></label><select class="form-select" id="ac-responsible"></select></div>
+    <button class="btn btn-warning btn-block" onclick="createAppeal()">提交申诉</button>
+  </div>
+</div>
+
+<!-- ======================== APPEAL DETAIL SCREEN ======================== -->
+<div id="screen-appeal-detail" class="screen">
+  <div class="header"><span class="back" onclick="navTo('appeal-list')">←</span><h1>申诉详情</h1><span></span></div>
+  <div id="ad-content"></div>
+</div>
+
+<!-- ======================== MEMBERS SCREEN ======================== -->
+<div id="screen-members" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>人员管理</h1><span class="right-btn" onclick="showAddMember()">添加</span></div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchMemberTab('unit')">单位人员</div>
+    <div class="tab" onclick="switchMemberTab('expert')">专家库</div>
+    <div class="tab" onclick="switchMemberTab('admin')">管理员</div>
+  </div>
+  <div id="members-content"></div>
+</div>
+
+<!-- ======================== SET PASSWORD MODAL ======================== -->
+<div id="modal-set-pwd" class="modal">
+  <div class="modal-content">
+    <div class="modal-title">设置密码</div>
+    <div id="modal-pwd-user" style="font-weight:600;margin-bottom:12px;color:var(--primary)"></div>
+    <div class="form-group"><label>4位数字密码 <span class="required">*</span></label>
+      <input class="form-input" type="text" id="modal-pwd" placeholder="请输入4位数字" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" style="text-align:center;font-size:24px;letter-spacing:12px">
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline btn-block" onclick="hideModal('modal-set-pwd')">取消</button>
+      <button class="btn btn-primary btn-block" onclick="setUserPassword()">确认设置</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== NAVBAR ======================== -->
+<div class="navbar" id="navbar" style="display:none">
+  <div class="nav-item active" onclick="navTo('dashboard')"><span class="nav-icon">🏠</span>首页</div>
+  <div class="nav-item" onclick="navTo('monthly-score')"><span class="nav-icon">📅</span>月度评分</div>
+  <div class="nav-item" onclick="navTo('quarterly-score')"><span class="nav-icon">📈</span>季度评分</div>
+  <div id="nav-deduction" class="nav-item" onclick="navTo('deduction-list')"><span class="nav-icon">📝</span>扣分管理</div>
+  <div id="nav-appeal" class="nav-item badge" onclick="navTo('appeal-list')" data-count=""><span class="nav-icon">📢</span>申诉</div>
+</div>
+
+<!-- ======================== ADD MEMBER MODAL ======================== -->
+<div id="modal-add-member" class="modal">
+  <div class="modal-content">
+    <div class="modal-title">添加人员</div>
+    <div class="form-group"><label>角色</label><span id="modal-role-label" style="font-weight:600"></span></div>
+    <div id="modal-unit-group" class="form-group" style="display:none"><label>单位</label><select class="form-select" id="modal-unit"></select></div>
+    <div class="form-group"><label>姓名 <span class="required">*</span></label><input class="form-input" id="modal-name" placeholder="请输入姓名"></div>
+    <div class="form-group"><label>4位密码 <span class="required">*</span></label><input class="form-input" type="text" id="modal-pwd-add" placeholder="请输入4位数字密码" maxlength="4" pattern="[0-9]{4}" inputmode="numeric" style="text-align:center;font-size:20px;letter-spacing:8px"></div>
+    <div class="btn-group">
+      <button class="btn btn-outline btn-block" onclick="hideModal('modal-add-member')">取消</button>
+      <button class="btn btn-primary btn-block" onclick="addMember()">确认添加</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ==================== CONSTANTS ====================
+const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
+const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
+
+const UNITS = [
+  { id: 'jg', name: '结构件分厂' },
+  { id: 'xl', name: '下料分厂' },
+  { id: 'jjg', name: '机加工分厂' },
+  { id: 'zz', name: '总装分厂' },
+  { id: 'jjg2', name: '机加工二分厂' },
+  { id: 'sc', name: '市场部' },
+  { id: 'cg', name: '采购部' },
+  { id: 'js', name: '技术中心' },
+  { id: 'yy', name: '运营部' },
+  { id: 'zl', name: '质量管理部' },
+  { id: 'ah', name: '安环设备部' },
+  { id: 'scgl', name: '生产管理部' },
+];
+
+function getUnitName(id) { const u = UNITS.find(x => x.id === id); return u ? u.name : id; }
+function getQuarter(m) { return Math.ceil(m / 3); }
+function getQuarterMonths(q) { return [(q-1)*3+1, (q-1)*3+2, (q-1)*3+3]; }
+const now = new Date();
+const currentYear = now.getFullYear();
+const currentMonth = now.getMonth() + 1;
+const currentQuarter = getQuarter(currentMonth);
+
+// ==================== DATA STORE (localStorage) ====================
+function getStore() {
+  let d = localStorage.getItem('kpi_data');
+  if (d) {
+    const store = JSON.parse(d);
+    // migration: add password to users that don't have one
+    let migrated = false;
+    store.users.forEach(u => {
+      if (!u.password) { u.password = '0000'; migrated = true; }
+    });
+    if (migrated) saveStore(store);
+    return store;
+  }
+  return initStore();
+}
+
+function initStore() {
+  const data = {
+    users: [
+      { id: 'u_jg', name: '李结构件', role: ROLES.UNIT, unitId: 'jg', password: '0000' },
+      { id: 'u_xl', name: '王下料', role: ROLES.UNIT, unitId: 'xl', password: '0000' },
+      { id: 'u_jjg', name: '赵机加工', role: ROLES.UNIT, unitId: 'jjg', password: '0000' },
+      { id: 'u_zz', name: '陈总装', role: ROLES.UNIT, unitId: 'zz', password: '0000' },
+      { id: 'u_jjg2', name: '刘机二', role: ROLES.UNIT, unitId: 'jjg2', password: '0000' },
+      { id: 'u_sc', name: '周市场', role: ROLES.UNIT, unitId: 'sc', password: '0000' },
+      { id: 'u_cg', name: '吴采购', role: ROLES.UNIT, unitId: 'cg', password: '0000' },
+      { id: 'u_js', name: '郑技术', role: ROLES.UNIT, unitId: 'js', password: '0000' },
+      { id: 'u_yy', name: '冯运营', role: ROLES.UNIT, unitId: 'yy', password: '0000' },
+      { id: 'u_zl', name: '褚质量', role: ROLES.UNIT, unitId: 'zl', password: '0000' },
+      { id: 'u_ah', name: '卫安环', role: ROLES.UNIT, unitId: 'ah', password: '0000' },
+      { id: 'u_scgl', name: '蒋生产', role: ROLES.UNIT, unitId: 'scgl', password: '0000' },
+      { id: 'u_exp1', name: '专家甲', role: ROLES.EXPERT, unitId: null, password: '0000' },
+      { id: 'u_exp2', name: '专家乙', role: ROLES.EXPERT, unitId: null, password: '0000' },
+      { id: 'u_exp3', name: '专家丙', role: ROLES.EXPERT, unitId: null, password: '0000' },
+      { id: 'u_exp4', name: '专家丁', role: ROLES.EXPERT, unitId: null, password: '0000' },
+      { id: 'u_exp5', name: '专家戊', role: ROLES.EXPERT, unitId: null, password: '0000' },
+      { id: 'u_admin', name: '张管理', role: ROLES.ADMIN, unitId: null, password: '0000' },
+    ],
+    deductions: [
+      { id: 'd1', unitId: 'jg', score: 3, reason: '焊接质量不达标', year: currentYear, month: currentMonth, time: now.toISOString() },
+      { id: 'd2', unitId: 'jjg', score: 2, reason: '零件加工精度偏差', year: currentYear, month: currentMonth, time: now.toISOString() },
+      { id: 'd3', unitId: 'zz', score: 5, reason: '总装线停工待料超时', year: currentYear, month: currentMonth, time: now.toISOString() },
+      { id: 'd4', unitId: 'jg', score: 1.5, reason: '结构件表面处理不规范', year: currentYear, month: currentMonth, time: now.toISOString() },
+      { id: 'd5', unitId: 'xl', score: 2.5, reason: '下料尺寸误差超标', year: currentYear, month: currentMonth, time: now.toISOString() },
+      { id: 'd6', unitId: 'cg', score: 3, reason: '原材料到货延迟', year: currentYear, month: currentMonth, time: now.toISOString() },
+    ],
+    appeals: [
+      {
+        id: 'a1',
+        deductionId: 'd1',
+        unitId: 'jg',
+        reason: '该扣分应由机加工分厂承担，焊缝开裂原因是上一道工序加工问题',
+        responsibleUnitId: 'jjg',
+        status: 'pending',
+        time: now.toISOString(),
+        votes: [
+          { userId: 'u_exp1', agree: true, time: now.toISOString() },
+          { userId: 'u_exp2', agree: true, time: now.toISOString() },
+        ],
+        result: null,
+      },
+    ],
+    nextIds: { deduction: 7, appeal: 2, user: 19 },
+  };
+  saveStore(data);
+  return data;
+}
+
+function saveStore(data) { localStorage.setItem('kpi_data', JSON.stringify(data)); }
+
+// ==================== AUTH ====================
+function getCurrentUser() {
+  const u = localStorage.getItem('kpi_currentUser');
+  return u ? JSON.parse(u) : null;
+}
+function getRole() {
+  const u = getCurrentUser();
+  return u ? u.role : null;
+}
+function setCurrentUser(user) {
+  localStorage.setItem('kpi_currentUser', JSON.stringify(user));
+}
+function doLogout() {
+  if (confirm('确定退出登录吗？')) {
+    localStorage.removeItem('kpi_currentUser');
+    showScreen('login');
+  }
+}
+
+// ==================== NAVIGATION ====================
+const NOT_AUTH_SCREENS = ['login'];
+let currentScreen = 'login';
+let dedTab = 'all', appealTab = 'all', memberTab = 'unit';
+
+function showScreen(name) {
+  if (!NOT_AUTH_SCREENS.includes(name) && !getCurrentUser()) {
+    showScreen('login');
+    return;
+  }
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('screen-' + name);
+  if (el) el.classList.add('active');
+  currentScreen = name;
+
+  // navbar
+  const nav = document.getElementById('navbar');
+  const mainScreens = ['dashboard','monthly-score','quarterly-score','deduction-list','appeal-list'];
+  nav.style.display = mainScreens.includes(name) ? 'flex' : 'none';
+  document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+  const navMap = { dashboard: 0, 'monthly-score': 1, 'quarterly-score': 2, 'deduction-list': 3, 'appeal-list': 4 };
+  if (navMap[name] !== undefined) {
+    document.querySelectorAll('.nav-item')[navMap[name]].classList.add('active');
+  }
+
+  // hide admin-only elements
+  const role = getRole();
+  document.getElementById('nav-deduction').style.display = (role === ROLES.ADMIN) ? '' : 'none';
+
+  // render screen
+  renderFunctions[name] && renderFunctions[name]();
+}
+
+function navTo(name, params) {
+  navParams = params || {};
+  showScreen(name);
+}
+
+let navParams = {};
+const renderFunctions = {
+  'login': renderLogin,
+  'dashboard': renderDashboard,
+  'monthly-score': renderMonthlyScore,
+  'monthly-detail': renderMonthlyDetail,
+  'quarterly-score': renderQuarterlyScore,
+  'quarterly-detail': renderQuarterlyDetail,
+  'deduction-list': renderDeductionList,
+  'deduction-create': renderDeductionCreate,
+  'deduction-detail': renderDeductionDetail,
+  'appeal-list': renderAppealList,
+  'appeal-create': renderAppealCreate,
+  'appeal-detail': renderAppealDetail,
+  'members': renderMembers,
+};
+
+// ==================== TOAST ====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ==================== MODAL ====================
+function showModal(id) { document.getElementById(id).classList.add('show'); }
+function hideModal(id) { document.getElementById(id).classList.remove('show'); }
+
+// ==================== LOGIN ====================
+let loginRole = '', loginUnit = '', loginUser = '';
+
+function renderLogin() {
+  const store = getStore();
+  // role options
+  const roles = [
+    { value: ROLES.ADMIN, name: '管理员', desc: '操作扣分，管理全部数据', icon: 'admin', emoji: '🔧' },
+    { value: ROLES.UNIT, name: '单位人员', desc: '查看本单位分值，有权发起申诉', icon: 'unit', emoji: '🏭' },
+    { value: ROLES.EXPERT, name: '专家', desc: '参与申诉评议投票', icon: 'expert', emoji: '🎓' },
+  ];
+  let roleHtml = '';
+  roles.forEach(r => {
+    const sel = loginRole === r.value ? ' selected' : '';
+    roleHtml += `<div class="role-card${sel}" onclick="selectRole('${r.value}')">
+      <div class="icon-circle ${r.icon}">${r.emoji}</div>
+      <div><div style="font-weight:600">${r.name}</div><div style="font-size:13px;color:var(--text-secondary)">${r.desc}</div></div>
+    </div>`;
+  });
+  document.getElementById('role-options').innerHTML = roleHtml;
+
+  document.getElementById('unit-selector').style.display = loginRole === ROLES.UNIT ? '' : 'none';
+  document.getElementById('user-selector').style.display = '';
+
+  // unit selector
+  if (loginRole === ROLES.UNIT) {
+    let uhtml = '<option value="">请选择单位</option>';
+    UNITS.forEach(u => uhtml += `<option value="${u.id}" ${loginUnit===u.id?'selected':''}>${u.name}</option>`);
+    document.getElementById('select-unit').innerHTML = uhtml;
+    document.getElementById('select-unit').onchange = function() {
+      loginUnit = this.value; loginUser = '';
+      renderLogin();
+    };
+  }
+
+  // user options
+  let users = [];
+  if (loginRole === ROLES.UNIT && loginUnit) users = store.users.filter(u => u.role === ROLES.UNIT && u.unitId === loginUnit);
+  else if (loginRole === ROLES.EXPERT) users = store.users.filter(u => u.role === ROLES.EXPERT);
+  else if (loginRole === ROLES.ADMIN) users = store.users.filter(u => u.role === ROLES.ADMIN);
+
+  let uhtml = '';
+  if (users.length === 0) uhtml = '<div class="empty"><div class="icon">📭</div>暂无可用账号</div>';
+  users.forEach(u => {
+    const sel = loginUser === u.id ? ' selected' : '';
+    uhtml += `<div class="user-select-card${sel}" onclick="selectUser('${u.id}')">
+      <div class="name">${u.name}</div>
+      <div class="desc">${ROLE_NAMES[u.role]}${u.unitId ? ' · ' + getUnitName(u.unitId) : ''}</div>
+    </div>`;
+  });
+  document.getElementById('user-options').innerHTML = uhtml;
+
+  // password area
+  const pwdArea = document.getElementById('pwd-area');
+  const loginBtn = document.getElementById('login-btn-area');
+  if (loginUser) {
+    pwdArea.style.display = '';
+    loginBtn.style.display = '';
+  } else {
+    pwdArea.style.display = 'none';
+    loginBtn.style.display = 'none';
+    document.getElementById('login-password').value = '';
+  }
+}
+
+function selectRole(r) { loginRole = r; loginUnit = ''; loginUser = ''; renderLogin(); }
+function selectUser(id) { loginUser = id; renderLogin(); }
+
+function doLogin() {
+  if (!loginRole) { showToast('请选择角色'); return; }
+  if (loginRole === ROLES.UNIT && !loginUnit) { showToast('请选择单位'); return; }
+  if (!loginUser) { showToast('请选择账号'); return; }
+  const pwd = document.getElementById('login-password').value;
+  if (!pwd) { showToast('请输入密码'); return; }
+  if (pwd.length !== 4 || !/^\d{4}$/.test(pwd)) { showToast('密码为4位数字'); return; }
+  const store = getStore();
+  const user = store.users.find(u => u.id === loginUser);
+  if (!user) { showToast('账号不存在'); return; }
+  if (user.password !== pwd) { showToast('密码错误'); return; }
+  setCurrentUser(user);
+  loginRole = ''; loginUnit = ''; loginUser = '';
+  document.getElementById('login-password').value = '';
+  showScreen('dashboard');
+}
+
+// ==================== DASHBOARD ====================
+function renderDashboard() {
+  const user = getCurrentUser();
+  const role = getRole();
+  const store = getStore();
+  const year = currentYear, month = currentMonth, quarter = currentQuarter;
+
+  document.getElementById('dash-greeting').textContent = `你好，${user.name}`;
+  document.getElementById('dash-role-tag').textContent = `${ROLE_NAMES[role]}${user.unitId ? ' · ' + getUnitName(user.unitId) : ''}`;
+
+  // hide all dash sections
+  document.getElementById('admin-dash').style.display = 'none';
+  document.getElementById('unit-dash').style.display = 'none';
+  document.getElementById('expert-dash').style.display = 'none';
+
+  if (role === ROLES.ADMIN) {
+    document.getElementById('admin-dash').style.display = '';
+    const allDeductions = store.deductions.filter(d => d.year === year && d.month === month);
+    const totalDeduct = allDeductions.reduce((s, d) => s + d.score, 0);
+    document.getElementById('stat-score').textContent = '--';
+    document.getElementById('stat-label1').textContent = '本月总扣分';
+    document.getElementById('stat-score').parentElement.className = 'stat-card danger';
+    document.getElementById('stat-score').textContent = totalDeduct.toFixed(1);
+    document.getElementById('stat-qscore').textContent = '--';
+    document.getElementById('stat-label2').textContent = '参与单位';
+    document.getElementById('stat-qscore').parentElement.className = 'stat-card';
+    document.getElementById('stat-qscore').textContent = UNITS.length;
+
+    const pending = store.appeals.filter(a => a.status === 'pending');
+    const reminder = document.getElementById('admin-appeal-reminder');
+    if (pending.length > 0) {
+      reminder.style.display = '';
+      reminder.textContent = `📢 有 ${pending.length} 条申诉待处理，点击查看`;
+    } else {
+      reminder.style.display = 'none';
+    }
+  } else if (role === ROLES.UNIT) {
+    document.getElementById('unit-dash').style.display = '';
+    const deductions = store.deductions.filter(d => d.unitId === user.unitId && d.year === year && d.month === month);
+    const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
+    const myScore = Math.max(0, 100 - totalDeduct);
+
+    document.getElementById('stat-score').textContent = myScore.toFixed(1);
+    document.getElementById('stat-label1').textContent = '本月得分';
+    document.getElementById('stat-score').parentElement.className = 'stat-card' + (myScore < 90 ? ' danger' : '');
+
+    // quarterly score
+    const qmonths = getQuarterMonths(quarter);
+    let qTotal = 0;
+    qmonths.forEach(m => {
+      const dds = store.deductions.filter(d => d.unitId === user.unitId && d.year === year && d.month === m);
+      const deduct = dds.reduce((s, d) => s + d.score, 0);
+      qTotal += Math.max(0, 100 - deduct);
+    });
+    const qScore = (qTotal / 3 * 0.2).toFixed(2);
+    document.getElementById('stat-qscore').textContent = qScore;
+    document.getElementById('stat-label2').textContent = '季度考核分(20%)';
+    document.getElementById('stat-qscore').parentElement.className = 'stat-card warning';
+
+    // deduction list
+    let dhtml = '';
+    if (deductions.length === 0) dhtml = '<div class="empty"><div class="icon">✅</div>本月无扣分记录</div>';
+    deductions.forEach(d => {
+      dhtml += `<div class="deduction-item">
+        <div class="d-title">${d.reason}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+          <span class="d-meta">${d.year}年${d.month}月</span>
+          <span class="d-score">-${d.score}分</span>
+        </div>
+      </div>`;
+    });
+    document.getElementById('unit-deductions').innerHTML = dhtml;
+  } else if (role === ROLES.EXPERT) {
+    document.getElementById('expert-dash').style.display = '';
+    const pending = store.appeals.filter(a => a.status === 'pending');
+    const reminder = document.getElementById('expert-appeal-reminder');
+    document.getElementById('stat-score').textContent = pending.length;
+    document.getElementById('stat-label1').textContent = '待评议';
+    document.getElementById('stat-score').parentElement.className = 'stat-card warning';
+
+    const voted = store.appeals.filter(a => a.votes && a.votes.some(v => v.userId === user.id)).length;
+    document.getElementById('expert-voted').textContent = voted;
+    document.getElementById('stat-qscore').textContent = voted;
+    document.getElementById('stat-label2').textContent = '已评议';
+    document.getElementById('stat-qscore').parentElement.className = 'stat-card';
+
+    if (pending.length > 0) {
+      reminder.style.display = '';
+      reminder.textContent = `📢 有 ${pending.length} 条申诉待评议，点击查看`;
+    } else {
+      reminder.style.display = 'none';
+    }
+  }
+
+  // update appeal badge
+  updateAppealBadge();
+}
+
+function updateAppealBadge() {
+  const store = getStore();
+  const role = getRole();
+  const user = getCurrentUser();
+  let count = 0;
+  if (role === ROLES.ADMIN) count = store.appeals.filter(a => a.status === 'pending').length;
+  else if (role === ROLES.EXPERT) count = store.appeals.filter(a => a.status === 'pending').length;
+  else if (role === ROLES.UNIT) count = store.appeals.filter(a => a.unitId === user.unitId).length;
+
+  const badge = document.getElementById('nav-appeal');
+  if (count > 0) {
+    badge.setAttribute('data-count', count);
+    badge.classList.add('badge');
+  } else {
+    badge.removeAttribute('data-count');
+    badge.classList.remove('badge');
+  }
+}
+
+// ==================== MONTHLY SCORE ====================
+function renderMonthlyScore() {
+  const store = getStore();
+  const year = currentYear, month = currentMonth;
+  document.getElementById('ms-year-month').textContent = `${year}年${month}月`;
+
+  let html = '';
+  UNITS.forEach(unit => {
+    const deductions = store.deductions.filter(d => d.unitId === unit.id && d.year === year && d.month === month);
+    const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
+    const score = Math.max(0, 100 - totalDeduct);
+    const cls = score >= 95 ? '' : (score >= 85 ? 'mid' : 'low');
+    html += `<div class="list-item" onclick="navTo('monthly-detail',{unitId:'${unit.id}',year:${year},month:${month}})">
+      <div class="info">
+        <div class="title">${unit.name}</div>
+        <div class="sub">扣分 ${totalDeduct.toFixed(1)} 分 · ${deductions.length} 条记录</div>
+      </div>
+      <div class="extra"><span class="score ${cls}">${score.toFixed(1)}</span></div>
+      <div class="arrow">›</div>
+    </div>`;
+  });
+  document.getElementById('monthly-score-list').innerHTML = html;
+}
+
+// ==================== MONTHLY DETAIL ====================
+function renderMonthlyDetail() {
+  const { unitId, year, month } = navParams;
+  const store = getStore();
+  document.getElementById('md-title').textContent = `${getUnitName(unitId)} - ${year}年${month}月`;
+  const deductions = store.deductions.filter(d => d.unitId === unitId && d.year === year && d.month === month);
+  const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
+  const score = Math.max(0, 100 - totalDeduct);
+
+  document.getElementById('md-score').textContent = score.toFixed(1);
+  document.getElementById('md-total-deduct').textContent = totalDeduct.toFixed(1);
+
+  let html = '';
+  if (deductions.length === 0) html = '<div class="empty"><div class="icon">✅</div>该月无扣分记录</div>';
+  deductions.forEach(d => {
+    html += `<div class="deduction-item" onclick="navTo('deduction-detail',{id:'${d.id}'})">
+      <div class="d-title">${d.reason}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+        <span class="d-meta">${d.year}年${d.month}月</span>
+        <span class="d-score">-${d.score}分</span>
+      </div>
+    </div>`;
+  });
+  document.getElementById('md-deduction-list').innerHTML = html;
+}
+
+// ==================== QUARTERLY SCORE ====================
+function renderQuarterlyScore() {
+  const store = getStore();
+  const year = currentYear, quarter = currentQuarter;
+  const qmonths = getQuarterMonths(quarter);
+  document.getElementById('qs-year-quarter').textContent = `${year}年第${quarter}季度（${qmonths[0]}-${qmonths[2]}月）`;
+
+  let html = '';
+  UNITS.forEach(unit => {
+    let qTotal = 0;
+    let monthDetails = [];
+    qmonths.forEach(m => {
+      const dds = store.deductions.filter(d => d.unitId === unit.id && d.year === year && d.month === m);
+      const deduct = dds.reduce((s, d) => s + d.score, 0);
+      const ms = Math.max(0, 100 - deduct);
+      qTotal += ms;
+      monthDetails.push({ month: m, score: ms, deduct: deduct });
+    });
+    const qScore = (qTotal / 3 * 0.2).toFixed(2);
+
+    html += `<div class="card quarterly-card" onclick="navTo('quarterly-detail',{unitId:'${unit.id}',year:${year},quarter:${quarter}})">
+      <div style="font-weight:600;margin-bottom:8px">${unit.name}</div>
+      <div class="months">
+        ${monthDetails.map(md => `<div class="month-item">
+          <div class="m-score">${md.score.toFixed(1)}</div>
+          <div class="m-label">${md.month}月</div>
+        </div>`).join('')}
+      </div>
+      <div class="result">
+        <div class="small">季度考核分（${(100/3).toFixed(1)}分 × 20%）</div>
+        <div class="big">${qScore}</div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('quarterly-score-list').innerHTML = html;
+}
+
+// ==================== QUARTERLY DETAIL ====================
+function renderQuarterlyDetail() {
+  const { unitId, year, quarter } = navParams;
+  const store = getStore();
+  const qmonths = getQuarterMonths(quarter);
+  document.getElementById('qd-title').textContent = `${getUnitName(unitId)}季度详情`;
+
+  let qTotal = 0;
+  let html = `<div style="text-align:center;padding:20px 0">
+    <div style="font-size:14px;color:var(--text-secondary)">${year}年第${quarter}季度</div>
+  </div>`;
+
+  qmonths.forEach(m => {
+    const dds = store.deductions.filter(d => d.unitId === unitId && d.year === year && d.month === m);
+    const deduct = dds.reduce((s, d) => s + d.score, 0);
+    const ms = Math.max(0, 100 - deduct);
+    qTotal += ms;
+
+    html += `<div class="card">
+      <div style="font-weight:600;margin-bottom:8px">📅 ${m}月 — 得分: ${ms.toFixed(1)} (扣${deduct.toFixed(1)}分)</div>`;
+    if (dds.length === 0) html += '<div style="color:var(--text-light);font-size:13px">无扣分记录</div>';
+    dds.forEach(d => {
+      html += `<div class="deduction-item"><div class="d-title">${d.reason}</div><div class="d-meta">扣 ${d.score} 分</div></div>`;
+    });
+    html += '</div>';
+  });
+
+  const qScore = (qTotal / 3 * 0.2).toFixed(2);
+  html += `<div class="card" style="text-align:center;background:var(--primary);color:#fff">
+    <div style="font-size:14px;opacity:.8">季度考核分（20%权重）</div>
+    <div style="font-size:36px;font-weight:700">${qScore}</div>
+    <div style="font-size:12px;opacity:.7">三月均分 ${(qTotal/3).toFixed(1)} × 20%</div>
+  </div>`;
+
+  document.getElementById('qd-content').innerHTML = html;
+}
+
+// ==================== DEDUCTION LIST ====================
+function switchDeductionTab(t) {
+  dedTab = t;
+  document.querySelectorAll('#screen-deduction-list .tab').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('#screen-deduction-list .tab')[t === 'all' ? 0 : 1].classList.add('active');
+  renderDeductionList();
+}
+
+function renderDeductionList() {
+  const store = getStore();
+  const user = getCurrentUser();
+  const role = getRole();
+  let list = [...store.deductions].reverse();
+
+  if (role === ROLES.UNIT || dedTab === 'mine') {
+    list = list.filter(d => d.unitId === user.unitId);
+  }
+
+  document.getElementById('dl-create-btn').style.display = (role === ROLES.ADMIN) ? '' : 'none';
+
+  let html = '';
+  if (list.length === 0) html = '<div class="empty"><div class="icon">📝</div>暂无扣分记录</div>';
+  list.forEach(d => {
+    html += `<div class="list-item" onclick="navTo('deduction-detail',{id:'${d.id}'})">
+      <div class="info">
+        <div class="title">${getUnitName(d.unitId)} · ${d.reason}</div>
+        <div class="sub">${d.year}年${d.month}月</div>
+      </div>
+      <div class="extra"><span class="score low" style="font-size:18px">-${d.score}</span></div>
+      <div class="arrow">›</div>
+    </div>`;
+  });
+  document.getElementById('deduction-list-content').innerHTML = html;
+}
+
+// ==================== DEDUCTION CREATE ====================
+function renderDeductionCreate() {
+  const store = getStore();
+  let uhtml = '';
+  UNITS.forEach(u => uhtml += `<option value="${u.id}">${u.name}</option>`);
+  document.getElementById('dc-unit').innerHTML = uhtml;
+  document.getElementById('dc-score').value = '';
+  document.getElementById('dc-reason').value = '';
+  const ym = `${currentYear}-${String(currentMonth).padStart(2,'0')}`;
+  document.getElementById('dc-month').value = ym;
+}
+
+function createDeduction() {
+  const store = getStore();
+  const unitId = document.getElementById('dc-unit').value;
+  const score = parseFloat(document.getElementById('dc-score').value);
+  const reason = document.getElementById('dc-reason').value.trim();
+  let monthStr = document.getElementById('dc-month').value;
+
+  if (!unitId) { showToast('请选择单位'); return; }
+  if (!score || score <= 0) { showToast('请输入有效扣分值'); return; }
+  if (!reason) { showToast('请填写扣分原因'); return; }
+
+  let year = currentYear, month = currentMonth;
+  if (monthStr) {
+    const [y, m] = monthStr.split('-').map(Number);
+    year = y; month = m;
+  }
+
+  const id = 'd' + (store.nextIds.deduction++);
+  store.deductions.push({ id, unitId, score, reason, year, month, time: new Date().toISOString() });
+  saveStore(store);
+  showToast('扣分记录已创建');
+  navTo('deduction-list');
+}
+
+// ==================== DEDUCTION DETAIL ====================
+function renderDeductionDetail() {
+  const { id } = navParams;
+  const store = getStore();
+  const d = store.deductions.find(x => x.id === id);
+  if (!d) { document.getElementById('dd-content').innerHTML = '<div class="empty">记录不存在</div>'; return; }
+
+  const relatedAppeals = store.appeals.filter(a => a.deductionId === d.id);
+  let html = `<div class="card">
+    <div style="font-size:24px;font-weight:700;color:var(--danger);text-align:center;margin-bottom:16px">-${d.score} 分</div>
+    <div class="form-group"><label>被扣分单位</label><div style="font-weight:500">${getUnitName(d.unitId)}</div></div>
+    <div class="form-group"><label>扣分原因</label><div>${d.reason}</div></div>
+    <div class="form-group"><label>考核月份</label><div>${d.year}年${d.month}月</div></div>
+  </div>`;
+
+  if (relatedAppeals.length > 0) {
+    html += '<div class="section-title">相关申诉</div>';
+    relatedAppeals.forEach(a => {
+      const statusTag = { pending: '<span class="tag tag-orange">待评议</span>', approved: '<span class="tag tag-green">已通过</span>', rejected: '<span class="tag tag-red">已驳回</span>' }[a.status];
+      html += `<div class="card" onclick="navTo('appeal-detail',{id:'${a.id}'})">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-weight:500">${a.reason.substring(0,20)}...</span>
+          ${statusTag}
+        </div>
+        <div class="d-meta">责任单位: ${getUnitName(a.responsibleUnitId)}</div>
+      </div>`;
+    });
+  }
+
+  document.getElementById('dd-content').innerHTML = html;
+}
+
+// ==================== APPEAL LIST ====================
+function switchAppealTab(t) {
+  appealTab = t;
+  document.querySelectorAll('#screen-appeal-list .tab').forEach(el => el.classList.remove('active'));
+  const idx = t === 'all' ? 0 : (t === 'mine' ? 1 : 2);
+  document.querySelectorAll('#screen-appeal-list .tab')[idx].classList.add('active');
+  renderAppealList();
+}
+
+function renderAppealList() {
+  const store = getStore();
+  const user = getCurrentUser();
+  const role = getRole();
+  let list = [...store.appeals].reverse();
+
+  if (appealTab === 'pending') list = list.filter(a => a.status === 'pending');
+  else if (appealTab === 'mine' && role === ROLES.UNIT) list = list.filter(a => a.unitId === user.unitId);
+
+  let html = '';
+  if (list.length === 0) html = '<div class="empty"><div class="icon">📢</div>暂无申诉记录</div>';
+  list.forEach(a => {
+    const d = store.deductions.find(x => x.id === a.deductionId);
+    const statusTag = { pending: '<span class="tag tag-orange">待评议</span>', approved: '<span class="tag tag-green">已通过</span>', rejected: '<span class="tag tag-red">已驳回</span>' }[a.status];
+    const agreeCount = (a.votes || []).filter(v => v.agree).length;
+    const disagreeCount = (a.votes || []).filter(v => !v.agree).length;
+
+    html += `<div class="card" onclick="navTo('appeal-detail',{id:'${a.id}'})">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:600;font-size:15px">${getUnitName(a.unitId)} → ${getUnitName(a.responsibleUnitId)}</div>
+          <div style="font-size:13px;color:var(--text-secondary);margin-top:2px">${a.reason.substring(0,30)}...</div>
+          <div style="font-size:12px;color:var(--text-light);margin-top:4px">扣分: ${d ? d.reason : '--'} (${d ? d.score : '--'}分)</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;margin-left:8px">${statusTag}</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-light);margin-top:8px">
+        同意 ${agreeCount} · 不同意 ${disagreeCount}
+      </div>
+    </div>`;
+  });
+  document.getElementById('appeal-list-content').innerHTML = html;
+}
+
+// ==================== APPEAL CREATE ====================
+function renderAppealCreate() {
+  const store = getStore();
+  const user = getCurrentUser();
+  const year = currentYear, month = currentMonth;
+  const deductions = store.deductions.filter(d => d.unitId === user.unitId && d.year === year && d.month === month);
+
+  let dhtml = '<option value="">请选择扣分记录</option>';
+  deductions.forEach(d => dhtml += `<option value="${d.id}">${d.reason} (-${d.score}分)</option>`);
+  document.getElementById('ac-deduction').innerHTML = dhtml;
+
+  let uhtml = '<option value="">请选择责任单位</option>';
+  UNITS.filter(u => u.id !== user.unitId).forEach(u => uhtml += `<option value="${u.id}">${u.name}</option>`);
+  document.getElementById('ac-responsible').innerHTML = uhtml;
+
+  document.getElementById('ac-reason').value = '';
+  document.getElementById('ac-deduction-info').style.display = 'none';
+}
+
+function onAppealDeductionChange() {
+  const deductionId = document.getElementById('ac-deduction').value;
+  const store = getStore();
+  const d = store.deductions.find(x => x.id === deductionId);
+  const info = document.getElementById('ac-deduction-info');
+  if (d) {
+    info.style.display = '';
+    info.innerHTML = `<strong>${d.reason}</strong><br>扣分: ${d.score}分 · ${d.year}年${d.month}月`;
+  } else {
+    info.style.display = 'none';
+  }
+}
+
+function createAppeal() {
+  const store = getStore();
+  const user = getCurrentUser();
+  const deductionId = document.getElementById('ac-deduction').value;
+  const reason = document.getElementById('ac-reason').value.trim();
+  const responsibleUnitId = document.getElementById('ac-responsible').value;
+
+  if (!deductionId) { showToast('请选择扣分记录'); return; }
+  if (!reason) { showToast('请填写申诉理由'); return; }
+  if (!responsibleUnitId) { showToast('请选择责任单位'); return; }
+
+  const id = 'a' + (store.nextIds.appeal++);
+  store.appeals.push({
+    id, deductionId, unitId: user.unitId, reason, responsibleUnitId,
+    status: 'pending', time: new Date().toISOString(), votes: [], result: null,
+  });
+  saveStore(store);
+  showToast('申诉已提交');
+  navTo('appeal-list');
+}
+
+// ==================== APPEAL DETAIL (with voting) ====================
+function renderAppealDetail() {
+  const { id } = navParams;
+  const store = getStore();
+  const user = getCurrentUser();
+  const role = getRole();
+  const a = store.appeals.find(x => x.id === id);
+  if (!a) { document.getElementById('ad-content').innerHTML = '<div class="empty">申诉不存在</div>'; return; }
+
+  const d = store.deductions.find(x => x.id === a.deductionId);
+  const agreeCount = (a.votes || []).filter(v => v.agree).length;
+  const disagreeCount = (a.votes || []).filter(v => !v.agree).length;
+  const total = agreeCount + disagreeCount;
+  const experts = store.users.filter(u => u.role === ROLES.EXPERT);
+  const hasVoted = (a.votes || []).some(v => v.userId === user.id);
+
+  const statusText = { pending: '待评议', approved: '已通过', rejected: '已驳回' };
+  const statusClass = { pending: 'tag-orange', approved: 'tag-green', rejected: 'tag-red' };
+
+  let voteInfoHtml = '';
+  if (total > 0) {
+    const agreePct = (agreeCount / total * 100).toFixed(0);
+    const disagreePct = (disagreeCount / total * 100).toFixed(0);
+    voteInfoHtml = `<div class="vote-result">
+      <div style="font-weight:600;margin-bottom:4px">投票情况 (${total}/${experts.length})</div>
+      <div class="vote-bar">
+        <div class="vote-agree" style="width:${agreePct}%">${agreeCount > 0 ? '同意 '+agreeCount : ''}</div>
+        <div class="vote-disagree" style="width:${disagreePct}%">${disagreeCount > 0 ? disagreeCount + ' 不同意' : ''}</div>
+      </div>
+      <div class="vote-info"><span>同意: ${agreeCount}票</span><span>不同意: ${disagreeCount}票</span></div>
+    </div>`;
+
+    // show vote details — privacy-aware rendering
+    if ((a.votes || []).length > 0) {
+      if (role === ROLES.ADMIN) {
+        // Admin: see all votes with names
+        voteInfoHtml += '<div style="margin-top:8px;font-size:13px;color:var(--text-secondary)"><div style="font-weight:500;margin-bottom:4px">投票明细：</div>';
+        a.votes.forEach(v => {
+          const vu = store.users.find(u => u.id === v.userId);
+          voteInfoHtml += `<div style="display:flex;justify-content:space-between;padding:3px 0">
+            <span>${vu ? vu.name : v.userId}</span>
+            <span style="color:${v.agree ? 'var(--success)' : 'var(--danger)'};font-weight:500">${v.agree ? '同意' : '不同意'}</span>
+          </div>`;
+        });
+        voteInfoHtml += '</div>';
+      } else if (role === ROLES.EXPERT && hasVoted) {
+        // Expert: only see their own vote
+        const myVote = a.votes.find(v => v.userId === user.id);
+        if (myVote) {
+          voteInfoHtml += `<div style="margin-top:8px;font-size:13px;color:var(--text-secondary)">
+            <span>我的投票：</span>
+            <span style="color:${myVote.agree ? 'var(--success)' : 'var(--danger)'};font-weight:500">
+              ${myVote.agree ? '同意' : '不同意'}
+            </span>
+          </div>`;
+        }
+      }
+      // Unit members: only see the vote bar and total counts (already shown above), no individual details
+    }
+  }
+
+  let actionHtml = '';
+  if (a.status === 'pending') {
+    if (role === ROLES.EXPERT && !hasVoted) {
+      actionHtml = `<div class="btn-group">
+        <button class="btn btn-success btn-block" onclick="voteAppeal('${a.id}',true)">✅ 同意申诉</button>
+        <button class="btn btn-danger btn-block" onclick="voteAppeal('${a.id}',false)">❌ 不同意</button>
+      </div>`;
+    } else if (role === ROLES.EXPERT && hasVoted) {
+      actionHtml = '<div class="alert alert-info">您已投票</div>';
+    }
+    if (role === ROLES.ADMIN && total >= experts.length) {
+      actionHtml += `<button class="btn btn-primary btn-block" style="margin-top:8px" onclick="closeAppeal('${a.id}')">📋 结案（统计投票结果）</button>`;
+    }
+    if (role === ROLES.ADMIN && total < experts.length) {
+      actionHtml += `<div class="alert alert-info">等待专家全部投票后即可结案 (${total}/${experts.length})</div>`;
+    }
+  }
+
+  if (a.status !== 'pending' && a.result) {
+    actionHtml = `<div class="alert alert-${a.status === 'approved' ? 'success' : 'danger'}">
+      <strong>申诉${a.status === 'approved' ? '已通过' : '已驳回'}</strong>
+      ${a.result.note || ''}
+    </div>`;
+  }
+
+  const html = `<div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="font-weight:600">${getUnitName(a.unitId)} 发起的申诉</span>
+      <span class="tag ${statusClass[a.status]}">${statusText[a.status]}</span>
+    </div>
+    <div class="form-group"><label>相关扣分</label>
+      <div class="deduction-item">
+        <div class="d-title">${d ? d.reason : '已删除'}</div>
+        <div class="d-meta">${d ? d.score + '分' : ''} · ${d ? d.year+'年'+d.month+'月' : ''}</div>
+      </div>
+    </div>
+    <div class="form-group"><label>申诉理由</label><div style="font-size:15px">${a.reason}</div></div>
+    <div class="form-group"><label>责任单位</label><div style="font-weight:500;color:var(--danger)">${getUnitName(a.responsibleUnitId)}</div></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">投票评议</div>
+    ${voteInfoHtml || '<div style="color:var(--text-light)">暂无投票</div>'}
+  </div>
+
+  ${actionHtml}`;
+
+  document.getElementById('ad-content').innerHTML = html;
+}
+
+function voteAppeal(appealId, agree) {
+  const store = getStore();
+  const user = getCurrentUser();
+  const a = store.appeals.find(x => x.id === appealId);
+  if (!a || a.status !== 'pending') return;
+  if ((a.votes || []).some(v => v.userId === user.id)) { showToast('您已投票'); return; }
+
+  a.votes = a.votes || [];
+  a.votes.push({ userId: user.id, agree, time: new Date().toISOString() });
+  saveStore(store);
+  showToast(agree ? '已投同意票' : '已投不同意票');
+  renderAppealDetail();
+  updateAppealBadge();
+}
+
+function closeAppeal(appealId) {
+  const store = getStore();
+  const a = store.appeals.find(x => x.id === appealId);
+  if (!a || a.status !== 'pending') return;
+
+  const agreeCount = (a.votes || []).filter(v => v.agree).length;
+  const disagreeCount = (a.votes || []).filter(v => !v.agree).length;
+
+  if (agreeCount > disagreeCount) {
+    // approved - transfer deduction to responsible unit
+    a.status = 'approved';
+    a.result = { note: `同意 ${agreeCount}票 > 不同意 ${disagreeCount}票，扣分已转移至${getUnitName(a.responsibleUnitId)}` };
+
+    const d = store.deductions.find(x => x.id === a.deductionId);
+    if (d) {
+      // remove original deduction
+      store.deductions = store.deductions.filter(x => x.id !== a.deductionId);
+      // create new deduction on responsible unit
+      const newId = 'd' + (store.nextIds.deduction++);
+      store.deductions.push({
+        id: newId, unitId: a.responsibleUnitId, score: d.score,
+        reason: d.reason + '（由' + getUnitName(a.unitId) + '申诉转移）',
+        year: d.year, month: d.month, time: new Date().toISOString(),
+      });
+    }
+  } else {
+    a.status = 'rejected';
+    a.result = { note: `同意 ${agreeCount}票 ≤ 不同意 ${disagreeCount}票，申诉被驳回` };
+  }
+
+  saveStore(store);
+  showToast(a.status === 'approved' ? '申诉通过，分值已转移' : '申诉被驳回');
+  renderAppealDetail();
+  updateAppealBadge();
+}
+
+// ==================== MEMBERS ====================
+let currentMemberRole = 'unit';
+
+function switchMemberTab(t) {
+  memberTab = t;
+  document.querySelectorAll('#screen-members .tab').forEach(el => el.classList.remove('active'));
+  const map = { unit: 0, expert: 1, admin: 2 };
+  document.querySelectorAll('#screen-members .tab')[map[t]].classList.add('active');
+  renderMembers();
+}
+
+function renderMembers() {
+  const store = getStore();
+  currentMemberRole = memberTab === 'admin' ? ROLES.ADMIN : (memberTab === 'expert' ? ROLES.EXPERT : ROLES.UNIT);
+  let users;
+  if (memberTab === 'admin') users = store.users.filter(u => u.role === ROLES.ADMIN);
+  else if (memberTab === 'expert') users = store.users.filter(u => u.role === ROLES.EXPERT);
+  else users = store.users.filter(u => u.role === ROLES.UNIT);
+
+  let html = '';
+  if (users.length === 0) html = '<div class="empty"><div class="icon">📭</div>暂无人员</div>';
+  users.forEach(u => {
+    html += `<div class="list-item">
+      <div class="info">
+        <div class="title">${u.name}</div>
+        <div class="sub">${ROLE_NAMES[u.role]}${u.unitId ? ' · ' + getUnitName(u.unitId) : ''} · 密码: ${u.password ? '****' : '<span style="color:var(--danger)">未设置</span>'}</div>
+      </div>
+      <button class="btn btn-outline btn-sm" style="margin-right:4px" onclick="showSetPwd('${u.id}')">设密码</button>
+      <button class="btn btn-outline btn-sm" onclick="removeMember('${u.id}')">删除</button>
+    </div>`;
+  });
+
+  document.getElementById('members-content').innerHTML = html;
+}
+
+function showAddMember() {
+  document.getElementById('modal-role-label').textContent = ROLE_NAMES[currentMemberRole];
+  const unitGroup = document.getElementById('modal-unit-group');
+  if (currentMemberRole === ROLES.UNIT) {
+    unitGroup.style.display = '';
+    let uhtml = '';
+    UNITS.forEach(u => uhtml += `<option value="${u.id}">${u.name}</option>`);
+    document.getElementById('modal-unit').innerHTML = uhtml;
+  } else {
+    unitGroup.style.display = 'none';
+  }
+  document.getElementById('modal-name').value = '';
+  showModal('modal-add-member');
+}
+
+function addMember() {
+  const store = getStore();
+  const name = document.getElementById('modal-name').value.trim();
+  const pwd = document.getElementById('modal-pwd-add').value;
+  if (!name) { showToast('请输入姓名'); return; }
+  if (!pwd || pwd.length !== 4 || !/^\d{4}$/.test(pwd)) { showToast('请输入4位数字密码'); return; }
+
+  let unitId = null;
+  if (currentMemberRole === ROLES.UNIT) {
+    unitId = document.getElementById('modal-unit').value;
+    if (!unitId) { showToast('请选择单位'); return; }
+  }
+
+  const id = 'u' + (store.nextIds.user++);
+  store.users.push({ id, name, role: currentMemberRole, unitId, password: pwd });
+  saveStore(store);
+  hideModal('modal-add-member');
+  document.getElementById('modal-pwd-add').value = '';
+  renderMembers();
+  showToast('人员已添加');
+}
+
+function removeMember(userId) {
+  if (!confirm('确定删除该人员吗？')) return;
+  const store = getStore();
+  store.users = store.users.filter(u => u.id !== userId);
+  saveStore(store);
+  renderMembers();
+  showToast('人员已删除');
+}
+
+// ==================== SET PASSWORD ====================
+let setPwdUserId = '';
+function showSetPwd(userId) {
+  const store = getStore();
+  const user = store.users.find(u => u.id === userId);
+  if (!user) return;
+  setPwdUserId = userId;
+  document.getElementById('modal-pwd-user').textContent = user.name + ' (' + ROLE_NAMES[user.role] + (user.unitId ? ' · ' + getUnitName(user.unitId) : '') + ')';
+  document.getElementById('modal-pwd').value = user.password || '';
+  showModal('modal-set-pwd');
+}
+
+function setUserPassword() {
+  const pwd = document.getElementById('modal-pwd').value;
+  if (!pwd || pwd.length !== 4 || !/^\d{4}$/.test(pwd)) { showToast('请输入4位数字密码'); return; }
+  const store = getStore();
+  const user = store.users.find(u => u.id === setPwdUserId);
+  if (!user) return;
+  user.password = pwd;
+  saveStore(store);
+  hideModal('modal-set-pwd');
+  renderMembers();
+  showToast('密码已更新');
+}
+
+// ==================== DATA BACKUP / RESTORE ====================
+function exportData() {
+  const store = getStore();
+  const dataStr = JSON.stringify(store, null, 2);
+  const blob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const now = new Date();
+  const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}`;
+  a.href = url;
+  a.download = `平煤机绩效考核_数据备份_${ts}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('数据备份已下载');
+}
+
+function importData(input) {
+  if (!input.files || !input.files[0]) return;
+  if (!confirm('⚠️ 导入数据将覆盖当前所有数据（扣分记录、申诉记录、人员信息等），此操作不可撤销。确定继续吗？')) {
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data.users || !data.deductions || !data.appeals) {
+        showToast('数据格式不正确，请选择正确的备份文件');
+        input.value = '';
+        return;
+      }
+      saveStore(data);
+      showToast('数据恢复成功！页面即将刷新');
+      setTimeout(() => { location.reload(); }, 1500);
+    } catch (err) {
+      showToast('JSON解析失败，文件可能损坏');
+      input.value = '';
+    }
+  };
+  reader.readAsText(input.files[0]);
+}
+
+// ==================== INIT ====================
+function init() {
+  initStore();
+  const user = getCurrentUser();
+  if (user) {
+    showScreen('dashboard');
+  } else {
+    showScreen('login');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+</body>
+</html>
