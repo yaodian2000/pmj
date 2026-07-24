@@ -391,6 +391,7 @@ const UNITS = [
   { id: 'zl', name: '质量管理部' },
   { id: 'ah', name: '安环设备部' },
   { id: 'scgl', name: '生产管理部' },
+  { id: 'hr', name: '恒锐分公司' },
 ];
 
 function getUnitName(id) { const u = UNITS.find(x => x.id === id); return u ? u.name : id; }
@@ -435,6 +436,7 @@ function initStore() {
       { id: 'u_zl', name: '褚质量', role: ROLES.UNIT, unitId: 'zl', password: '0000' },
       { id: 'u_ah', name: '卫安环', role: ROLES.UNIT, unitId: 'ah', password: '0000' },
       { id: 'u_scgl', name: '蒋生产', role: ROLES.UNIT, unitId: 'scgl', password: '0000' },
+      { id: 'u_hr', name: '恒锐', role: ROLES.UNIT, unitId: 'hr', password: '0000' },
       { id: 'u_exp1', name: '专家甲', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp2', name: '专家乙', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp3', name: '专家丙', role: ROLES.EXPERT, unitId: null, password: '0000' },
@@ -467,7 +469,7 @@ function initStore() {
         assignedExperts: ['u_exp1','u_exp2','u_exp3'],
       },
     ],
-    nextIds: { deduction: 7, appeal: 2, user: 19 },
+    nextIds: { deduction: 7, appeal: 2, user: 20 },
   };
   saveStore(data);
   return data;
