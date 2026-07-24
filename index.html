@@ -415,6 +415,12 @@ function getStore() {
     store.appeals.forEach(a => {
       if (!a.assignedExperts) { a.assignedExperts = []; migrated = true; }
     });
+    // migration: add 恒锐分公司 user if missing
+    if (!store.users.find(u => u.id === 'u_hr')) {
+      store.users.push({ id: 'u_hr', name: '恒锐', role: ROLES.UNIT, unitId: 'hr', password: '0000' });
+      if (store.nextIds && store.nextIds.user) store.nextIds.user = Math.max(store.nextIds.user, 20);
+      migrated = true;
+    }
     if (migrated) saveStore(store);
     return store;
   }
