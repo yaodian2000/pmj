@@ -118,6 +118,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 .deduction-item .d-title{font-weight:500;margin-bottom:4px}
 .deduction-item .d-meta{font-size:12px;color:var(--text-light)}
 .deduction-item .d-score{font-size:18px;font-weight:700;color:var(--danger)}
+.expert-assign-card{border:1.5px solid var(--border);border-radius:8px;padding:12px;margin-bottom:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px}
+.expert-assign-card.selected{border-color:var(--success);background:#def7ec}
+.expert-assign-card .check-circle{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:#fff}
+.expert-assign-card.selected .check-circle{border-color:var(--success);background:var(--success)}
+.assigned-expert-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.assigned-expert-tag{background:var(--primary);color:#fff;padding:2px 10px;border-radius:20px;font-size:12px}
+.assigned-expert-tag.unvoted{background:var(--text-light)}
 </style>
 </head>
 <body>
@@ -404,6 +411,9 @@ function getStore() {
     store.users.forEach(u => {
       if (!u.password) { u.password = '0000'; migrated = true; }
     });
+    store.appeals.forEach(a => {
+      if (!a.assignedExperts) { a.assignedExperts = []; migrated = true; }
+    });
     if (migrated) saveStore(store);
     return store;
   }
@@ -454,6 +464,7 @@ function initStore() {
           { userId: 'u_exp2', agree: true, time: now.toISOString() },
         ],
         result: null,
+        assignedExperts: ['u_exp1','u_exp2','u_exp3'],
       },
     ],
     nextIds: { deduction: 7, appeal: 2, user: 19 },
@@ -664,10 +675,12 @@ function renderDashboard() {
     document.getElementById('stat-qscore').textContent = UNITS.length;
 
     const pending = store.appeals.filter(a => a.status === 'pending');
+    const unassigned = pending.filter(a => (a.assignedExperts || []).length === 0);
     const reminder = document.getElementById('admin-appeal-reminder');
     if (pending.length > 0) {
       reminder.style.display = '';
-      reminder.textContent = `📢 有 ${pending.length} 条申诉待处理，点击查看`;
+      const unassignHint = unassigned.length > 0 ? `（${unassigned.length}条待选配专家）` : '';
+      reminder.textContent = `📢 有 ${pending.length} 条申诉待处理${unassignHint}，点击查看`;
     } else {
       reminder.style.display = 'none';
     }
@@ -709,21 +722,21 @@ function renderDashboard() {
     document.getElementById('unit-deductions').innerHTML = dhtml;
   } else if (role === ROLES.EXPERT) {
     document.getElementById('expert-dash').style.display = '';
-    const pending = store.appeals.filter(a => a.status === 'pending');
+    const assignedPending = store.appeals.filter(a => a.status === 'pending' && (a.assignedExperts || []).includes(user.id));
     const reminder = document.getElementById('expert-appeal-reminder');
-    document.getElementById('stat-score').textContent = pending.length;
-    document.getElementById('stat-label1').textContent = '待评议';
+    document.getElementById('stat-score').textContent = assignedPending.length;
+    document.getElementById('stat-label1').textContent = '待我评议';
     document.getElementById('stat-score').parentElement.className = 'stat-card warning';
 
-    const voted = store.appeals.filter(a => a.votes && a.votes.some(v => v.userId === user.id)).length;
+    const voted = store.appeals.filter(a => (a.assignedExperts || []).includes(user.id) && a.votes && a.votes.some(v => v.userId === user.id)).length;
     document.getElementById('expert-voted').textContent = voted;
     document.getElementById('stat-qscore').textContent = voted;
     document.getElementById('stat-label2').textContent = '已评议';
     document.getElementById('stat-qscore').parentElement.className = 'stat-card';
 
-    if (pending.length > 0) {
+    if (assignedPending.length > 0) {
       reminder.style.display = '';
-      reminder.textContent = `📢 有 ${pending.length} 条申诉待评议，点击查看`;
+      reminder.textContent = `📢 有 ${assignedPending.length} 条申诉待您评议，点击查看`;
     } else {
       reminder.style.display = 'none';
     }
@@ -739,7 +752,7 @@ function updateAppealBadge() {
   const user = getCurrentUser();
   let count = 0;
   if (role === ROLES.ADMIN) count = store.appeals.filter(a => a.status === 'pending').length;
-  else if (role === ROLES.EXPERT) count = store.appeals.filter(a => a.status === 'pending').length;
+  else if (role === ROLES.EXPERT) count = store.appeals.filter(a => a.status === 'pending' && (a.assignedExperts || []).includes(user.id)).length;
   else if (role === ROLES.UNIT) count = store.appeals.filter(a => a.unitId === user.unitId).length;
 
   const badge = document.getElementById('nav-appeal');
@@ -994,7 +1007,10 @@ function renderAppealList() {
   const role = getRole();
   let list = [...store.appeals].reverse();
 
-  if (appealTab === 'pending') list = list.filter(a => a.status === 'pending');
+  if (appealTab === 'pending') {
+    if (role === ROLES.EXPERT) list = list.filter(a => a.status === 'pending' && (a.assignedExperts || []).includes(user.id));
+    else list = list.filter(a => a.status === 'pending');
+  }
   else if (appealTab === 'mine' && role === ROLES.UNIT) list = list.filter(a => a.unitId === user.unitId);
 
   let html = '';
@@ -1004,6 +1020,7 @@ function renderAppealList() {
     const statusTag = { pending: '<span class="tag tag-orange">待评议</span>', approved: '<span class="tag tag-green">已通过</span>', rejected: '<span class="tag tag-red">已驳回</span>' }[a.status];
     const agreeCount = (a.votes || []).filter(v => v.agree).length;
     const disagreeCount = (a.votes || []).filter(v => !v.agree).length;
+    const assignedCount = (a.assignedExperts || []).length;
 
     html += `<div class="card" onclick="navTo('appeal-detail',{id:'${a.id}'})">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -1015,7 +1032,7 @@ function renderAppealList() {
         <div style="text-align:right;flex-shrink:0;margin-left:8px">${statusTag}</div>
       </div>
       <div style="font-size:12px;color:var(--text-light);margin-top:8px">
-        同意 ${agreeCount} · 不同意 ${disagreeCount}
+        同意 ${agreeCount} · 不同意 ${disagreeCount}${assignedCount > 0 ? ' · 评议专家 ' + assignedCount + '人' : ' · 未选配专家'}
       </div>
     </div>`;
   });
@@ -1068,14 +1085,14 @@ function createAppeal() {
   const id = 'a' + (store.nextIds.appeal++);
   store.appeals.push({
     id, deductionId, unitId: user.unitId, reason, responsibleUnitId,
-    status: 'pending', time: new Date().toISOString(), votes: [], result: null,
+    status: 'pending', time: new Date().toISOString(), votes: [], result: null, assignedExperts: [],
   });
   saveStore(store);
   showToast('申诉已提交');
   navTo('appeal-list');
 }
 
-// ==================== APPEAL DETAIL (with voting) ====================
+// ==================== APPEAL DETAIL (with voting + expert assignment) ====================
 function renderAppealDetail() {
   const { id } = navParams;
   const store = getStore();
@@ -1085,21 +1102,57 @@ function renderAppealDetail() {
   if (!a) { document.getElementById('ad-content').innerHTML = '<div class="empty">申诉不存在</div>'; return; }
 
   const d = store.deductions.find(x => x.id === a.deductionId);
+  const allExperts = store.users.filter(u => u.role === ROLES.EXPERT);
+  const assignedExperts = a.assignedExperts || [];
   const agreeCount = (a.votes || []).filter(v => v.agree).length;
   const disagreeCount = (a.votes || []).filter(v => !v.agree).length;
   const total = agreeCount + disagreeCount;
-  const experts = store.users.filter(u => u.role === ROLES.EXPERT);
   const hasVoted = (a.votes || []).some(v => v.userId === user.id);
+  const isAssigned = role === ROLES.EXPERT && assignedExperts.includes(user.id);
 
   const statusText = { pending: '待评议', approved: '已通过', rejected: '已驳回' };
   const statusClass = { pending: 'tag-orange', approved: 'tag-green', rejected: 'tag-red' };
 
+  // Build assigned expert tags
+  let assignedTagsHtml = '';
+  if (assignedExperts.length > 0) {
+    assignedTagsHtml = '<div class="assigned-expert-tags">';
+    assignedExperts.forEach(eid => {
+      const eu = store.users.find(u => u.id === eid);
+      const voted = (a.votes || []).some(v => v.userId === eid);
+      assignedTagsHtml += `<span class="assigned-expert-tag${voted ? '' : ' unvoted'}">${eu ? eu.name : eid}${voted ? ' ✓' : ''}</span>`;
+    });
+    assignedTagsHtml += '</div>';
+  } else {
+    assignedTagsHtml = '<div style="color:var(--text-light);font-size:13px">尚未选配专家</div>';
+  }
+
+  // Build expert assignment panel for admin
+  let assignPanelHtml = '';
+  if (role === ROLES.ADMIN && a.status === 'pending') {
+    let expertCardsHtml = '';
+    allExperts.forEach(eu => {
+      const isSelected = assignedExperts.includes(eu.id);
+      expertCardsHtml += `<div class="expert-assign-card${isSelected ? ' selected' : ''}" onclick="toggleAssignExpert('${a.id}','${eu.id}')">
+        <div class="check-circle">${isSelected ? '✓' : ''}</div>
+        <div><div style="font-weight:500">${eu.name}</div></div>
+      </div>`;
+    });
+    assignPanelHtml = `<div class="card">
+      <div class="card-title">🎓 选配评议专家</div>
+      <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">从专家库中选择负责本次申诉评议的专家，选择后这些专家将能看到此申诉并投票。</div>
+      ${expertCardsHtml}
+      <div style="margin-top:8px;font-size:12px;color:var(--text-light)">已选 ${assignedExperts.length} / ${allExperts.length} 位专家</div>
+    </div>`;
+  }
+
   let voteInfoHtml = '';
   if (total > 0) {
-    const agreePct = (agreeCount / total * 100).toFixed(0);
-    const disagreePct = (disagreeCount / total * 100).toFixed(0);
+    const voteTarget = assignedExperts.length > 0 ? assignedExperts.length : allExperts.length;
+    const agreePct = (agreeCount / voteTarget * 100).toFixed(0);
+    const disagreePct = (disagreeCount / voteTarget * 100).toFixed(0);
     voteInfoHtml = `<div class="vote-result">
-      <div style="font-weight:600;margin-bottom:4px">投票情况 (${total}/${experts.length})</div>
+      <div style="font-weight:600;margin-bottom:4px">投票情况 (${total}/${voteTarget})</div>
       <div class="vote-bar">
         <div class="vote-agree" style="width:${agreePct}%">${agreeCount > 0 ? '同意 '+agreeCount : ''}</div>
         <div class="vote-disagree" style="width:${disagreePct}%">${disagreeCount > 0 ? disagreeCount + ' 不同意' : ''}</div>
@@ -1107,10 +1160,8 @@ function renderAppealDetail() {
       <div class="vote-info"><span>同意: ${agreeCount}票</span><span>不同意: ${disagreeCount}票</span></div>
     </div>`;
 
-    // show vote details — privacy-aware rendering
     if ((a.votes || []).length > 0) {
       if (role === ROLES.ADMIN) {
-        // Admin: see all votes with names
         voteInfoHtml += '<div style="margin-top:8px;font-size:13px;color:var(--text-secondary)"><div style="font-weight:500;margin-bottom:4px">投票明细：</div>';
         a.votes.forEach(v => {
           const vu = store.users.find(u => u.id === v.userId);
@@ -1121,7 +1172,6 @@ function renderAppealDetail() {
         });
         voteInfoHtml += '</div>';
       } else if (role === ROLES.EXPERT && hasVoted) {
-        // Expert: only see their own vote
         const myVote = a.votes.find(v => v.userId === user.id);
         if (myVote) {
           voteInfoHtml += `<div style="margin-top:8px;font-size:13px;color:var(--text-secondary)">
@@ -1132,25 +1182,30 @@ function renderAppealDetail() {
           </div>`;
         }
       }
-      // Unit members: only see the vote bar and total counts (already shown above), no individual details
     }
   }
 
   let actionHtml = '';
   if (a.status === 'pending') {
-    if (role === ROLES.EXPERT && !hasVoted) {
+    if (role === ROLES.EXPERT && isAssigned && !hasVoted) {
       actionHtml = `<div class="btn-group">
         <button class="btn btn-success btn-block" onclick="voteAppeal('${a.id}',true)">✅ 同意申诉</button>
         <button class="btn btn-danger btn-block" onclick="voteAppeal('${a.id}',false)">❌ 不同意</button>
       </div>`;
-    } else if (role === ROLES.EXPERT && hasVoted) {
+    } else if (role === ROLES.EXPERT && isAssigned && hasVoted) {
       actionHtml = '<div class="alert alert-info">您已投票</div>';
+    } else if (role === ROLES.EXPERT && !isAssigned) {
+      actionHtml = '<div class="alert alert-info">您未被分配到此申诉的评议</div>';
     }
-    if (role === ROLES.ADMIN && total >= experts.length) {
-      actionHtml += `<button class="btn btn-primary btn-block" style="margin-top:8px" onclick="closeAppeal('${a.id}')">📋 结案（统计投票结果）</button>`;
-    }
-    if (role === ROLES.ADMIN && total < experts.length) {
-      actionHtml += `<div class="alert alert-info">等待专家全部投票后即可结案 (${total}/${experts.length})</div>`;
+    if (role === ROLES.ADMIN) {
+      const voteTarget = assignedExperts.length > 0 ? assignedExperts.length : 0;
+      if (assignedExperts.length === 0) {
+        actionHtml += '<div class="alert alert-warning">请先选配专家，专家投票后可结案</div>';
+      } else if (total >= voteTarget) {
+        actionHtml += `<button class="btn btn-primary btn-block" style="margin-top:8px" onclick="closeAppeal('${a.id}')">📋 结案（统计投票结果）</button>`;
+      } else {
+        actionHtml += `<div class="alert alert-info">等待专家全部投票后即可结案 (${total}/${voteTarget})</div>`;
+      }
     }
   }
 
@@ -1174,7 +1229,10 @@ function renderAppealDetail() {
     </div>
     <div class="form-group"><label>申诉理由</label><div style="font-size:15px">${a.reason}</div></div>
     <div class="form-group"><label>责任单位</label><div style="font-weight:500;color:var(--danger)">${getUnitName(a.responsibleUnitId)}</div></div>
+    <div class="form-group"><label>评议专家</label>${assignedTagsHtml}</div>
   </div>
+
+  ${assignPanelHtml}
 
   <div class="card">
     <div class="card-title">投票评议</div>
@@ -1186,11 +1244,30 @@ function renderAppealDetail() {
   document.getElementById('ad-content').innerHTML = html;
 }
 
+function toggleAssignExpert(appealId, expertId) {
+  const store = getStore();
+  const a = store.appeals.find(x => x.id === appealId);
+  if (!a || a.status !== 'pending') return;
+  a.assignedExperts = a.assignedExperts || [];
+  if (a.assignedExperts.includes(expertId)) {
+    a.assignedExperts = a.assignedExperts.filter(eid => eid !== expertId);
+    // also remove their vote if they already voted
+    a.votes = (a.votes || []).filter(v => v.userId !== expertId);
+  } else {
+    a.assignedExperts.push(expertId);
+  }
+  saveStore(store);
+  renderAppealDetail();
+  updateAppealBadge();
+}
+
 function voteAppeal(appealId, agree) {
   const store = getStore();
   const user = getCurrentUser();
   const a = store.appeals.find(x => x.id === appealId);
   if (!a || a.status !== 'pending') return;
+  const assignedExperts = a.assignedExperts || [];
+  if (assignedExperts.length > 0 && !assignedExperts.includes(user.id)) { showToast('您未被分配到此申诉'); return; }
   if ((a.votes || []).some(v => v.userId === user.id)) { showToast('您已投票'); return; }
 
   a.votes = a.votes || [];
@@ -1212,6 +1289,7 @@ function closeAppeal(appealId) {
   if (agreeCount > disagreeCount) {
     // approved - transfer deduction to responsible unit
     a.status = 'approved';
+    const assignedCount = (a.assignedExperts || []).length;
     a.result = { note: `同意 ${agreeCount}票 > 不同意 ${disagreeCount}票，扣分已转移至${getUnitName(a.responsibleUnitId)}` };
 
     const d = store.deductions.find(x => x.id === a.deductionId);
