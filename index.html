@@ -1475,7 +1475,7 @@ function importData(input) {
 
 // ==================== INIT ====================
 function init() {
-  initStore();
+  getStore();
   const user = getCurrentUser();
   if (user) {
     showScreen('dashboard');
