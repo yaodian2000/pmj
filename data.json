@@ -181,28 +181,28 @@
       "responsibleUnitId": "js",
       "status": "pending",
       "time": "2026-07-29T02:27:17.479Z",
-      "votes": [
-        {
-          "userId": "u_exp2",
-          "agree": false,
-          "time": "2026-07-29T02:29:27.401Z"
-        }
-      ],
+      "votes": [],
       "result": null,
-      "assignedExperts": [
-        "u_exp1",
-        "u_exp2",
-        "u_exp3",
-        "u_exp4",
-        "u_exp5"
-      ]
+      "assignedExperts": []
+    },
+    {
+      "id": "a2",
+      "deductionId": "d3",
+      "unitId": "zz",
+      "reason": "此责任应该为结构件分厂周转延期造成的",
+      "responsibleUnitId": "jg",
+      "status": "pending",
+      "time": "2026-07-29T02:29:47.995Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
     }
   ],
   "nextIds": {
     "deduction": 5,
-    "appeal": 2,
+    "appeal": 3,
     "user": 20
   },
   "_dataCleared": true,
-  "_encToken": "3154c6e74ebabe9412fb1660eb26dcedaab09d2f2da5967f89e0e9d88ecc048d0ae27aff79b38490991678cc86a016d6e09f0b906b1a7fe0caefd685f819e16bf54b2188"
+  "_encToken": "b761dc74677a9343b942f3162c85ba6ed241b60772e5e2c178952bd0163146d9922c8e96638bd8845e862d4e17923f2c38b7512d3f99570c2abe188136d756f0463e8642"
 }
