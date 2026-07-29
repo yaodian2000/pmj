@@ -55,6 +55,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u27",
+      "name": "胡永峰",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -62,8 +69,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 27
+    "user": 28
   },
   "_dataCleared": true,
-  "_encToken": "60d03e0236aca4c2ac4d616cd6410ea6f2a5e4d76d186da69496d45f24ba5329fd9b506d9e8327bca960585462a4dc03e5f450270497e3cba01a6d2f2d915aee9781a324"
+  "_encToken": "160817c4fd486e72c039851dc0ffedf985d5bd0c24548ba531ffb1e6e19baa68b9042286dc9b67701607e5b52f237453c96cf36a5d5e9ee3ded3a41c198cfc758ffbcfec"
 }
