@@ -69,6 +69,13 @@
       "role": "unit",
       "unitId": "jjg",
       "password": "1111"
+    },
+    {
+      "id": "u23",
+      "name": "刘国",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "1111"
     }
   ],
   "deductions": [],
@@ -76,8 +83,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 23
+    "user": 24
   },
   "_dataCleared": true,
-  "_encToken": "fc8991e615eb002c11343815a1925e293996ae79bd22072f88b24c656916e0b54efe97bc54f3a21d604fe877a1dc4216a619b8d651f2de98bc1fbd1ffc5936993929f9fb"
+  "_encToken": "88f796d9d25156c1e4d786ac396c97201ca4bed6b181aa6e1d6b9a5679c0e9a504b1ff9a4c20621c3459e9843b5f383ca84360e1d413e9e4a055c55c5452553ee51ee17b"
 }
