@@ -561,6 +561,47 @@ function base64Decode(str) {
   return new TextDecoder().decode(bytes);
 }
 
+// ==================== TOKEN ENCRYPTION (AES-GCM) ====================
+// Shared key derived from a passphrase — enables cross-device token sharing
+const _CRYPTO_PASSPHRASE = 'pmj_kpi_sync_2026_secure_key_v2';
+const _CRYPTO_SALT = new Uint8Array([0x50,0x4D,0x4A,0x5F,0x4B,0x50,0x49,0x5F,0x53,0x59,0x4E,0x43,0x5F,0x32,0x30,0x32]);
+
+async function _deriveKey() {
+  const enc = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey('raw', enc.encode(_CRYPTO_PASSPHRASE), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: _CRYPTO_SALT, iterations: 100000, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt']
+  );
+}
+
+async function encryptToken(token) {
+  const key = await _deriveKey();
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const enc = new TextEncoder();
+  const encrypted = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(token));
+  // Return IV + ciphertext as hex string
+  const combined = new Uint8Array(iv.length + encrypted.byteLength);
+  combined.set(iv);
+  combined.set(new Uint8Array(encrypted), iv.length);
+  return Array.from(combined).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function decryptToken(hexStr) {
+  if (!hexStr || hexStr.length < 24) return null;
+  const bytes = new Uint8Array(hexStr.match(/.{1,2}/g).map(b => parseInt(b, 16)));
+  const iv = bytes.slice(0, 12);
+  const ciphertext = bytes.slice(12);
+  try {
+    const key = await _deriveKey();
+    const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ciphertext);
+    return new TextDecoder().decode(decrypted);
+  } catch(e) { return null; }
+}
+
 let _syncTimer = null;
 let _syncing = false;
 
@@ -590,6 +631,11 @@ async function _syncToCloud(data) {
     // Clean data for upload (remove _updatedAt)
     const cleanData = { ...data };
     delete cleanData._updatedAt;
+
+    // Include encrypted token in cloud data for cross-device sharing
+    if (config.token) {
+      cleanData._encToken = await encryptToken(config.token);
+    }
 
     const content = base64Encode(JSON.stringify(cleanData, null, 2));
     const body = { message: 'Auto-sync: ' + new Date().toLocaleString('zh-CN'), content };
@@ -697,6 +743,7 @@ async function syncNow() {
         updateSyncUI('syncing', '正在上传本地数据...');
         const cleanData = { ...localData };
         delete cleanData._updatedAt;
+        if (config.token) cleanData._encToken = await encryptToken(config.token);
         const content = base64Encode(JSON.stringify(cleanData, null, 2));
         const body = {
           message: 'Manual sync: ' + new Date().toLocaleString('zh-CN'),
@@ -714,6 +761,7 @@ async function syncNow() {
       updateSyncUI('syncing', '正在首次上传...');
       const cleanData = { ...localData };
       delete cleanData._updatedAt;
+      if (config.token) cleanData._encToken = await encryptToken(config.token);
       const content = base64Encode(JSON.stringify(cleanData, null, 2));
       const body = {
         message: 'Initial sync: ' + new Date().toLocaleString('zh-CN'),
@@ -768,10 +816,26 @@ function enableSync() {
   syncNow();
 }
 
-function disableSync() {
+async function disableSync() {
   if (!confirm('确定要停用云端数据同步吗？停用后数据将不会自动跨设备同步。')) return;
 
   const config = getSyncConfig();
+
+  // Remove encrypted token from cloud data
+  try {
+    const result = await githubAPI('data.json');
+    const cloudData = JSON.parse(base64Decode(result.content));
+    delete cloudData._encToken;
+    const content = base64Encode(JSON.stringify(cloudData, null, 2));
+    await githubAPI('data.json', 'PUT', {
+      message: 'Disable cloud sync',
+      content,
+      sha: result.sha,
+    });
+  } catch(e) {
+    console.warn('Failed to clear cloud token:', e);
+  }
+
   config.enabled = false;
   config.token = ''; // Clear token for security
   saveSyncConfig(config);
@@ -812,6 +876,29 @@ function renderSyncSettings() {
 
 async function initCloudSync() {
   const config = getSyncConfig();
+
+  // If no local token, try to recover from cloud (public raw URL)
+  if (!config.token) {
+    try {
+      const rawRes = await fetch('https://raw.githubusercontent.com/yaodian2000/pmj/main/data.json');
+      if (rawRes.ok) {
+        const rawData = await rawRes.json();
+        if (rawData._encToken) {
+          const token = await decryptToken(rawData._encToken);
+          if (token) {
+            config.token = token;
+            config.enabled = true;
+            config.lastSync = 0;
+            saveSyncConfig(config);
+            console.log('Token recovered from cloud');
+          }
+        }
+      }
+    } catch(e) {
+      console.log('No cloud token available:', e.message);
+    }
+  }
+
   if (!config.enabled || !config.token) {
     // Sync not configured
     document.getElementById('sync-status-bar').style.display = 'none';
@@ -840,6 +927,7 @@ async function initCloudSync() {
         updateSyncUI('syncing', '正在上传本地数据...');
         const cleanData = { ...localData };
         delete cleanData._updatedAt;
+        if (config.token) cleanData._encToken = await encryptToken(config.token);
         const content = base64Encode(JSON.stringify(cleanData, null, 2));
         const body = {
           message: 'Auto-sync on startup: ' + new Date().toLocaleString('zh-CN'),
@@ -859,6 +947,7 @@ async function initCloudSync() {
       const localData = getStore();
       const cleanData = { ...localData };
       delete cleanData._updatedAt;
+      if (config.token) cleanData._encToken = await encryptToken(config.token);
       const content = base64Encode(JSON.stringify(cleanData, null, 2));
       const body = {
         message: 'Initial sync: ' + new Date().toLocaleString('zh-CN'),
