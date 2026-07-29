@@ -309,7 +309,11 @@
       "time": "2026-07-29T09:08:52.796Z",
       "votes": [],
       "result": null,
-      "assignedExperts": []
+      "assignedExperts": [
+        "u25",
+        "u26",
+        "u27"
+      ]
     },
     {
       "id": "a3",
@@ -334,5 +338,5 @@
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "b175d34a9632519646c46df1df36378144ae2200c769bb67bff73007b16efd00e50f25f650486ac21db1c3d68cd4be2090a5afed031ff27581155547735f4f80bf4356d4"
+  "_encToken": "bb5a066a2272e8ceabd97e2dae7f149846e93ab9b8d2cc346711b1ff6a874d29decd8cd84da195f7d8d7f24a08b3c03d01ac574e1bceb89f8a90037fdfd77ebb3efd8e47"
 }
