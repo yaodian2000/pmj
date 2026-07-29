@@ -125,6 +125,13 @@
       "role": "unit",
       "unitId": "cg",
       "password": "0000"
+    },
+    {
+      "id": "u32",
+      "name": "王跃功",
+      "role": "unit",
+      "unitId": "js",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -132,8 +139,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 32
+    "user": 33
   },
   "_dataCleared": true,
-  "_encToken": "d7340399a1d01cde638f5b50fa9e5b70cb3037660bd97c07dccce86335b666071c42bf47c3fd983f4db722a49307b90b6fa84937675895249d8c453b6016d2a4dd907f0b"
+  "_encToken": "cbd0f7c11b89c4636d7e9acfc8c8bb87be78f87cd20c255849fd15b1c5cc1fc2bb1b6337ae293cf7ecac768db157a1ed9783f698f829c75d2b9f6987e7c9537aab573f59"
 }
