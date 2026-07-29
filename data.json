@@ -1,41 +1,6 @@
 {
   "users": [
     {
-      "id": "u_exp1",
-      "name": "专家甲",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp2",
-      "name": "专家乙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp3",
-      "name": "专家丙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp4",
-      "name": "专家丁",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp5",
-      "name": "专家戊",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u_gys",
       "name": "孙工艺",
       "role": "unit",
@@ -191,5 +156,5 @@
     "user": 40
   },
   "_dataCleared": true,
-  "_encToken": "756de741a1be9a660ace403207591f3f0ba415e41e0c6fc46c716f0166086f40b7def8a0b871674c5f14c43eab19ed08e9a80d0d7bde1deaf874edcf6c24a540c5b83010"
+  "_encToken": "b238d5e5ddb07d4f1731cb54d1314d8ddb8182e2e019f3de32f856966743a93c725acf5d503507b4960a08c8fa019c22e2852f5816b43f6429114b96cfbbcc704f3f884b"
 }
