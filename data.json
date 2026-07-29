@@ -146,6 +146,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u40",
+      "name": "胡永峰",
+      "role": "expert",
+      "unitId": null,
+      "password": "0002"
     }
   ],
   "deductions": [],
@@ -153,8 +160,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 40
+    "user": 41
   },
   "_dataCleared": true,
-  "_encToken": "b238d5e5ddb07d4f1731cb54d1314d8ddb8182e2e019f3de32f856966743a93c725acf5d503507b4960a08c8fa019c22e2852f5816b43f6429114b96cfbbcc704f3f884b"
+  "_encToken": "096d789cdcd31a316e30c969d894bd451cf0c74e23ec9f48cd3e3749653ee1289e0790ac17c672825c71144f662704d0ec1436d57ff0e55b1197e9a579e5dc34d3517c47"
 }
