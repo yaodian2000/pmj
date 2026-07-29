@@ -188,6 +188,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u46",
+      "name": "樊永斌",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -252,8 +259,8 @@
   "nextIds": {
     "deduction": 3,
     "appeal": 2,
-    "user": 46
+    "user": 47
   },
   "_dataCleared": true,
-  "_encToken": "5062a97cdc2ef914fcf264ac6f724d2e36806573384cb6945549b917140c27428d3c6036ccc2151b5daf6b6611780b6be58087e63f29117c1b6ddd32962cec8fe113eb8f"
+  "_encToken": "4537f18bd67a9ede65f631b4238928de059d081c6e23651df257c6cd291da689d7e1610628cfd45b96552026d5a43394e87c498ae71a5a7e31e219253f71314ab53324d7"
 }
