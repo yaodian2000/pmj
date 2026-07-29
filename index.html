@@ -431,7 +431,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607291010'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202607291013'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -912,6 +912,18 @@ async function initCloudSync() {
   try {
     const cloudResult = await pullFromCloud();
     if (cloudResult) {
+      const hasLocal = !!localStorage.getItem('kpi_data');
+
+      if (!hasLocal) {
+        // New device — no local data, always use cloud as source of truth
+        saveStoreRaw(cloudResult.data);
+        updateSyncUI('synced', '已从云端加载数据');
+        config.lastSync = Date.now();
+        saveSyncConfig(config);
+        console.log('Fresh device: loaded cloud data');
+        return;
+      }
+
       const localData = getStore();
       const localTime = localData._updatedAt || 0;
       const cloudTime = cloudResult.data._updatedAt || 0;
@@ -2013,10 +2025,11 @@ async function init() {
   }
   localStorage.setItem('_appVersion', APP_VERSION);
 
+  // Cloud sync FIRST — so fresh devices get cloud data before initStore creates blank data
+  await initCloudSync();
+  // Now init local store (if cloud already populated it, this finds existing data)
   getStore();
   initMonthTabs();
-  // Always try cloud sync first, even before login — ensures new devices get latest data
-  await initCloudSync();
   const user = getCurrentUser();
   if (user) {
     showScreen('dashboard');
