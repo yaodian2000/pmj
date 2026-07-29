@@ -160,6 +160,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u43",
+      "name": "刘庆伟",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -167,8 +174,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 43
+    "user": 44
   },
   "_dataCleared": true,
-  "_encToken": "bed610431c58e91046505a8e4c0fe4ed8f07bf5baae411c720dc04d5638b02378efa4c6ef0544ed03ca0723864d2de0fa1ff6a571519019886a67a52544ff78fbe1a0fbb"
+  "_encToken": "27e26a200a24f222a3f562b2d91d251d6c2fad152990265281aec25943cf1f87861da7b9ac324aa14cfcde68b7b5ff8ae39cc4fa291df1dac93b61065b42b44103624929"
 }
