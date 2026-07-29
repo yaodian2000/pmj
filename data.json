@@ -334,6 +334,11 @@
           "userId": "u25",
           "agree": true,
           "time": "2026-07-29T09:10:12.132Z"
+        },
+        {
+          "userId": "u26",
+          "agree": true,
+          "time": "2026-07-29T09:10:31.740Z"
         }
       ],
       "result": null,
@@ -350,5 +355,5 @@
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "ee4f0a77da5008606d63a2fe26206649c0f24a8b0d8e07c02a022ad5ddcb3345e1c92d925198659205e5ec460652a80ba985140f98d3ada463e16dc229d831210333a553"
+  "_encToken": "04bfccda84f3f7f3f3f93f0be86087567fc4ecaf3248baf908016593359191db5a4bf43d385ebc443bd243576924bc30ee778c492591a2fd408688a05944797e7c2f5e31"
 }
