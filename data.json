@@ -148,13 +148,6 @@
       "password": "0000"
     },
     {
-      "id": "u40",
-      "name": "胡永峰",
-      "role": "expert",
-      "unitId": null,
-      "password": "0002"
-    },
-    {
       "id": "u41",
       "name": "洪亮",
       "role": "expert",
@@ -170,5 +163,5 @@
     "user": 42
   },
   "_dataCleared": true,
-  "_encToken": "44f963848adb51e1507224cf0033a3e03e4c7137334b4bfe1353477e5b196671ee188ac14be74a0817a4a75a92af0706059de7f99c74198cce8d6f61a7a39df6920b27d4"
+  "_encToken": "dde4457d8e7a10cf37650f0beb8bdcbf635b15c83141a1ee4123125a85c46e4c8384f0a04baf2a8a73974158e83ea8ed0b4fa9f18e2837881ed7b06c805cb5d158b7636e"
 }
