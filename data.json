@@ -174,6 +174,13 @@
       "role": "unit",
       "unitId": "hr",
       "password": "0000"
+    },
+    {
+      "id": "u39",
+      "name": "刘庆伟",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -181,8 +188,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 39
+    "user": 40
   },
   "_dataCleared": true,
-  "_encToken": "8582469db2ab067e1fe48ac27baa0b43a42788b5840f8d1ae57f86ed6fd603eaf6b0f84356e918bf613ccc5e79bbf09714c4444b8ff328e92d30387ee41483cedd75a730"
+  "_encToken": "756de741a1be9a660ace403207591f3f0ba415e41e0c6fc46c716f0166086f40b7def8a0b871674c5f14c43eab19ed08e9a80d0d7bde1deaf874edcf6c24a540c5b83010"
 }
