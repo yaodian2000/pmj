@@ -167,6 +167,13 @@
       "role": "unit",
       "unitId": "scgl",
       "password": "0000"
+    },
+    {
+      "id": "u43",
+      "name": "王跃功",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -174,8 +181,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 43
+    "user": 44
   },
   "_dataCleared": true,
-  "_encToken": "0e94228e603bba5a2f22386c2a6a4d3c2666ce4b4d10b551fff009192c8051917f61c67b529ab07e033f87d28f9add3f57c3bbb3b318991b80df30c98af65f2f7f3d384c"
+  "_encToken": "8e311a9e2d9dad5ddeac0152fa166360e1e52482da3c2d5fcfe191d63e151c703c00d263d905f011d5b6b99e42587c771e7f56d73f15a840091a431e6708897b6bb2eecd"
 }
