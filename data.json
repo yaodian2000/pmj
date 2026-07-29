@@ -223,6 +223,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u51",
+      "name": "刘法旺",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -287,8 +294,8 @@
   "nextIds": {
     "deduction": 3,
     "appeal": 2,
-    "user": 51
+    "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "06988d96ad457ae4e069751312d344b0c97b9a89076118933da22166ebbe2dbc0b8999270a7b9e850805d2e85d1b5d9916140ac6723a794a5257aca01656d39b16d70f03"
+  "_encToken": "461afdcda435386a4139faf03c036bec4715e5d9dab5621958fb04cd195105333d963c6126fafbf293982ab7aebfb877dc4e90e9a3bd1abfb0750cf8693b2362cd153542"
 }
