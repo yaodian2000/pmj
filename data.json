@@ -146,6 +146,13 @@
       "role": "unit",
       "unitId": "ah",
       "password": "0000"
+    },
+    {
+      "id": "u40",
+      "name": "刘法旺",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -153,8 +160,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 40
+    "user": 41
   },
   "_dataCleared": true,
-  "_encToken": "ec4ae32be6a3a9674270fda8e14119fa1a8a6bb7a6028380d6460610c71bc7ea3f117257d1bb905fbb27f71039983d75a4b814e340defad6a72edc8a2680f5468c5df943"
+  "_encToken": "c292916c2d74a37ff5a8294d55fb43b49463f62e0853d4db271dec2d0d42c554e385d3ffac1d94b0e0744271c61eef25f49b3edb3a5f7feec1a7525beb88935d1b478994"
 }
