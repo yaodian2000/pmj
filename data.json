@@ -104,6 +104,13 @@
       "role": "unit",
       "unitId": "jjg2",
       "password": "0000"
+    },
+    {
+      "id": "u34",
+      "name": "董威",
+      "role": "unit",
+      "unitId": "sc",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -111,8 +118,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 34
+    "user": 35
   },
   "_dataCleared": true,
-  "_encToken": "4b62ce21de311ad7057ded21dee4a5fd8973f0bb5c7ffee5850a0a6376de0b8f586bb6996d0c329c5279c443794e71d636ed22c148d17809440bb27f2dd34ead8832818b"
+  "_encToken": "4a3f55e69efc90f9f65075f5dbf3715a12945aa3bef4e8a6a265671470306f262501c2540fb8650a835732b860a3da09d1c2e542394b6fb6412d7a6596f1cd7fbc93c20d"
 }
