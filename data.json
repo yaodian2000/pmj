@@ -48,6 +48,13 @@
       "role": "unit",
       "unitId": "hr",
       "password": "0000"
+    },
+    {
+      "id": "u21",
+      "name": "姜喜",
+      "role": "admin",
+      "unitId": null,
+      "password": "0001"
     }
   ],
   "deductions": [],
@@ -55,8 +62,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21
+    "user": 22
   },
   "_dataCleared": true,
-  "_encToken": "42ae314b3957e13f015e409e2b479744fb6aad49c8e0b1ba9dfa8abe98a0195f91450818bc4cc54034e9aa2b990579e3957fb4dfba8a4656c2a26061fe5d69e4de22ab40"
+  "_encToken": "a981f546fdec76b25e6c875f67d70385b3eb79579ce31f3af96c68f5cc640e7005418218ec1afb0483e6baf47e18fae555a8f785f0f0a0b9d396544e57b4246867162e8e"
 }
