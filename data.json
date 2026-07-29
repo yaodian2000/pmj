@@ -195,7 +195,11 @@
       "time": "2026-07-29T02:29:47.995Z",
       "votes": [],
       "result": null,
-      "assignedExperts": []
+      "assignedExperts": [
+        "u_exp5",
+        "u_exp4",
+        "u_exp3"
+      ]
     }
   ],
   "nextIds": {
@@ -204,5 +208,5 @@
     "user": 20
   },
   "_dataCleared": true,
-  "_encToken": "b761dc74677a9343b942f3162c85ba6ed241b60772e5e2c178952bd0163146d9922c8e96638bd8845e862d4e17923f2c38b7512d3f99570c2abe188136d756f0463e8642"
+  "_encToken": "59cf493317283ed2e94cbff257bd4a78e0a4e75ea156208387563dba7359526b0500954d3d09f9606e3dd31f24ffa7f0b486c81b924ab9b8013c97104f7320d1d4ac8b60"
 }
