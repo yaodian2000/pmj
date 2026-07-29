@@ -48,6 +48,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u26",
+      "name": "刘国",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -55,8 +62,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 26
+    "user": 27
   },
   "_dataCleared": true,
-  "_encToken": "ed2f0f781d277d3136ab1b11841b40ccd7e0da66926c3fedfd8bb42372d190fa196d91ff79f2700dca5963638d63e742b61b26f9ea8af7940dd85774365b1b01bab053f8"
+  "_encToken": "60d03e0236aca4c2ac4d616cd6410ea6f2a5e4d76d186da69496d45f24ba5329fd9b506d9e8327bca960585462a4dc03e5f450270497e3cba01a6d2f2d915aee9781a324"
 }
