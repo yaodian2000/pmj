@@ -48,6 +48,13 @@
       "role": "unit",
       "unitId": "hr",
       "password": "0000"
+    },
+    {
+      "id": "u20",
+      "name": "谷兵",
+      "role": "unit",
+      "unitId": "jg",
+      "password": "1111"
     }
   ],
   "deductions": [],
@@ -55,8 +62,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 20
+    "user": 21
   },
   "_dataCleared": true,
-  "_encToken": "5ce6571b5771abff1f46775c6e25a72b0fd2115683048a761cc10245a3151cdc3a29d79a4d77c6d9bd3171a78d3d9608c21504a2a553cd8cb377677ea5085a312a58e4e3"
+  "_encToken": "9157b0c08c30c87cabe693adc2877716a087d18a56c20bbc4117cb88cb64aacb2a7c07e6a98575c33db5aa022f1c73d80538b325c62206fc9bb65623dc0616b05a00559b"
 }
