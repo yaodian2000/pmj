@@ -243,13 +243,13 @@
       "time": "2026-07-29T07:41:52.430Z"
     },
     {
-      "id": "d3",
-      "unitId": "jg",
+      "id": "d4",
+      "unitId": "scgl",
       "score": 1,
-      "reason": "测试",
+      "reason": "测试（由结构件分厂申诉转移）",
       "year": 2026,
       "month": 7,
-      "time": "2026-07-29T09:07:41.267Z"
+      "time": "2026-07-29T09:11:13.324Z"
     }
   ],
   "appeals": [
@@ -337,7 +337,7 @@
       "unitId": "jg",
       "reason": "测试",
       "responsibleUnitId": "scgl",
-      "status": "pending",
+      "status": "approved",
       "time": "2026-07-29T09:09:13.747Z",
       "votes": [
         {
@@ -356,7 +356,9 @@
           "time": "2026-07-29T09:10:54.404Z"
         }
       ],
-      "result": null,
+      "result": {
+        "note": "同意 3票 > 不同意 0票，扣分已转移至生产管理部"
+      },
       "assignedExperts": [
         "u25",
         "u26",
@@ -365,10 +367,10 @@
     }
   ],
   "nextIds": {
-    "deduction": 4,
+    "deduction": 5,
     "appeal": 4,
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "d13d0884cf3618938ff3fe6c93f4e8b4013ae04021d7f19ab1cc2173c1eda5c92ead8961353f3cb748355771e6c67853eac80ae3c316c4f951bdd439c94db281a398d93a"
+  "_encToken": "72997922905ddced4cdd766415212138fe4f180a442809189923edefc14c4848e27ece9296c8b9473b2b9cfef83b12875b67a83872f29fb9901dffbb648d985b0761f7bc"
 }
