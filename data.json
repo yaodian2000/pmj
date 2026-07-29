@@ -55,6 +55,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0001"
+    },
+    {
+      "id": "u22",
+      "name": "王世博",
+      "role": "admin",
+      "unitId": null,
+      "password": "0001"
     }
   ],
   "deductions": [],
@@ -62,8 +69,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 22
+    "user": 23
   },
   "_dataCleared": true,
-  "_encToken": "a981f546fdec76b25e6c875f67d70385b3eb79579ce31f3af96c68f5cc640e7005418218ec1afb0483e6baf47e18fae555a8f785f0f0a0b9d396544e57b4246867162e8e"
+  "_encToken": "377682e7e60b7c5b42aa45ecb51184ca66c49a32e750b4facd0b127e5677ee19412c5b490b0225eb88a7a148d2a4ad9ac2ab9d2d79bfd1a4a4440e76b995f56ebc47dbf2"
 }
