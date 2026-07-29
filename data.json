@@ -162,10 +162,20 @@
       "password": "1234"
     }
   ],
-  "deductions": [],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "jg",
+      "score": 30,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T01:56:12.050Z"
+    }
+  ],
   "appeals": [],
   "nextIds": {
-    "deduction": 1,
+    "deduction": 2,
     "appeal": 1,
     "user": 39
   },
