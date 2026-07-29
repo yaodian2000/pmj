@@ -1,97 +1,6 @@
 {
   "users": [
     {
-      "id": "u_jg",
-      "name": "李结构件",
-      "role": "unit",
-      "unitId": "jg",
-      "password": "0000"
-    },
-    {
-      "id": "u_xl",
-      "name": "王下料",
-      "role": "unit",
-      "unitId": "xl",
-      "password": "0000"
-    },
-    {
-      "id": "u_jjg",
-      "name": "赵机加工",
-      "role": "unit",
-      "unitId": "jjg",
-      "password": "0000"
-    },
-    {
-      "id": "u_zz",
-      "name": "陈总装",
-      "role": "unit",
-      "unitId": "zz",
-      "password": "0000"
-    },
-    {
-      "id": "u_jjg2",
-      "name": "刘机二",
-      "role": "unit",
-      "unitId": "jjg2",
-      "password": "0000"
-    },
-    {
-      "id": "u_sc",
-      "name": "周市场",
-      "role": "unit",
-      "unitId": "sc",
-      "password": "0000"
-    },
-    {
-      "id": "u_cg",
-      "name": "吴采购",
-      "role": "unit",
-      "unitId": "cg",
-      "password": "0000"
-    },
-    {
-      "id": "u_js",
-      "name": "郑技术",
-      "role": "unit",
-      "unitId": "js",
-      "password": "0000"
-    },
-    {
-      "id": "u_yy",
-      "name": "冯运营",
-      "role": "unit",
-      "unitId": "yy",
-      "password": "0000"
-    },
-    {
-      "id": "u_zl",
-      "name": "褚质量",
-      "role": "unit",
-      "unitId": "zl",
-      "password": "0000"
-    },
-    {
-      "id": "u_ah",
-      "name": "卫安环",
-      "role": "unit",
-      "unitId": "ah",
-      "password": "0000"
-    },
-    {
-      "id": "u_scgl",
-      "name": "蒋生产",
-      "role": "unit",
-      "unitId": "scgl",
-      "password": "0000"
-    },
-    {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
       "id": "u_exp1",
       "name": "专家甲",
       "role": "expert",
@@ -132,6 +41,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -142,5 +58,5 @@
     "user": 20
   },
   "_dataCleared": true,
-  "_encToken": "de679f74b97f65a9e2ea86ac986cc895f4451d091c4dc2959f6218a2406c8b6622f6c17ed804d355609d694ebc7f71488a4e359caae470d4c764c1b833c36a17a972671e"
+  "_encToken": "5ce6571b5771abff1f46775c6e25a72b0fd2115683048a761cc10245a3151cdc3a29d79a4d77c6d9bd3171a78d3d9608c21504a2a553cd8cb377677ea5085a312a58e4e3"
 }
