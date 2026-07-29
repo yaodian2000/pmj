@@ -321,7 +321,11 @@
       "time": "2026-07-29T09:09:13.747Z",
       "votes": [],
       "result": null,
-      "assignedExperts": []
+      "assignedExperts": [
+        "u25",
+        "u26",
+        "u27"
+      ]
     }
   ],
   "nextIds": {
@@ -330,5 +334,5 @@
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "775062afc4b611b72003a424a7473273c1605fb1de3d4aeb34f9dac49db961a0e042e3fc94f41670355d3e8596af5c22e6700cb830194d93f1e9473139f63ca88de2e750"
+  "_encToken": "b175d34a9632519646c46df1df36378144ae2200c769bb67bff73007b16efd00e50f25f650486ac21db1c3d68cd4be2090a5afed031ff27581155547735f4f80bf4356d4"
 }
