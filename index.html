@@ -431,7 +431,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607291002'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202607291010'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -2015,10 +2015,10 @@ async function init() {
 
   getStore();
   initMonthTabs();
+  // Always try cloud sync first, even before login — ensures new devices get latest data
+  await initCloudSync();
   const user = getCurrentUser();
   if (user) {
-    // Try cloud sync first
-    await initCloudSync();
     showScreen('dashboard');
   } else {
     showScreen('login');
