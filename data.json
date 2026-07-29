@@ -196,7 +196,13 @@
       "responsibleUnitId": "jg",
       "status": "pending",
       "time": "2026-07-29T07:38:29.959Z",
-      "votes": [],
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-07-29T07:40:07.670Z"
+        }
+      ],
       "result": null,
       "assignedExperts": [
         "u25",
@@ -213,5 +219,5 @@
     "user": 44
   },
   "_dataCleared": true,
-  "_encToken": "715f10f4b1f1abe20d4db808dac6541710a601485a6633d3df48f2f046962b4b23886f3efee783b55ab6c77daaf301dddd99cec0939d64a5f9caf49952a6d16220dd4073"
+  "_encToken": "070f65e5ad4781aec1890c677d63b748f9d4ec31021b55c8aaa6d63f9141f851904588f52a9886b6aa34b2dd747b45b3a5005e655362039cef3710ed4ba0c0446c33b02c"
 }
