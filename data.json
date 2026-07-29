@@ -36,13 +36,6 @@
       "password": "0000"
     },
     {
-      "id": "u_admin",
-      "name": "张管理",
-      "role": "admin",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u_hr",
       "name": "恒锐",
       "role": "unit",
@@ -142,5 +135,5 @@
     "user": 32
   },
   "_dataCleared": true,
-  "_encToken": "c2e4925a127005679bab8c0d5a281282eead624b31d674bb1f00e95f693042d659ad1414697bec700bb7b5b2eeb62e95f7a13ae0897da989907da42102090b90194f2376"
+  "_encToken": "77bc4315e8968dd7d316808d623a5e37b5867b2b588baf7db3fb8f31d8bb3f626ecf3e65a8bf3840e3c42e995fe0c168f3c95057c5457081f44b467cbf107d95a8f3c518"
 }
