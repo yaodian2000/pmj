@@ -134,13 +134,23 @@
       "password": "0000"
     }
   ],
-  "deductions": [],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "jg",
+      "score": 20,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:27.210Z"
+    }
+  ],
   "appeals": [],
   "nextIds": {
-    "deduction": 1,
+    "deduction": 2,
     "appeal": 1,
     "user": 20
   },
   "_dataCleared": true,
-  "_encToken": "d419f9223b7fec36d6db08796624458700a9345cbc72250d0436778588a8f0bfd7a3691ca36561a4504d7facfe78a9b8cdbb027894f2f7e1b101c9e5937ed73c2badf9a7"
+  "_encToken": "325e483c73b1e9197cab7989c1c2f2146957540cfc5de8d625e2ef7785b6ad944c37ee268d59a199caf8d4aa2a94cf8953be93f0b3920b73af3f9abfcbe479b31127a4e7"
 }
