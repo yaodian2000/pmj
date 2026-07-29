@@ -195,6 +195,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u47",
+      "name": "刘伟波",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -259,8 +266,8 @@
   "nextIds": {
     "deduction": 3,
     "appeal": 2,
-    "user": 47
+    "user": 48
   },
   "_dataCleared": true,
-  "_encToken": "4537f18bd67a9ede65f631b4238928de059d081c6e23651df257c6cd291da689d7e1610628cfd45b96552026d5a43394e87c498ae71a5a7e31e219253f71314ab53324d7"
+  "_encToken": "2c6594df4bc87de0bc039149ac328a570aaa7e4d275cd0d50484b01c6f96eb9c1fcd0afea34ded589fa572b3c315798b6dbd7044e4ca07bf9bcdbf3581e94f2cc9ca9519"
 }
