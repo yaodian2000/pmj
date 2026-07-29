@@ -69,6 +69,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u24",
+      "name": "潘富康",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -76,8 +83,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 24
+    "user": 25
   },
   "_dataCleared": true,
-  "_encToken": "ce158438c7769feddb3be99f4ca3108d4fdfb9e6fd4e7d1dd3122cdc79f29ae6bb3e1eff5bcc94ed301331a53aab7cd0541c833f2283a2d4b61c4151ecad9b6f747e14dc"
+  "_encToken": "bf806884e2853904ee26797341b92af25ebd6c9a815fd48320e7a93663da91b6867fcaaa9561e92c646d294b38a39dca0795d1793bc217b2d81af59a5f6396623651a70d"
 }
