@@ -310,9 +310,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 <!-- ======================== QUARTERLY SCORES SCREEN ======================== -->
 <div id="screen-quarterly-score" class="screen">
   <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>季度评分</h1><span></span></div>
-  <div class="card" style="display:flex;align-items:center;justify-content:space-between">
-    <span style="font-weight:600" id="qs-year-quarter">--</span>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px">
+    <span style="font-size:18px;cursor:pointer;user-select:none" onclick="changeQuarterYear(-1)">◀</span>
+    <span style="font-weight:600;font-size:16px" id="qs-year-label">2026年</span>
+    <span style="font-size:18px;cursor:pointer;user-select:none" onclick="changeQuarterYear(1)">▶</span>
   </div>
+  <div id="quarter-tabs" class="tabs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:transparent;box-shadow:none;margin-bottom:8px"></div>
   <div id="quarterly-score-list"></div>
 </div>
 
@@ -431,7 +434,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607291330'; // 每次修改代码后更新此版本号
+const APP_VERSION_TEMP = '202607291330'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -1011,6 +1014,7 @@ const NOT_AUTH_SCREENS = ['login'];
 let currentScreen = 'login';
 let dedTab = 'all', appealTab = 'all', memberTab = 'unit';
 let scoreYear = currentYear, scoreMonth = currentMonth;
+let quarterYear = currentYear, quarterQuarter = currentQuarter;
 
 function changeScoreYear(delta) {
   scoreYear += delta;
@@ -1020,6 +1024,16 @@ function changeScoreYear(delta) {
 function selectMonth(m) {
   scoreMonth = m;
   renderMonthlyScore();
+}
+
+function changeQuarterYear(delta) {
+  quarterYear += delta;
+  renderQuarterlyScore();
+}
+
+function selectQuarter(q) {
+  quarterQuarter = q;
+  renderQuarterlyScore();
 }
 
 function showScreen(name) {
@@ -1363,9 +1377,17 @@ function renderMonthlyDetail() {
 // ==================== QUARTERLY SCORE ====================
 function renderQuarterlyScore() {
   const store = getStore();
-  const year = currentYear, quarter = currentQuarter;
+  const year = quarterYear, quarter = quarterQuarter;
   const qmonths = getQuarterMonths(quarter);
-  document.getElementById('qs-year-quarter').textContent = `${year}年第${quarter}季度（${qmonths[0]}-${qmonths[2]}月）`;
+  document.getElementById('qs-year-label').textContent = `${year}年`;
+
+  // Render quarter tabs
+  const qNames = ['第一季度','第二季度','第三季度','第四季度'];
+  let qtHtml = '';
+  for (let q = 1; q <= 4; q++) {
+    qtHtml += `<div class="tab ${q === quarter ? 'active' : ''}" style="font-size:13px;padding:8px 4px" id="qt-tab-${q}" onclick="selectQuarter(${q})">${qNames[q-1]}</div>`;
+  }
+  document.getElementById('quarter-tabs').innerHTML = qtHtml;
 
   let html = '';
   UNITS.forEach(unit => {
