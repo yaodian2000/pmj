@@ -125,6 +125,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 .assigned-expert-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .assigned-expert-tag{background:var(--primary);color:#fff;padding:2px 10px;border-radius:20px;font-size:12px}
 .assigned-expert-tag.unvoted{background:var(--text-light)}
+/* Sync styles */
+.sync-status-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;font-size:13px;margin-bottom:12px}
+.sync-status-bar.synced{background:#def7ec;color:var(--success)}
+.sync-status-bar.syncing{background:#fef3c7;color:#92400e}
+.sync-status-bar.error{background:#fde8e8;color:var(--danger)}
+.sync-status-bar.unconfigured{background:#f3f4f6;color:var(--text-light)}
+.sync-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.sync-status-bar.synced .sync-dot{background:var(--success)}
+.sync-status-bar.syncing .sync-dot{background:var(--warning);animation:pulse 1s infinite}
+.sync-status-bar.error .sync-dot{background:var(--danger)}
+.sync-status-bar.unconfigured .sync-dot{background:var(--text-light)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.sync-hint{font-size:12px;color:var(--text-light);margin-top:4px}
+.token-masked{font-family:monospace;letter-spacing:2px}
 </style>
 </head>
 <body>
@@ -173,6 +187,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
     <button class="btn btn-outline btn-sm" onclick="doLogout()">退出</button>
   </div>
 
+  <!-- Cloud sync status bar -->
+  <div id="sync-status-bar" class="sync-status-bar unconfigured" style="display:none">
+    <div class="sync-dot"></div>
+    <span id="sync-status-text">云端同步未配置</span>
+  </div>
+
   <div class="stat-grid">
     <div class="stat-card"><div class="num" id="stat-score">--</div><div class="label" id="stat-label1">本月得分</div></div>
     <div class="stat-card warning"><div class="num" id="stat-qscore">--</div><div class="label" id="stat-label2">季度考核分</div></div>
@@ -186,9 +206,42 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
           <button class="btn btn-outline" onclick="navTo('members')">👥 人员管理</button>
         </div>
       </div>
+      <!-- Cloud Sync Settings Card -->
+      <div class="card" id="sync-settings-card">
+        <div class="card-title">☁️ 云端数据同步 <span id="sync-badge" class="tag tag-gray" style="margin-left:8px">未启用</span></div>
+        <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">
+          启用后数据将自动同步到 GitHub，更换设备登录后自动获取最新数据。
+        </div>
+        <div id="sync-config-area">
+          <div class="form-group">
+            <label>GitHub Token <span class="required">*</span></label>
+            <input class="form-input" type="password" id="sync-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+            <div class="sync-hint">
+              创建方式：GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)<br>
+              权限只需勾选 <b>repo</b> 即可。
+            </div>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary btn-block" onclick="enableSync()" id="sync-enable-btn">☁️ 启用云端同步</button>
+          </div>
+        </div>
+        <div id="sync-info-area" style="display:none">
+          <div style="font-size:13px;color:var(--text-secondary);margin-bottom:8px">
+            状态：<span id="sync-info-status" style="font-weight:600">已启用</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-light);margin-bottom:8px">
+            Token：<span class="token-masked" id="sync-info-token">****</span>
+          </div>
+          <div style="font-size:13px;color:var(--text-light);margin-bottom:12px" id="sync-info-time"></div>
+          <div class="btn-group" style="flex-wrap:wrap">
+            <button class="btn btn-outline" onclick="syncNow()" id="sync-now-btn">🔄 立即同步</button>
+            <button class="btn btn-outline" onclick="disableSync()" style="color:var(--danger);border-color:var(--danger)">停用同步</button>
+          </div>
+        </div>
+      </div>
       <div class="card">
-        <div class="card-title">🔧 系统管理（数据备份）</div>
-        <div style="margin-bottom:8px;font-size:13px;color:var(--text-secondary)">定期备份数据，防止浏览器清缓存导致数据丢失。</div>
+        <div class="card-title">🔧 数据备份（本地）</div>
+        <div style="margin-bottom:8px;font-size:13px;color:var(--text-secondary)">本地备份作为额外保障，不受云端同步影响。</div>
         <div class="btn-group">
           <button class="btn btn-outline btn-block" onclick="exportData()">📥 导出数据备份</button>
           <button class="btn btn-outline btn-block" onclick="document.getElementById('import-file-input').click()">📤 导入数据恢复</button>
@@ -224,7 +277,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
       <div class="arrow">›</div>
     </div>
     <div class="list-item" onclick="navTo('quarterly-score')">
-      <div class="info"><div class="title">季度评分</div><div class="sub">季度加权20%分值</div></div>
+      <div class="info"><div class="title">季度评分</div><div class="sub">季度均分统计</div></div>
       <div class="arrow">›</div>
     </div>
   </div>
@@ -233,9 +286,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 <!-- ======================== MONTHLY SCORES SCREEN ======================== -->
 <div id="screen-monthly-score" class="screen">
   <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>月度评分</h1><span></span></div>
-  <div class="card" style="display:flex;align-items:center;justify-content:space-between">
-    <span style="font-weight:600" id="ms-year-month">--</span>
+  <div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px">
+    <span style="font-size:18px;cursor:pointer;user-select:none" onclick="changeScoreYear(-1)">◀</span>
+    <span style="font-weight:600;font-size:16px" id="ms-year-label">2026年</span>
+    <span style="font-size:18px;cursor:pointer;user-select:none" onclick="changeScoreYear(1)">▶</span>
   </div>
+  <div id="month-tabs" class="tabs" style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:transparent;box-shadow:none;margin-bottom:8px"></div>
   <div id="monthly-score-list"></div>
 </div>
 
@@ -421,6 +477,16 @@ function getStore() {
       if (store.nextIds && store.nextIds.user) store.nextIds.user = Math.max(store.nextIds.user, 20);
       migrated = true;
     }
+    if (!store._updatedAt) { store._updatedAt = Date.now(); migrated = true; }
+    // migration: clear all deductions and appeals (one-time data reset)
+    if (!store._dataCleared) {
+      store.deductions = [];
+      store.appeals = [];
+      store.nextIds.deduction = 1;
+      store.nextIds.appeal = 1;
+      store._dataCleared = true;
+      migrated = true;
+    }
     if (migrated) saveStore(store);
     return store;
   }
@@ -450,38 +516,364 @@ function initStore() {
       { id: 'u_exp5', name: '专家戊', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_admin', name: '张管理', role: ROLES.ADMIN, unitId: null, password: '0000' },
     ],
-    deductions: [
-      { id: 'd1', unitId: 'jg', score: 3, reason: '焊接质量不达标', year: currentYear, month: currentMonth, time: now.toISOString() },
-      { id: 'd2', unitId: 'jjg', score: 2, reason: '零件加工精度偏差', year: currentYear, month: currentMonth, time: now.toISOString() },
-      { id: 'd3', unitId: 'zz', score: 5, reason: '总装线停工待料超时', year: currentYear, month: currentMonth, time: now.toISOString() },
-      { id: 'd4', unitId: 'jg', score: 1.5, reason: '结构件表面处理不规范', year: currentYear, month: currentMonth, time: now.toISOString() },
-      { id: 'd5', unitId: 'xl', score: 2.5, reason: '下料尺寸误差超标', year: currentYear, month: currentMonth, time: now.toISOString() },
-      { id: 'd6', unitId: 'cg', score: 3, reason: '原材料到货延迟', year: currentYear, month: currentMonth, time: now.toISOString() },
-    ],
-    appeals: [
-      {
-        id: 'a1',
-        deductionId: 'd1',
-        unitId: 'jg',
-        reason: '该扣分应由机加工分厂承担，焊缝开裂原因是上一道工序加工问题',
-        responsibleUnitId: 'jjg',
-        status: 'pending',
-        time: now.toISOString(),
-        votes: [
-          { userId: 'u_exp1', agree: true, time: now.toISOString() },
-          { userId: 'u_exp2', agree: true, time: now.toISOString() },
-        ],
-        result: null,
-        assignedExperts: ['u_exp1','u_exp2','u_exp3'],
-      },
-    ],
-    nextIds: { deduction: 7, appeal: 2, user: 20 },
+    deductions: [],
+    appeals: [],
+    nextIds: { deduction: 1, appeal: 1, user: 20 },
+    _updatedAt: Date.now(),
   };
   saveStore(data);
   return data;
 }
 
-function saveStore(data) { localStorage.setItem('kpi_data', JSON.stringify(data)); }
+function saveStore(data) {
+  data._updatedAt = Date.now();
+  localStorage.setItem('kpi_data', JSON.stringify(data));
+  // Auto cloud sync (async, non-blocking)
+  if (getSyncConfig().enabled) {
+    syncToCloudDebounced(data);
+  }
+}
+
+// ==================== CLOUD SYNC (GitHub API) ====================
+// Sync config — stored separately, NOT synced to cloud
+function getSyncConfig() {
+  try {
+    return JSON.parse(localStorage.getItem('kpi_sync_config') || '{}');
+  } catch(e) { return {}; }
+}
+
+function saveSyncConfig(config) {
+  localStorage.setItem('kpi_sync_config', JSON.stringify(config));
+}
+
+// Base64 encode/decode with Unicode support
+function base64Encode(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+
+function base64Decode(str) {
+  const binary = atob(str);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+let _syncTimer = null;
+let _syncing = false;
+
+function syncToCloudDebounced(data) {
+  // Debounce: wait 2 seconds after last change before syncing
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(() => _syncToCloud(data), 2000);
+}
+
+async function _syncToCloud(data) {
+  if (_syncing) return;
+  _syncing = true;
+  updateSyncUI('syncing', '同步中...');
+  try {
+    const config = getSyncConfig();
+    if (!config.token) throw new Error('未配置Token');
+
+    // Get current file sha from GitHub
+    let sha = null;
+    try {
+      const result = await githubAPI('data.json');
+      sha = result.sha;
+    } catch(e) {
+      // File doesn't exist yet, that's fine
+    }
+
+    // Clean data for upload (remove _updatedAt)
+    const cleanData = { ...data };
+    delete cleanData._updatedAt;
+
+    const content = base64Encode(JSON.stringify(cleanData, null, 2));
+    const body = { message: 'Auto-sync: ' + new Date().toLocaleString('zh-CN'), content };
+    if (sha) body.sha = sha;
+
+    await githubAPI('data.json', 'PUT', body);
+    config.lastSync = Date.now();
+    saveSyncConfig(config);
+    updateSyncUI('synced', '已同步 ' + new Date().toLocaleTimeString('zh-CN'));
+  } catch(e) {
+    console.error('Cloud sync failed:', e);
+    updateSyncUI('error', '同步失败: ' + (e.message || '未知错误'));
+  } finally {
+    _syncing = false;
+  }
+}
+
+async function pullFromCloud() {
+  try {
+    const result = await githubAPI('data.json');
+    const content = JSON.parse(base64Decode(result.content));
+    content._updatedAt = Date.now();
+    return { data: content, sha: result.sha };
+  } catch(e) {
+    if (e.message && (e.message.includes('404') || e.message.includes('Not Found'))) return null;
+    console.warn('Pull from cloud failed:', e);
+    throw e;
+  }
+}
+
+async function githubAPI(path, method, body) {
+  const config = getSyncConfig();
+  if (!config.token) throw new Error('未配置GitHub Token');
+
+  const url = 'https://api.github.com/repos/yaodian2000/pmj/contents/' + path;
+  const options = {
+    method: method || 'GET',
+    headers: {
+      'Authorization': 'token ' + config.token,
+      'Accept': 'application/vnd.github.v3+json',
+    },
+  };
+  if (body) {
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(body);
+  }
+
+  const res = await fetch(url, options);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || ('GitHub API HTTP ' + res.status));
+  }
+  return res.json();
+}
+
+function updateSyncUI(status, text) {
+  const bar = document.getElementById('sync-status-bar');
+  const statusText = document.getElementById('sync-status-text');
+  if (!bar || !statusText) return;
+
+  bar.className = 'sync-status-bar ' + status;
+  bar.style.display = '';
+  statusText.textContent = text || status;
+
+  // Also update the sync badge in settings card
+  const badge = document.getElementById('sync-badge');
+  if (badge) {
+    const config = getSyncConfig();
+    badge.textContent = config.enabled ? (status === 'synced' ? '已同步' : status === 'syncing' ? '同步中' : '已启用') : '未启用';
+    badge.className = 'tag ' + (config.enabled ? (status === 'error' ? 'tag-red' : 'tag-green') : 'tag-gray');
+  }
+}
+
+async function syncNow() {
+  const config = getSyncConfig();
+  if (!config.token) {
+    showToast('请先配置 GitHub Token');
+    return;
+  }
+  const btn = document.getElementById('sync-now-btn');
+  if (btn) btn.disabled = true;
+  showToast('正在同步...');
+
+  try {
+    // Pull from cloud first to get latest
+    updateSyncUI('syncing', '正在拉取云端数据...');
+    const cloudResult = await pullFromCloud();
+    const localData = getStore();
+    const localTime = localData._updatedAt || 0;
+
+    if (cloudResult) {
+      // Compare timestamps — use whichever is newer
+      if (cloudResult.data._updatedAt && cloudResult.data._updatedAt > localTime) {
+        // Cloud is newer — use cloud data
+        saveStoreRaw(cloudResult.data);
+        showToast('已从云端加载最新数据');
+        updateSyncUI('synced', '已同步 ' + new Date().toLocaleTimeString('zh-CN'));
+        config.lastSync = Date.now();
+        saveSyncConfig(config);
+        // Re-render current screen
+        const renderFn = renderFunctions[currentScreen];
+        if (renderFn) renderFn();
+      } else {
+        // Local is newer or same — push to cloud
+        updateSyncUI('syncing', '正在上传本地数据...');
+        const cleanData = { ...localData };
+        delete cleanData._updatedAt;
+        const content = base64Encode(JSON.stringify(cleanData, null, 2));
+        const body = {
+          message: 'Manual sync: ' + new Date().toLocaleString('zh-CN'),
+          content,
+          sha: cloudResult.sha,
+        };
+        await githubAPI('data.json', 'PUT', body);
+        showToast('数据已上传到云端');
+        updateSyncUI('synced', '已同步 ' + new Date().toLocaleTimeString('zh-CN'));
+        config.lastSync = Date.now();
+        saveSyncConfig(config);
+      }
+    } else {
+      // No cloud data — push local
+      updateSyncUI('syncing', '正在首次上传...');
+      const cleanData = { ...localData };
+      delete cleanData._updatedAt;
+      const content = base64Encode(JSON.stringify(cleanData, null, 2));
+      const body = {
+        message: 'Initial sync: ' + new Date().toLocaleString('zh-CN'),
+        content,
+      };
+      await githubAPI('data.json', 'PUT', body);
+      showToast('首次同步成功！');
+      updateSyncUI('synced', '已同步 ' + new Date().toLocaleTimeString('zh-CN'));
+      config.lastSync = Date.now();
+      saveSyncConfig(config);
+    }
+  } catch(e) {
+    updateSyncUI('error', '同步失败: ' + (e.message || '未知错误'));
+    showToast('同步失败: ' + (e.message || '未知错误'));
+  } finally {
+    if (btn) btn.disabled = false;
+  }
+}
+
+function saveStoreRaw(data) {
+  // Save without triggering auto-sync (used when pulling from cloud)
+  localStorage.setItem('kpi_data', JSON.stringify(data));
+}
+
+function enableSync() {
+  const tokenInput = document.getElementById('sync-token');
+  const token = tokenInput.value.trim();
+  if (!token) { showToast('请输入 GitHub Token'); return; }
+  if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+    showToast('Token 格式不正确，应以 ghp_ 或 github_pat_ 开头');
+    return;
+  }
+
+  const config = getSyncConfig();
+  config.token = token;
+  config.enabled = true;
+  config.lastSync = 0;
+  saveSyncConfig(config);
+
+  // Hide config area, show info area
+  document.getElementById('sync-config-area').style.display = 'none';
+  document.getElementById('sync-info-area').style.display = '';
+  document.getElementById('sync-info-status').textContent = '已启用';
+  document.getElementById('sync-info-token').textContent = token.substring(0, 4) + '****' + token.substring(token.length - 4);
+  document.getElementById('sync-badge').textContent = '已启用';
+  document.getElementById('sync-badge').className = 'tag tag-green';
+
+  updateSyncUI('unconfigured', '请在 Token 输入框中粘贴 GitHub Token 后点击"启用"');
+  showToast('云端同步已启用，正在首次同步...');
+
+  // Do initial sync
+  syncNow();
+}
+
+function disableSync() {
+  if (!confirm('确定要停用云端数据同步吗？停用后数据将不会自动跨设备同步。')) return;
+
+  const config = getSyncConfig();
+  config.enabled = false;
+  config.token = ''; // Clear token for security
+  saveSyncConfig(config);
+
+  document.getElementById('sync-config-area').style.display = '';
+  document.getElementById('sync-info-area').style.display = 'none';
+  document.getElementById('sync-token').value = '';
+  document.getElementById('sync-badge').textContent = '未启用';
+  document.getElementById('sync-badge').className = 'tag tag-gray';
+
+  updateSyncUI('unconfigured', '云端同步已停用');
+  showToast('云端同步已停用');
+}
+
+function renderSyncSettings() {
+  const config = getSyncConfig();
+  if (config.enabled && config.token) {
+    document.getElementById('sync-config-area').style.display = 'none';
+    document.getElementById('sync-info-area').style.display = '';
+    document.getElementById('sync-info-status').textContent = '已启用';
+    document.getElementById('sync-info-token').textContent = config.token.substring(0, 4) + '****' + config.token.substring(config.token.length - 4);
+    if (config.lastSync) {
+      document.getElementById('sync-info-time').textContent = '上次同步：' + new Date(config.lastSync).toLocaleString('zh-CN');
+    } else {
+      document.getElementById('sync-info-time').textContent = '尚未同步';
+    }
+    document.getElementById('sync-badge').textContent = '已启用';
+    document.getElementById('sync-badge').className = 'tag tag-green';
+    updateSyncUI('synced', config.lastSync ? '已同步 ' + new Date(config.lastSync).toLocaleTimeString('zh-CN') : '已启用');
+  } else {
+    document.getElementById('sync-config-area').style.display = '';
+    document.getElementById('sync-info-area').style.display = 'none';
+    document.getElementById('sync-badge').textContent = '未启用';
+    document.getElementById('sync-badge').className = 'tag tag-gray';
+    updateSyncUI('unconfigured', '云端同步未启用 — 换设备后数据不会自动同步');
+  }
+}
+
+async function initCloudSync() {
+  const config = getSyncConfig();
+  if (!config.enabled || !config.token) {
+    // Sync not configured
+    document.getElementById('sync-status-bar').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('sync-status-bar').style.display = '';
+  updateSyncUI('syncing', '正在检查云端数据...');
+
+  try {
+    const cloudResult = await pullFromCloud();
+    if (cloudResult) {
+      const localData = getStore();
+      const localTime = localData._updatedAt || 0;
+      const cloudTime = cloudResult.data._updatedAt || 0;
+
+      if (cloudTime > localTime) {
+        // Cloud is newer — use cloud data
+        saveStoreRaw(cloudResult.data);
+        updateSyncUI('synced', '已加载云端最新数据 ' + new Date().toLocaleTimeString('zh-CN'));
+        config.lastSync = Date.now();
+        saveSyncConfig(config);
+        console.log('Loaded newer data from cloud');
+      } else if (localTime > cloudTime) {
+        // Local is newer — push to cloud
+        updateSyncUI('syncing', '正在上传本地数据...');
+        const cleanData = { ...localData };
+        delete cleanData._updatedAt;
+        const content = base64Encode(JSON.stringify(cleanData, null, 2));
+        const body = {
+          message: 'Auto-sync on startup: ' + new Date().toLocaleString('zh-CN'),
+          content,
+          sha: cloudResult.sha,
+        };
+        await githubAPI('data.json', 'PUT', body);
+        updateSyncUI('synced', '已同步 ' + new Date().toLocaleTimeString('zh-CN'));
+        config.lastSync = Date.now();
+        saveSyncConfig(config);
+      } else {
+        updateSyncUI('synced', '数据已是最新');
+      }
+    } else {
+      // No cloud data yet, push local
+      updateSyncUI('syncing', '首次上传...');
+      const localData = getStore();
+      const cleanData = { ...localData };
+      delete cleanData._updatedAt;
+      const content = base64Encode(JSON.stringify(cleanData, null, 2));
+      const body = {
+        message: 'Initial sync: ' + new Date().toLocaleString('zh-CN'),
+        content,
+      };
+      await githubAPI('data.json', 'PUT', body);
+      updateSyncUI('synced', '首次同步完成');
+      config.lastSync = Date.now();
+      saveSyncConfig(config);
+    }
+  } catch(e) {
+    console.error('Cloud sync init failed:', e);
+    updateSyncUI('error', '同步失败，使用本地数据 · ' + (e.message || ''));
+  }
+}
 
 // ==================== AUTH ====================
 function getCurrentUser() {
@@ -506,6 +898,17 @@ function doLogout() {
 const NOT_AUTH_SCREENS = ['login'];
 let currentScreen = 'login';
 let dedTab = 'all', appealTab = 'all', memberTab = 'unit';
+let scoreYear = currentYear, scoreMonth = currentMonth;
+
+function changeScoreYear(delta) {
+  scoreYear += delta;
+  renderMonthlyScore();
+}
+
+function selectMonth(m) {
+  scoreMonth = m;
+  renderMonthlyScore();
+}
 
 function showScreen(name) {
   if (!NOT_AUTH_SCREENS.includes(name) && !getCurrentUser()) {
@@ -669,8 +1072,22 @@ function renderDashboard() {
   document.getElementById('unit-dash').style.display = 'none';
   document.getElementById('expert-dash').style.display = 'none';
 
+  // Show sync status bar for all roles
+  const syncConfig = getSyncConfig();
+  if (syncConfig.enabled) {
+    document.getElementById('sync-status-bar').style.display = '';
+    if (syncConfig.lastSync) {
+      updateSyncUI('synced', '已同步 ' + new Date(syncConfig.lastSync).toLocaleTimeString('zh-CN'));
+    } else {
+      updateSyncUI('syncing', '等待首次同步...');
+    }
+  } else {
+    document.getElementById('sync-status-bar').style.display = role === ROLES.ADMIN ? '' : 'none';
+  }
+
   if (role === ROLES.ADMIN) {
     document.getElementById('admin-dash').style.display = '';
+    renderSyncSettings();
     const allDeductions = store.deductions.filter(d => d.year === year && d.month === month);
     const totalDeduct = allDeductions.reduce((s, d) => s + d.score, 0);
     document.getElementById('stat-score').textContent = '--';
@@ -776,10 +1193,18 @@ function updateAppealBadge() {
 // ==================== MONTHLY SCORE ====================
 function renderMonthlyScore() {
   const store = getStore();
-  const year = currentYear, month = currentMonth;
-  document.getElementById('ms-year-month').textContent = `${year}年${month}月`;
+  const year = scoreYear, month = scoreMonth;
+  document.getElementById('ms-year-label').textContent = `${year}年`;
 
-  let html = '';
+  // Highlight active month tab
+  for (let m = 1; m <= 12; m++) {
+    const tab = document.getElementById('ms-tab-' + m);
+    if (tab) {
+      tab.classList.toggle('active', m === month);
+    }
+  }
+
+  let html = `<div style="text-align:center;color:var(--text-secondary);font-size:14px;margin-bottom:8px">${year}年${month}月</div>`;
   UNITS.forEach(unit => {
     const deductions = store.deductions.filter(d => d.unitId === unit.id && d.year === year && d.month === month);
     const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
@@ -841,7 +1266,7 @@ function renderQuarterlyScore() {
       qTotal += ms;
       monthDetails.push({ month: m, score: ms, deduct: deduct });
     });
-    const qScore = (qTotal / 3 * 0.2).toFixed(2);
+    const qScore = (qTotal / 3).toFixed(1);
 
     html += `<div class="card quarterly-card" onclick="navTo('quarterly-detail',{unitId:'${unit.id}',year:${year},quarter:${quarter}})">
       <div style="font-weight:600;margin-bottom:8px">${unit.name}</div>
@@ -852,7 +1277,7 @@ function renderQuarterlyScore() {
         </div>`).join('')}
       </div>
       <div class="result">
-        <div class="small">季度考核分（${(100/3).toFixed(1)}分 × 20%）</div>
+        <div class="small">季度均分</div>
         <div class="big">${qScore}</div>
       </div>
     </div>`;
@@ -887,11 +1312,10 @@ function renderQuarterlyDetail() {
     html += '</div>';
   });
 
-  const qScore = (qTotal / 3 * 0.2).toFixed(2);
+  const qScore = (qTotal / 3).toFixed(1);
   html += `<div class="card" style="text-align:center;background:var(--primary);color:#fff">
-    <div style="font-size:14px;opacity:.8">季度考核分（20%权重）</div>
+    <div style="font-size:14px;opacity:.8">季度均分</div>
     <div style="font-size:36px;font-weight:700">${qScore}</div>
-    <div style="font-size:12px;opacity:.7">三月均分 ${(qTotal/3).toFixed(1)} × 20%</div>
   </div>`;
 
   document.getElementById('qd-content').innerHTML = html;
@@ -1436,8 +1860,8 @@ function exportData() {
   const blob = new Blob([dataStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  const now = new Date();
-  const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}`;
+  const n = new Date();
+  const ts = `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}_${String(n.getHours()).padStart(2,'0')}-${String(n.getMinutes()).padStart(2,'0')}`;
   a.href = url;
   a.download = `平煤机绩效考核_数据备份_${ts}.json`;
   document.body.appendChild(a);
@@ -1462,7 +1886,8 @@ function importData(input) {
         input.value = '';
         return;
       }
-      saveStore(data);
+      data._updatedAt = Date.now();
+      saveStoreRaw(data);
       showToast('数据恢复成功！页面即将刷新');
       setTimeout(() => { location.reload(); }, 1500);
     } catch (err) {
@@ -1474,10 +1899,23 @@ function importData(input) {
 }
 
 // ==================== INIT ====================
-function init() {
+function initMonthTabs() {
+  const container = document.getElementById('month-tabs');
+  if (!container) return;
+  let html = '';
+  for (let m = 1; m <= 12; m++) {
+    html += `<div class="tab" style="padding:8px 0;font-size:12px;border-radius:6px;background:var(--card);box-shadow:var(--shadow)" id="ms-tab-${m}" onclick="selectMonth(${m})">${m}月</div>`;
+  }
+  container.innerHTML = html;
+}
+
+async function init() {
   getStore();
+  initMonthTabs();
   const user = getCurrentUser();
   if (user) {
+    // Try cloud sync first
+    await initCloudSync();
     showScreen('dashboard');
   } else {
     showScreen('login');
