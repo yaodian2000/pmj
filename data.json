@@ -189,11 +189,20 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-29T01:56:39.002Z"
+    },
+    {
+      "id": "d4",
+      "unitId": "hr",
+      "score": 15,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T01:56:53.114Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 4,
+    "deduction": 5,
     "appeal": 1,
     "user": 39
   },
