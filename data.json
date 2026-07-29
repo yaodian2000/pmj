@@ -183,13 +183,23 @@
       "password": "0000"
     }
   ],
-  "deductions": [],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "jg",
+      "score": 1,
+      "reason": "潞安结构件未按期转出",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T06:16:09.522Z"
+    }
+  ],
   "appeals": [],
   "nextIds": {
-    "deduction": 1,
+    "deduction": 2,
     "appeal": 1,
     "user": 46
   },
   "_dataCleared": true,
-  "_encToken": "2f2873fe61c4821bb492a2da880408d794f67e86e1e164aab0e5f5a543530ce92f057bbf5f7fa55789561eae2de58a87e08de6144faa61836371ca6d96c715b37674f3ef"
+  "_encToken": "1bdb33609ee87902d720633911e87fea942630936f9f049d9bea819a621c9f47fb0496b610d933bba8adf65d69a62a875848c90193241ba2efa0e9f24f5bbdff072c7356"
 }
