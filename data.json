@@ -146,6 +146,13 @@
       "role": "unit",
       "unitId": "zl",
       "password": "0000"
+    },
+    {
+      "id": "u35",
+      "name": "吴陆洋",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -153,8 +160,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 35
+    "user": 36
   },
   "_dataCleared": true,
-  "_encToken": "534395564c61e400027efca2c1e924758b0f1fa9c5160f266b313c65bd78baa8cb481cf7ff5b70a8d4dbad4a5e55d05e57dabe07f00278f974aeb2f9d66a665e57afc658"
+  "_encToken": "2c2224777c0c0a0f10e881de37234004bb36376e23e9648b485c87cfc90dd7b85e794f9371ca8c838075e0db70a7c152064a283b608d77cd712506705beda2560a154d75"
 }
