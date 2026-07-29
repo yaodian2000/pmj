@@ -307,7 +307,13 @@
       "responsibleUnitId": "scgl",
       "status": "pending",
       "time": "2026-07-29T09:08:52.796Z",
-      "votes": [],
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-07-29T09:10:15.796Z"
+        }
+      ],
       "result": null,
       "assignedExperts": [
         "u25",
@@ -344,5 +350,5 @@
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "fb3fdb51a45353cec3b244eedd7fb52584a2ba12356891c614d1281627e79dc68504227a7ef08bc1acfb70f5fe2334de2a8cc815fc6ec4cb8da51bb8a62d52cab5893bfc"
+  "_encToken": "ee4f0a77da5008606d63a2fe26206649c0f24a8b0d8e07c02a022ad5ddcb3345e1c92d925198659205e5ec460652a80ba985140f98d3ada463e16dc229d831210333a553"
 }
