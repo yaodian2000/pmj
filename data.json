@@ -85,6 +85,13 @@
       "password": "0000"
     },
     {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
+    },
+    {
       "id": "u_exp1",
       "name": "专家甲",
       "role": "expert",
@@ -125,13 +132,6 @@
       "role": "admin",
       "unitId": null,
       "password": "0000"
-    },
-    {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
     }
   ],
   "deductions": [],
@@ -142,5 +142,5 @@
     "user": 20
   },
   "_dataCleared": true,
-  "_encToken": "46f9b0f1da7d775a2752443735ef591f610b1c276b950dc1ffe7de4dcfe27ec0649dcb6336495e7dec0f179fd671c7ca7382572cfcc8973eff4b60d644be3b4ee87ff19c"
+  "_encToken": "b07f4723ed428c195fc91f63d89cdffdf4bce6044ba87f91fe1454b16695f6539507cb092e30393211e76c2172b0281146942e3cfdaa3c2ae9c01598b5716505011a47c1"
 }
