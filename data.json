@@ -160,6 +160,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u42",
+      "name": "姜喜",
+      "role": "unit",
+      "unitId": "scgl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -167,8 +174,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 42
+    "user": 43
   },
   "_dataCleared": true,
-  "_encToken": "f6e30433ff5e6969c29f723f2e4e0e0cf08d6ee3a161408fc3f259b4937c4b05ba52b899ca3615059a6903efd2e13a6e2060681b738f3e94bca98807bbcae4b175e87c84"
+  "_encToken": "0e94228e603bba5a2f22386c2a6a4d3c2666ce4b4d10b551fff009192c8051917f61c67b529ab07e033f87d28f9add3f57c3bbb3b318991b80df30c98af65f2f7f3d384c"
 }
