@@ -194,12 +194,25 @@
       "time": "2026-07-29T06:16:09.522Z"
     }
   ],
-  "appeals": [],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "jg",
+      "reason": "起吊环回厂晚",
+      "responsibleUnitId": "sc",
+      "status": "pending",
+      "time": "2026-07-29T06:16:56.618Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
+    }
+  ],
   "nextIds": {
     "deduction": 2,
-    "appeal": 1,
+    "appeal": 2,
     "user": 46
   },
   "_dataCleared": true,
-  "_encToken": "1bdb33609ee87902d720633911e87fea942630936f9f049d9bea819a621c9f47fb0496b610d933bba8adf65d69a62a875848c90193241ba2efa0e9f24f5bbdff072c7356"
+  "_encToken": "a11015974ab475f5c90a4e0f16694cc8c65b132708e8eec9cf59bd30436749a095f7ecac5fb2d24a88de681aa5bdca13bd977c7e9613df7270be905b0f593c6aa7032a14"
 }
