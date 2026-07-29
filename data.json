@@ -241,6 +241,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-29T07:41:52.430Z"
+    },
+    {
+      "id": "d3",
+      "unitId": "jg",
+      "score": 1,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T09:07:41.267Z"
     }
   ],
   "appeals": [
@@ -292,10 +301,10 @@
     }
   ],
   "nextIds": {
-    "deduction": 3,
+    "deduction": 4,
     "appeal": 2,
     "user": 52
   },
   "_dataCleared": true,
-  "_encToken": "461afdcda435386a4139faf03c036bec4715e5d9dab5621958fb04cd195105333d963c6126fafbf293982ab7aebfb877dc4e90e9a3bd1abfb0750cf8693b2362cd153542"
+  "_encToken": "2f9b69439968c0394e41650b1f3b54f03f3f82180719a3fbcaad427f3e710902c4b4f9cc50aed8a44712cc237b432bf0a7f6b146eda14ada83368c4e0b918f5823cc43bd"
 }
