@@ -160,6 +160,13 @@
       "role": "unit",
       "unitId": "ah",
       "password": "0000"
+    },
+    {
+      "id": "u37",
+      "name": "胡永峰",
+      "role": "unit",
+      "unitId": "scgl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -167,8 +174,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 37
+    "user": 38
   },
   "_dataCleared": true,
-  "_encToken": "59901a36b8f9b635c2f6db43c450d550febb5a6b1ed82cae513aa09772aa4964ae6bc24e963c2620812e5fe8214f074fc6f1edbb5f828294f8737425bdb837231e767e33"
+  "_encToken": "15ae98be2e661243b169e4480e198fcfc12a531b8023cc3b59ef08a791b0c5f5e2a3a4e41c199509e7c647f79867f19159b96851830b8fa4a7b1d977a9f069325f4461e5"
 }
