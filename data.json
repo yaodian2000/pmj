@@ -132,6 +132,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0001"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -142,5 +149,5 @@
     "user": 39
   },
   "_dataCleared": true,
-  "_encToken": "2e2b486793b2904d3558f09c427541bcacddf7463263d4d6f17fa8a113dbbf997524d63fe1a8c6c93aa90a9093deba577d7f69d1113a6cd8d72b929a860c34254a5751d3"
+  "_encToken": "9f13852b648f9651742002ca74432856764a959e3e6c2691eee784736411e7587ba48effd08aa592bbd3ddf7065e458ebf484b5b1a82bfdbd9a7593b56cdbb07357e9a59"
 }
