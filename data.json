@@ -55,6 +55,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u21",
+      "name": "王世博",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -62,8 +69,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21
+    "user": 22
   },
   "_dataCleared": true,
-  "_encToken": "a855f91e83c0b72599939a143d003021eaf422ffe8eb3341806b2c21636396816c6866fbdf61fc9c33ff828a0531d03c2ea649f2162728d4e4a50a155b0990ed01eb3455"
+  "_encToken": "c8d36af5510a9974782bfe3029bc5ebe03ce2886dce2ef5b194607a61dae3fb64ab64448f407ec8ef2c8a4f85c4f55ef01cc22b6e9522dc16d4c760a915dd05ca00f2040"
 }
