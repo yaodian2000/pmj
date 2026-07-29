@@ -55,6 +55,13 @@
       "role": "unit",
       "unitId": "jg",
       "password": "1111"
+    },
+    {
+      "id": "u21",
+      "name": "王继辉",
+      "role": "unit",
+      "unitId": "xl",
+      "password": "1111"
     }
   ],
   "deductions": [],
@@ -62,8 +69,8 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21
+    "user": 22
   },
   "_dataCleared": true,
-  "_encToken": "9157b0c08c30c87cabe693adc2877716a087d18a56c20bbc4117cb88cb64aacb2a7c07e6a98575c33db5aa022f1c73d80538b325c62206fc9bb65623dc0616b05a00559b"
+  "_encToken": "4b1f3b70dd7c7dc958f565cf47dd84483bf11bf26ff9f16b4008d1dbe667d72464d62292077e24cadd657514d221c727529ab9dcff0bc915823c2580e6ea4b3d3900d921"
 }
