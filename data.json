@@ -187,12 +187,25 @@
       "time": "2026-07-29T07:37:14.184Z"
     }
   ],
-  "appeals": [],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "scgl",
+      "reason": "测试11111",
+      "responsibleUnitId": "jg",
+      "status": "pending",
+      "time": "2026-07-29T07:38:29.959Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
+    }
+  ],
   "nextIds": {
     "deduction": 2,
-    "appeal": 1,
+    "appeal": 2,
     "user": 44
   },
   "_dataCleared": true,
-  "_encToken": "23a635b8bb65e6038006e95f7ed82a5c0f44422428bb8031b6d7e0af1d9f491b8fb795fb4a63a4763d9a0c652aa2178353c24a349cc05e44395910d8b4848969785ac798"
+  "_encToken": "8f0462377afb8e0a4399d2c15098be720835a0cf19918c5a6f817d2feee816fe57e78002d1e09b1f6bdb39c1e8ce688aa4fae5234c43f8f20b9be5bff2242f347348e11c"
 }
