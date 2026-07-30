@@ -71,13 +71,6 @@
       "password": "0000"
     },
     {
-      "id": "u_gys",
-      "name": "孙工艺",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
-    },
-    {
       "id": "u31",
       "name": "王继辉",
       "role": "unit",
@@ -153,6 +146,13 @@
       "role": "unit",
       "unitId": "hr",
       "password": "0000"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -163,7 +163,7 @@
     "user": 41,
     "bonus": 1
   },
-  "_encToken": "d0e0c61961a0124b342846b1490cd36eda06f212f22627460eaabd909c9b3d33d0e94e416a1da45b7b5f8ac60b12ad5645f020ca1c187fed6bf0b835bdc4076ba65c58e2",
+  "_encToken": "0441b7b8bbe0fde493216f5d6e33ff3d2d273507b1cd6f2b33a46bc251d15c2024096b302ec4512ad8762fc824e8cac9da7ce9fa27ddde5e4a21d3953815a720ba08883e",
   "bonuses": [],
   "_dataCleared": true
 }
