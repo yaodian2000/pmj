@@ -252,16 +252,25 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T03:21:28.404Z"
+    },
+    {
+      "id": "d4",
+      "unitId": "cg",
+      "score": 1,
+      "reason": "要求千斤顶锻件6月30日回厂完，实际回厂100台。原因原材料回厂晚，第50台锻件6月29日才开始外转，责任单位：采购部",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:22:00.476Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 4,
+    "deduction": 5,
     "appeal": 1,
     "user": 51,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "e3fd3dc0b558028ac33880b9aa716bc4aebd508f24849a6eccb3afef7b94287b78d0acab0a6fd154d2e786f5a52d370b4157a538b49eea171360c9e9e9c319b012e9474a",
+  "_encToken": "737bd82f5feea1c182fa35c80e64d0aebaf9659b13e40cf0c0f0426c079730cb97c7f88f5cce9d8aae7e8dc8da43303d79e02422a4fb8d4604da65d3fe6115da6fdbc495",
   "bonuses": []
 }
