@@ -146,6 +146,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0730"
+    },
+    {
+      "id": "u27",
+      "name": "张伟",
+      "role": "admin",
+      "unitId": null,
+      "password": "0730"
     }
   ],
   "deductions": [],
@@ -153,10 +160,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 27,
+    "user": 28,
     "bonus": 1
   },
-  "_encToken": "31b584c1c1f2b53d4cc2de055d2131c65c7b600b38ec9c8eca65f3949faa2ea335f193969f388d5a320d000bf275dd6f9b2ebee16836302fba58a276b9ef069a48dafdae",
+  "_encToken": "12e4afc17a25172e51485d1e62d97b65efb5b80da23b82428f92b0146552ba8113520f8335c7b671480c9bdc28a53c75ed57499ad3d79ad3bb082d9ec4ac8113c6eff8ae",
   "bonuses": [],
   "_dataCleared": true
 }
