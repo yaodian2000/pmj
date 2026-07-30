@@ -1,1 +1,218 @@
-{"users": [{"id": "u_jg", "name": "李结构件", "role": "unit", "unitId": "jg", "password": "0000"}, {"id": "u_xl", "name": "王下料", "role": "unit", "unitId": "xl", "password": "0000"}, {"id": "u_jjg", "name": "赵机加工", "role": "unit", "unitId": "jjg", "password": "0000"}, {"id": "u_zz", "name": "陈总装", "role": "unit", "unitId": "zz", "password": "0000"}, {"id": "u_jjg2", "name": "刘机二", "role": "unit", "unitId": "jjg2", "password": "0000"}, {"id": "u_sc", "name": "周市场", "role": "unit", "unitId": "sc", "password": "0000"}, {"id": "u_cg", "name": "吴采购", "role": "unit", "unitId": "cg", "password": "0000"}, {"id": "u_js", "name": "郑技术", "role": "unit", "unitId": "js", "password": "0000"}, {"id": "u_yy", "name": "冯运营", "role": "unit", "unitId": "yy", "password": "0000"}, {"id": "u_zl", "name": "褚质量", "role": "unit", "unitId": "zl", "password": "0000"}, {"id": "u_ah", "name": "卫安环", "role": "unit", "unitId": "ah", "password": "0000"}, {"id": "u_scgl", "name": "蒋生产", "role": "unit", "unitId": "scgl", "password": "0000"}, {"id": "u_hr", "name": "恒锐", "role": "unit", "unitId": "hr", "password": "0000"}, {"id": "u_gys", "name": "孙工艺", "role": "unit", "unitId": "gys", "password": "0000"}, {"id": "u_exp1", "name": "专家甲", "role": "expert", "unitId": null, "password": "0000"}, {"id": "u_exp2", "name": "专家乙", "role": "expert", "unitId": null, "password": "0000"}, {"id": "u_exp3", "name": "专家丙", "role": "expert", "unitId": null, "password": "0000"}, {"id": "u_exp4", "name": "专家丁", "role": "expert", "unitId": null, "password": "0000"}, {"id": "u_exp5", "name": "专家戊", "role": "expert", "unitId": null, "password": "0000"}, {"id": "u_admin", "name": "张管理", "role": "admin", "unitId": null, "password": "0000"}], "deductions": [], "appeals": [], "nextIds": {"deduction": 1, "appeal": 1, "user": 20, "bonus": 1}, "_dataCleared": true, "bonuses": [], "_encToken": "1832d1435bb465b6bbc6bd1063407e0a59510ed68947440fdf173bb9539334c5d37e536748c95804b30cb381cf6486e96c099f259a47e994cd0ae161fad95cb9807fb614", "_updatedAt": 1785398986786, "_dataVersion": 3}
+{
+  "users": [
+    {
+      "id": "u_jg",
+      "name": "李结构件",
+      "role": "unit",
+      "unitId": "jg",
+      "password": "0000"
+    },
+    {
+      "id": "u_xl",
+      "name": "王下料",
+      "role": "unit",
+      "unitId": "xl",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg",
+      "name": "赵机加工",
+      "role": "unit",
+      "unitId": "jjg",
+      "password": "0000"
+    },
+    {
+      "id": "u_zz",
+      "name": "陈总装",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg2",
+      "name": "刘机二",
+      "role": "unit",
+      "unitId": "jjg2",
+      "password": "0000"
+    },
+    {
+      "id": "u_sc",
+      "name": "周市场",
+      "role": "unit",
+      "unitId": "sc",
+      "password": "0000"
+    },
+    {
+      "id": "u_cg",
+      "name": "吴采购",
+      "role": "unit",
+      "unitId": "cg",
+      "password": "0000"
+    },
+    {
+      "id": "u_js",
+      "name": "郑技术",
+      "role": "unit",
+      "unitId": "js",
+      "password": "0000"
+    },
+    {
+      "id": "u_yy",
+      "name": "冯运营",
+      "role": "unit",
+      "unitId": "yy",
+      "password": "0000"
+    },
+    {
+      "id": "u_zl",
+      "name": "褚质量",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
+    },
+    {
+      "id": "u_ah",
+      "name": "卫安环",
+      "role": "unit",
+      "unitId": "ah",
+      "password": "0000"
+    },
+    {
+      "id": "u_scgl",
+      "name": "蒋生产",
+      "role": "unit",
+      "unitId": "scgl",
+      "password": "0000"
+    },
+    {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
+    },
+    {
+      "id": "u_exp1",
+      "name": "专家甲",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp2",
+      "name": "专家乙",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp3",
+      "name": "专家丙",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp4",
+      "name": "专家丁",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp5",
+      "name": "专家戊",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_admin",
+      "name": "张管理",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
+    }
+  ],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "jg",
+      "score": 20,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:27.210Z"
+    },
+    {
+      "id": "d2",
+      "unitId": "xl",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:38.123Z"
+    },
+    {
+      "id": "d3",
+      "unitId": "zz",
+      "score": 22,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:47.658Z"
+    },
+    {
+      "id": "d4",
+      "unitId": "jjg2",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:18:19.891Z"
+    }
+  ],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "jg",
+      "reason": "测试",
+      "responsibleUnitId": "js",
+      "status": "pending",
+      "time": "2026-07-29T02:27:17.479Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
+    },
+    {
+      "id": "a2",
+      "deductionId": "d3",
+      "unitId": "zz",
+      "reason": "此责任应该为结构件分厂周转延期造成的",
+      "responsibleUnitId": "jg",
+      "status": "pending",
+      "time": "2026-07-29T02:29:47.995Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
+    }
+  ],
+  "nextIds": {
+    "deduction": 5,
+    "appeal": 3,
+    "user": 21,
+    "bonus": 1
+  },
+  "_dataCleared": true,
+  "_encToken": "af1e0cc792cfa98f67d0a559a6e128e82d688b0c4484cdad667854d77b67c8ce16ef1d4a11497f535674452c48e41ff3e553cd58177802d8dd75cb29350370c4fec450bf",
+  "_updatedAt": 1785399179871,
+  "bonuses": []
+}
