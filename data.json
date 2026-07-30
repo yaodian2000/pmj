@@ -1,27 +1,6 @@
 {
   "users": [
     {
-      "id": "u_exp1",
-      "name": "专家甲",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp2",
-      "name": "专家乙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp3",
-      "name": "专家丙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u_exp4",
       "name": "专家丁",
       "role": "expert",
@@ -156,7 +135,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "bcafa80947b27edc33431a7d1b26cd13e1837d6293e88446b9e904ae139bbc724819c74d41840e06928f15720361551e62d0539819084c26e620cfed41bba04c36bdfe41",
-  "_updatedAt": 1785400413121,
+  "_encToken": "ab4ff9a9b2993cbe65341074ee9afce54fe2137a2a20f81f60e39dca573e6123afe4fc1116f9915aa2ef8f7bb7067b11089f7670d9b6ad4000c2391ca628bcd6edb35017",
+  "_updatedAt": 1785400418109,
   "bonuses": []
 }
