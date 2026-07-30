@@ -141,75 +141,13 @@
       "password": "0000"
     }
   ],
-  "deductions": [
-    {
-      "id": "d1",
-      "unitId": "jg",
-      "score": 20,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:27.210Z"
-    },
-    {
-      "id": "d2",
-      "unitId": "xl",
-      "score": 21,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:38.123Z"
-    },
-    {
-      "id": "d3",
-      "unitId": "zz",
-      "score": 22,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:47.658Z"
-    },
-    {
-      "id": "d4",
-      "unitId": "jjg2",
-      "score": 21,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:18:19.891Z"
-    }
-  ],
-  "appeals": [
-    {
-      "id": "a1",
-      "deductionId": "d1",
-      "unitId": "jg",
-      "reason": "测试",
-      "responsibleUnitId": "js",
-      "status": "pending",
-      "time": "2026-07-29T02:27:17.479Z",
-      "votes": [],
-      "result": null,
-      "assignedExperts": []
-    },
-    {
-      "id": "a2",
-      "deductionId": "d3",
-      "unitId": "zz",
-      "reason": "此责任应该为结构件分厂周转延期造成的",
-      "responsibleUnitId": "jg",
-      "status": "pending",
-      "time": "2026-07-29T02:29:47.995Z",
-      "votes": [],
-      "result": null,
-      "assignedExperts": []
-    }
-  ],
+  "deductions": [],
+  "appeals": [],
   "nextIds": {
-    "deduction": 5,
-    "appeal": 3,
+    "deduction": 1,
+    "appeal": 1,
     "user": 21
   },
   "_dataCleared": true,
-  "_encToken": "2fd1cdff4aae2880d64fd941789090b7260bba683adea56595ed7ed8062984accbf6adb17a306a8bae9feb9609a0b4701ee04cdd1751463916b4a49d5c462d1dafd9e882"
+  "_encToken": "f3be1b11ed43354ee624f56e51880040df8a053f72a2d420c870e37e68fe878c30c40c7d35c4e22746552e0f154c4a784c2c669d3dd4e62b876ec57f80d0f22db9941d96"
 }
