@@ -313,7 +313,7 @@
         {
           "userId": "u28",
           "agree": true,
-          "time": "2026-07-30T07:17:41.287Z"
+          "time": "2026-07-30T07:17:47.720Z"
         }
       ],
       "result": null,
@@ -331,7 +331,7 @@
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "efaaff790ea011871ce9ff1f92dd6dc8c2cc868fda4c0813d648f2e43a26c5b3cdb72c4511f1ba73110e60a5c80713e56d52fbc783558ff6567a4ebbf2a5988d8e12aa31",
+  "_encToken": "8617ce63107127433d177bc98317ccd87eb99df0d984c44ee068833747790b3bb399bf2b7fed26f191879bbb5c2c09ea235010ecfe9fcb1685acafe975dda8fd6e4b7e02",
   "bonuses": [
     {
       "id": "b1",
