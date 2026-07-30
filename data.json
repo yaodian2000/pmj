@@ -301,7 +301,11 @@
       "time": "2026-07-30T07:14:35.657Z",
       "votes": [],
       "result": null,
-      "assignedExperts": []
+      "assignedExperts": [
+        "u28",
+        "u29",
+        "u30"
+      ]
     }
   ],
   "nextIds": {
@@ -311,7 +315,7 @@
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "a211e335e313df4cedf2ca6d51b7ff6dcda5b54dd0aec2623bdb81a9a34fa4b3fc8793f109501a19db6c55a93f777e4e2528f35e18f796752bfb2a161ce1f6fbcc80ad9f",
+  "_encToken": "e89e896dcb1e181a726a93ea67d621afda87063bbc5898032cbf0d3f5716d6fecca3122e4c1f8fffa44ec855290e8a7e81b5e2567a265bf54dd2049f0f1913da29da8a9a",
   "bonuses": [
     {
       "id": "b1",
