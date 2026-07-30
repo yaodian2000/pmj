@@ -146,6 +146,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u40",
+      "name": "刘国",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -153,10 +160,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 40,
+    "user": 41,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "dba3aa27464645e9b6d9a9e13bfefe305b194a569c199b395212cd7773de0bdd79122229397e76a44c6c14525fb615904047b47146e9678e42d135749519a699514306de",
+  "_encToken": "1332f7f1cea9daddb3659b10665a9c4d2da677f888a03bf5ee983f9afad8ef96d88a937a73a7940384d13f938de6d971f37edfbed91a0ff3d8a4eff2e57f8bb59838903c",
   "bonuses": []
 }
