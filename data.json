@@ -139,6 +139,13 @@
       "role": "unit",
       "unitId": "yy",
       "password": "0000"
+    },
+    {
+      "id": "u39",
+      "name": "黄海涛",
+      "role": "unit",
+      "unitId": "ah",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -146,10 +153,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 39,
+    "user": 40,
     "bonus": 1
   },
-  "_encToken": "eac7d67b388ec14709b21717743b5e597dd36be065e8d20089be7b0f9a8817a0b30a5ab98f59519dea436700c92516aadcb54c100fb7ca613b02c2fe353e2885c9dfd8e2",
+  "_encToken": "f7f234b8ec91f9d7f4f24f61121985495607d142cca40e8423613975c9f05c82f7b17584a1a3ed1f34e7d9e946579b87918719a1c6f968505383f562c3fce1e445822e8b",
   "bonuses": [],
   "_dataCleared": true
 }
