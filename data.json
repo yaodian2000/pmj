@@ -118,6 +118,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u35",
+      "name": "刘国",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -187,11 +194,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 35,
+    "user": 36,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "d49342a4256e2ec21e934a38331c36d08ee72f0a903149f229c11d04c0886eb60c8f23b7dd2760816ca5487f9479f4c6df32ca5572165057b9b19101e87f3db063207b0e",
-  "_updatedAt": 1785400686151,
+  "_encToken": "b8bc0ed1f6c9bd4f7cc5bb2352687727633572094f2ddcdcca10ea0faf72aca7aa6515485540626f5c19ad66f1047667f545990c61894a642fd0139a0e94db2e552db0ee",
+  "_updatedAt": 1785400692959,
   "bonuses": []
 }
