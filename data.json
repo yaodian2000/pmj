@@ -92,6 +92,13 @@
       "password": "0000"
     },
     {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
+    },
+    {
       "id": "u_exp1",
       "name": "专家甲",
       "role": "expert",
@@ -132,13 +139,6 @@
       "role": "admin",
       "unitId": null,
       "password": "0000"
-    },
-    {
-      "id": "u_gys",
-      "name": "孙工艺",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
     }
   ],
   "deductions": [],
@@ -146,10 +146,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21,
+    "user": 20,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "b0e880382e639817105cd233e97f20c3469b3ac83f9cb30a061ad2dc991215863c6183bcf2e6a603c285f38d4448d3144ddf61853928a6da3410856f7dd0d3c8b45f5c6e"
+  "_encToken": "e6702004a549fef70552ec2d3715b6a92b24ef5d293a97d2eebc10144dd44ec265d748c13e28b4f351d6c8461cd88200686d3cf1ba2a91d328fd9c5cf5da675e887128d3"
 }
