@@ -64,13 +64,6 @@
       "password": "0730"
     },
     {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
       "id": "u30",
       "name": "谷兵",
       "role": "unit",
@@ -146,6 +139,20 @@
       "role": "unit",
       "unitId": "ah",
       "password": "0000"
+    },
+    {
+      "id": "u40",
+      "name": "洪亮",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
+    },
+    {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -153,10 +160,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 40,
+    "user": 41,
     "bonus": 1
   },
-  "_encToken": "f7f234b8ec91f9d7f4f24f61121985495607d142cca40e8423613975c9f05c82f7b17584a1a3ed1f34e7d9e946579b87918719a1c6f968505383f562c3fce1e445822e8b",
+  "_encToken": "d0e0c61961a0124b342846b1490cd36eda06f212f22627460eaabd909c9b3d33d0e94e416a1da45b7b5f8ac60b12ad5645f020ca1c187fed6bf0b835bdc4076ba65c58e2",
   "bonuses": [],
   "_dataCleared": true
 }
