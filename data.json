@@ -290,15 +290,28 @@
       "time": "2026-07-30T05:40:01.934Z"
     }
   ],
-  "appeals": [],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d2",
+      "unitId": "scgl",
+      "reason": "1111",
+      "responsibleUnitId": "sc",
+      "status": "pending",
+      "time": "2026-07-30T07:14:35.657Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": []
+    }
+  ],
   "nextIds": {
     "deduction": 8,
-    "appeal": 1,
+    "appeal": 2,
     "user": 51,
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "0e2698c6ddf765d2c990f4def49212fd7787b2ed832b3a75671801444c368c5fba033eb66e94794f629d8b146d84af1c50370d2c73d09161f9064cefa00046770244d95c",
+  "_encToken": "a211e335e313df4cedf2ca6d51b7ff6dcda5b54dd0aec2623bdb81a9a34fa4b3fc8793f109501a19db6c55a93f777e4e2528f35e18f796752bfb2a161ce1f6fbcc80ad9f",
   "bonuses": [
     {
       "id": "b1",
