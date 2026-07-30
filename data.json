@@ -236,15 +236,6 @@
       "time": "2026-07-30T03:19:16.548Z"
     },
     {
-      "id": "d2",
-      "unitId": "scgl",
-      "score": 1,
-      "reason": "苏艾克缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:21:04.860Z"
-    },
-    {
       "id": "d3",
       "unitId": "jjg",
       "score": 1,
@@ -288,6 +279,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T05:40:01.934Z"
+    },
+    {
+      "id": "d8",
+      "unitId": "sc",
+      "score": 1,
+      "reason": "苏艾克缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂（由生产管理部申诉转移）",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T07:18:18.088Z"
     }
   ],
   "appeals": [
@@ -297,7 +297,7 @@
       "unitId": "scgl",
       "reason": "1111",
       "responsibleUnitId": "sc",
-      "status": "pending",
+      "status": "approved",
       "time": "2026-07-30T07:14:35.657Z",
       "votes": [
         {
@@ -316,7 +316,9 @@
           "time": "2026-07-30T07:17:47.720Z"
         }
       ],
-      "result": null,
+      "result": {
+        "note": "同意 2票 > 不同意 1票，扣分已转移至市场部"
+      },
       "assignedExperts": [
         "u28",
         "u29",
@@ -325,13 +327,13 @@
     }
   ],
   "nextIds": {
-    "deduction": 8,
+    "deduction": 9,
     "appeal": 2,
     "user": 51,
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "8617ce63107127433d177bc98317ccd87eb99df0d984c44ee068833747790b3bb399bf2b7fed26f191879bbb5c2c09ea235010ecfe9fcb1685acafe975dda8fd6e4b7e02",
+  "_encToken": "c2733dc95a83e5dbb1dd5038be2b701a180c451735054e9761aa858e7fb8efc950b3d7d40afa84fccabf95df7163b0d5d374b801e4e1ad5365858c5e9cc6e818cc56dc52",
   "bonuses": [
     {
       "id": "b1",
