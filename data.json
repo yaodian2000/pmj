@@ -76,6 +76,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u30",
+      "name": "谷兵",
+      "role": "unit",
+      "unitId": "jg",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -83,10 +90,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 30,
+    "user": 31,
     "bonus": 1
   },
-  "_encToken": "161431277f5a7b68006e14852c659c729c4bacdb50ca6b1a0423c68b60522b53efd257413f1c5ca8b8dcb907721cd7f32545209db8bedcb1017d34f6d035a15978169f1c",
+  "_encToken": "df0c461e9e76c863d00746a11f92bd04d27097962feea90f8a4afaf02976ae7dbbfa1d11eb2b954eb6acd337705351e6ce69ebd393ecac0008aec57dee4e4ba3580389c2",
   "bonuses": [],
   "_dataCleared": true
 }
