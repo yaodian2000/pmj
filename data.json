@@ -19,14 +19,14 @@
       "name": "王世博",
       "role": "admin",
       "unitId": null,
-      "password": "0730"
+      "password": "0000"
     },
     {
       "id": "u22",
       "name": "姜喜",
       "role": "admin",
       "unitId": null,
-      "password": "0000"
+      "password": "0730"
     },
     {
       "id": "u23",
@@ -375,6 +375,6 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "f0bcc1c331cb9de4cefaf62602b2a8243218bc20bd95c2eb333bd924b5d19b7e07aa39fc8bdeb07eec6f160d86ab488b91a5bfb37e5531d9ffa8133c67d7cfe25caa05cd",
+  "_encToken": "5fc75d6eca031b6789e85ce923fd0f88548159c366bb9fe6d63dec00e823a65d4b51b30fa3e5b32595fabc80ada863e91f11339a4310a96a5738c056621fd9ad93febdee",
   "bonuses": []
 }
