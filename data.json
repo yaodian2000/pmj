@@ -19,7 +19,7 @@
       "name": "王世博",
       "role": "admin",
       "unitId": null,
-      "password": "0000"
+      "password": "0730"
     },
     {
       "id": "u22",
@@ -375,6 +375,6 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "8c1508248714bfb2a5b05b224a43a2ecd3ef807736841acae9bea3d64f0de48cbebf6feca391e0ee81df7ea98588fee7803ca75f7e74b91db576ec2888643e7b9a054975",
+  "_encToken": "f0bcc1c331cb9de4cefaf62602b2a8243218bc20bd95c2eb333bd924b5d19b7e07aa39fc8bdeb07eec6f160d86ab488b91a5bfb37e5531d9ffa8133c67d7cfe25caa05cd",
   "bonuses": []
 }
