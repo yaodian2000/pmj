@@ -141,87 +141,15 @@
       "password": "0000"
     }
   ],
-  "deductions": [
-    {
-      "id": "d1",
-      "unitId": "jg",
-      "score": 20,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:27.210Z"
-    },
-    {
-      "id": "d2",
-      "unitId": "xl",
-      "score": 21,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:38.123Z"
-    },
-    {
-      "id": "d3",
-      "unitId": "zz",
-      "score": 22,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:47.658Z"
-    },
-    {
-      "id": "d4",
-      "unitId": "jjg2",
-      "score": 21,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:18:19.891Z"
-    }
-  ],
-  "appeals": [
-    {
-      "id": "a1",
-      "deductionId": "d1",
-      "unitId": "jg",
-      "reason": "测试",
-      "responsibleUnitId": "js",
-      "status": "pending",
-      "time": "2026-07-29T02:27:17.479Z",
-      "votes": [],
-      "result": null,
-      "assignedExperts": [
-        "u_exp1",
-        "u_exp2",
-        "u_exp3",
-        "u_exp4",
-        "u_exp5"
-      ]
-    },
-    {
-      "id": "a2",
-      "deductionId": "d3",
-      "unitId": "zz",
-      "reason": "此责任应该为结构件分厂周转延期造成的",
-      "responsibleUnitId": "jg",
-      "status": "pending",
-      "time": "2026-07-29T02:29:47.995Z",
-      "votes": [],
-      "result": null,
-      "assignedExperts": [
-        "u_exp5",
-        "u_exp4",
-        "u_exp3"
-      ]
-    }
-  ],
+  "deductions": [],
+  "appeals": [],
   "nextIds": {
-    "deduction": 5,
-    "appeal": 3,
+    "deduction": 1,
+    "appeal": 1,
     "user": 21,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "61ff233e603092bdeedb4538620575e6be15a6c98e895dc7593f75c4dd1a34411f3e02327d26c5f440d0cce6c03e04fadab8f0bad772261eb210fca9628c929a11f6f752",
+  "_encToken": "3588794cc5408927c7db04d0b0c53dac19c2aa3a11c5f0eb3bfbab3cf06370baf3d45861e7b159fc7f748f62d09258a341fbe95ff82c7ccf9775f40cb9aeaee14e22ea07",
   "bonuses": []
 }
