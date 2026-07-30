@@ -146,6 +146,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u39",
+      "name": "谷兵",
+      "role": "unit",
+      "unitId": "jg",
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -215,11 +222,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 39,
+    "user": 40,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "0cb2ff80a22f0ab558ecd6df064ed1e6f60454417ecee29c4d4db16126cfcdda3117cfdc115ca463f4963fd93e94ff7d30ca1b507d5e76801023d3a5faf53ebafef96102",
-  "_updatedAt": 1785400735647,
+  "_encToken": "4f38b128485a4efc0cefa89a86f7cb97e17773dce81ad737aa082cfb95c1b1b5a2e2f51f2478cb97a8530e7db2fa2da2a1341b1436d227b54bbd1735fda7658372b0e291",
+  "_updatedAt": 1785400756406,
   "bonuses": []
 }
