@@ -92,41 +92,6 @@
       "password": "0000"
     },
     {
-      "id": "u_exp1",
-      "name": "专家甲",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp2",
-      "name": "专家乙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp3",
-      "name": "专家丙",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp4",
-      "name": "专家丁",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u_exp5",
-      "name": "专家戊",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u_admin",
       "name": "张管理",
       "role": "admin",
@@ -149,7 +114,7 @@
     "user": 21,
     "bonus": 1
   },
-  "_encToken": "e671603132e0f7e92d239f91ee1fe77e06a20e879bd17dd5d50ffb39350e24b54a1a1bfb3dd06f4a8a0959661377052e9c74af3be3ce89c201134434ef23f051d6b55017",
+  "_encToken": "4726c257f4a35f74705d494f07022f3643fd0be122044c689a4c9a0a3069b65cdf046ef5ec47438126960c60cf604c59837c47a45a5e6030a4d51ed01d779ef6341b60ed",
   "bonuses": [],
   "_dataCleared": true
 }
