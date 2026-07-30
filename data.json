@@ -146,8 +146,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21
+    "user": 21,
+    "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "0e9da305e0e0b519020e6dcba71dfaaab2206631b7d053d0913799ec2b71228a5c220b21600f801903943805846a9bfeedbad75ec37bdc4beca348726283b819441a1ae5"
+  "_encToken": "5400d6ff8e3bddebeded4e6225ed4524e68967e717689c6ccd0d6804c7340d64a6bda3c54b8b8a57324d632819ad6275ed6d92d03ab578083b9d640a799abd4e22b9a9ec",
+  "bonuses": []
 }
