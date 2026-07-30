@@ -72,7 +72,7 @@
     },
     {
       "id": "u29",
-      "name": "王继辉",
+      "name": "吴陆洋",
       "role": "expert",
       "unitId": null,
       "password": "0000"
@@ -87,6 +87,6 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "236a02e5e152335632d7eb3c6ff51f937dd6acc897d0b40d97e38b31106ab75f22fe16d21b8c1477bfa8ae28f1efc70cb98b199f48d33a40c3daabfbbf84428fa53440fa",
+  "_encToken": "c49ca16eb4ef8b108752decdda5d4f2c7fab3cecf91cb0848badaefb75d76d374570835e20494f957f95d33a23862c597293db452faae7bcfa71aa4877c55e4244ebcdb5",
   "bonuses": []
 }
