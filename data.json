@@ -104,6 +104,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u21",
+      "name": "刘庆伟",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -111,10 +118,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 21,
+    "user": 22,
     "bonus": 1
   },
-  "_encToken": "4726c257f4a35f74705d494f07022f3643fd0be122044c689a4c9a0a3069b65cdf046ef5ec47438126960c60cf604c59837c47a45a5e6030a4d51ed01d779ef6341b60ed",
+  "_encToken": "420ec4043b6744f2a1327d3be871f17e1ae8d516268166458caac3864ee1a29e297e7767c482eadcc47bba8f03586e05165c77bc01f56ffda360d369793f01c72f288e24",
   "bonuses": [],
   "_dataCleared": true
 }
