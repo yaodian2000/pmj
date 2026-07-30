@@ -261,16 +261,25 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T03:22:00.476Z"
+    },
+    {
+      "id": "d5",
+      "unitId": "cg",
+      "score": 1,
+      "reason": "苏艾克按倒排计划要求，截至7月23日，苏艾克特殊架DN25胶管未按要求回厂完，影响联调支架组装。责任单位：采购部",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:26:14.452Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 5,
+    "deduction": 6,
     "appeal": 1,
     "user": 51,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "737bd82f5feea1c182fa35c80e64d0aebaf9659b13e40cf0c0f0426c079730cb97c7f88f5cce9d8aae7e8dc8da43303d79e02422a4fb8d4604da65d3fe6115da6fdbc495",
+  "_encToken": "756f531e5941f223b1e554371471a90dbc1da7b4e7586a6fef55fecd497bd98d2f64e501ce0a3012b4be92b6e2fd1dc2d53cf6119cd1a5aa53f2d75c11bf6592450039c8",
   "bonuses": []
 }
