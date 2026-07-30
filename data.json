@@ -243,16 +243,25 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T03:21:04.860Z"
+    },
+    {
+      "id": "d3",
+      "unitId": "jjg",
+      "score": 1,
+      "reason": "缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:21:28.404Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 3,
+    "deduction": 4,
     "appeal": 1,
     "user": 51,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "cbb36d755a680ca8deb342bfc3c7af98db1a6146a9d4db994cd5df6be8ff8f7166f37001068f62140da3f36f69849dca12981c20722c6e946008a4eabd0cd722c72cf66d",
+  "_encToken": "e3fd3dc0b558028ac33880b9aa716bc4aebd508f24849a6eccb3afef7b94287b78d0acab0a6fd154d2e786f5a52d370b4157a538b49eea171360c9e9e9c319b012e9474a",
   "bonuses": []
 }
