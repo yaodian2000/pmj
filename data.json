@@ -167,6 +167,13 @@
       "role": "unit",
       "unitId": "jjg",
       "password": "0000"
+    },
+    {
+      "id": "u42",
+      "name": "刘国",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -236,11 +243,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 42,
+    "user": 43,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "84d95d1bbcc8536d4ebfc5ca294d5b5faa935a8aa12974d3014ff61b0bb302f35503e8d51c0de50ff37e221166975964970f58848c7551c706bc20612ae8ca0968ca580e",
-  "_updatedAt": 1785400775910,
+  "_encToken": "6fecb664f31c3bb89ebb7e3011b1e459bbbee6f1a372c3c1b918452dd2b02131b847bbd700d05f6e5d86607fab1c4246b8c906fe94d6583fffb165be58e43475ea260d4a",
+  "_updatedAt": 1785400782110,
   "bonuses": []
 }
