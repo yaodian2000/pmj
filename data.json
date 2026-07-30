@@ -301,9 +301,9 @@
       "time": "2026-07-30T07:14:35.657Z",
       "votes": [
         {
-          "userId": "u28",
+          "userId": "u29",
           "agree": true,
-          "time": "2026-07-30T07:16:12.344Z"
+          "time": "2026-07-30T07:16:34.537Z"
         }
       ],
       "result": null,
@@ -321,7 +321,7 @@
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "5f2703e79b1b25510da39d260f8cbd7a3c6dc51274707d4325486d769d01f7209fa04d8cd13e727caf2391af9bdc655b21ccaf3f455706c51c4fb697dfc4a705dc82735b",
+  "_encToken": "09f47045c601783f7ff1c341130a40dea696998b06dab10fe58c42478095d4e10a62d7c11edb55242dcc9b39e7dbcab7c4b1fb9b56e2682967ad6ecce93c997faa27daec",
   "bonuses": [
     {
       "id": "b1",
