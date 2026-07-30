@@ -2235,15 +2235,15 @@ function initMonthTabs() {
 }
 
 async function init() {
-  // ===== 防缓存：检测版本更新，自动强制刷新 =====
+  // ===== 防缓存：检测版本更新，自动清缓存刷新 =====
   const storedVersion = localStorage.getItem('_appVersion');
   if (storedVersion && storedVersion !== APP_VERSION) {
-    // 已访问过但版本变了 → 清缓存 + 强制刷新
+    // 已访问过但版本变了 → 清缓存 + 刷新同一网址
     if ('caches' in window) {
       caches.keys().then(keys => keys.forEach(k => caches.delete(k)));
     }
     localStorage.setItem('_appVersion', APP_VERSION);
-    location.href = location.href.replace(/\?.*/, '') + '?v=' + APP_VERSION;
+    location.reload();
     return;
   }
   localStorage.setItem('_appVersion', APP_VERSION);
