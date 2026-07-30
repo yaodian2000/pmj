@@ -230,6 +230,13 @@
       "role": "unit",
       "unitId": "scgl",
       "password": "0000"
+    },
+    {
+      "id": "u51",
+      "name": "刘法旺",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -299,11 +306,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 51,
+    "user": 52,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "0163201d449f9791b984490cc32e451be1f7a9275d5bea44d61f00117bf2c1b88fee5e6615a208ce20c24247c61b5278a15865df8cdbded2d5686165d1a4da235663e6c0",
-  "_updatedAt": 1785400875862,
+  "_encToken": "032461ba154d1414d11fb64252b7ad26287067b249745017266db2a581ba2650b9ab721a739623387aef277a00d76e0b3d37307e98b911692220d5d8a92bc795e7cc88c1",
+  "_updatedAt": 1785400892349,
   "bonuses": []
 }
