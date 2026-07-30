@@ -1,10 +1,87 @@
 {
   "users": [
     {
-      "id": "u_gys",
-      "name": "孙工艺",
+      "id": "u_jg",
+      "name": "李结构件",
       "role": "unit",
-      "unitId": "gys",
+      "unitId": "jg",
+      "password": "0000"
+    },
+    {
+      "id": "u_xl",
+      "name": "王下料",
+      "role": "unit",
+      "unitId": "xl",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg",
+      "name": "赵机加工",
+      "role": "unit",
+      "unitId": "jjg",
+      "password": "0000"
+    },
+    {
+      "id": "u_zz",
+      "name": "陈总装",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg2",
+      "name": "刘机二",
+      "role": "unit",
+      "unitId": "jjg2",
+      "password": "0000"
+    },
+    {
+      "id": "u_sc",
+      "name": "周市场",
+      "role": "unit",
+      "unitId": "sc",
+      "password": "0000"
+    },
+    {
+      "id": "u_cg",
+      "name": "吴采购",
+      "role": "unit",
+      "unitId": "cg",
+      "password": "0000"
+    },
+    {
+      "id": "u_js",
+      "name": "郑技术",
+      "role": "unit",
+      "unitId": "js",
+      "password": "0000"
+    },
+    {
+      "id": "u_yy",
+      "name": "冯运营",
+      "role": "unit",
+      "unitId": "yy",
+      "password": "0000"
+    },
+    {
+      "id": "u_zl",
+      "name": "褚质量",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
+    },
+    {
+      "id": "u_ah",
+      "name": "卫安环",
+      "role": "unit",
+      "unitId": "ah",
+      "password": "0000"
+    },
+    {
+      "id": "u_scgl",
+      "name": "蒋生产",
+      "role": "unit",
+      "unitId": "scgl",
       "password": "0000"
     },
     {
@@ -15,334 +92,64 @@
       "password": "0000"
     },
     {
-      "id": "u21",
-      "name": "姜喜",
+      "id": "u_exp1",
+      "name": "专家甲",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp2",
+      "name": "专家乙",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp3",
+      "name": "专家丙",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp4",
+      "name": "专家丁",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_exp5",
+      "name": "专家戊",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u_admin",
+      "name": "张管理",
       "role": "admin",
       "unitId": null,
-      "password": "0001"
-    },
-    {
-      "id": "u22",
-      "name": "王世博",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
-      "id": "u23",
-      "name": "张伟",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
-      "id": "u24",
-      "name": "潘富康",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
-      "id": "u25",
-      "name": "谷兵",
-      "role": "unit",
-      "unitId": "jg",
       "password": "0000"
     },
     {
-      "id": "u26",
-      "name": "王继辉",
-      "role": "unit",
-      "unitId": "xl",
-      "password": "0000"
-    },
-    {
-      "id": "u27",
-      "name": "李聚涛",
-      "role": "unit",
-      "unitId": "jjg",
-      "password": "0000"
-    },
-    {
-      "id": "u28",
-      "name": "洪亮",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u29",
-      "name": "吴陆洋",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u30",
-      "name": "王继辉",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u31",
-      "name": "刘庆伟",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u32",
-      "name": "刘国",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u33",
-      "name": "胡永峰",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u34",
-      "name": "彭育东",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u35",
-      "name": "樊永斌",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u36",
-      "name": "刘伟波",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u37",
-      "name": "谷兵",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u38",
-      "name": "王继辉",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u39",
-      "name": "刘法旺",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u40",
-      "name": "刘国",
-      "role": "unit",
-      "unitId": "zz",
-      "password": "0000"
-    },
-    {
-      "id": "u41",
-      "name": "朱予滨",
-      "role": "unit",
-      "unitId": "jjg2",
-      "password": "0000"
-    },
-    {
-      "id": "u42",
-      "name": "董威",
-      "role": "unit",
-      "unitId": "sc",
-      "password": "0000"
-    },
-    {
-      "id": "u43",
-      "name": "刘伟波",
-      "role": "unit",
-      "unitId": "cg",
-      "password": "0000"
-    },
-    {
-      "id": "u44",
-      "name": "王跃功",
-      "role": "unit",
-      "unitId": "js",
-      "password": "0000"
-    },
-    {
-      "id": "u45",
-      "name": "杨晓峰",
-      "role": "unit",
-      "unitId": "yy",
-      "password": "0000"
-    },
-    {
-      "id": "u46",
-      "name": "洪亮",
-      "role": "unit",
-      "unitId": "zl",
-      "password": "0000"
-    },
-    {
-      "id": "u47",
-      "name": "黄海涛",
-      "role": "unit",
-      "unitId": "ah",
-      "password": "0000"
-    },
-    {
-      "id": "u48",
-      "name": "姜喜",
-      "role": "unit",
-      "unitId": "scgl",
-      "password": "0000"
-    },
-    {
-      "id": "u49",
-      "name": "刘法旺",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
-      "id": "u50",
-      "name": "刘庆伟",
+      "id": "u_gys",
+      "name": "孙工艺",
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
     }
   ],
-  "deductions": [
-    {
-      "id": "d1",
-      "unitId": "sc",
-      "score": 1,
-      "reason": "阳泉特殊架要求总装分厂7月2日交检完，阳泉主机要求总装分厂7月2日组装10台，未完成。原因是阳泉提供采购件未回厂完，无法组装。责任单位：市场开发部。",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:19:16.548Z"
-    },
-    {
-      "id": "d3",
-      "unitId": "jjg",
-      "score": 1,
-      "reason": "缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:21:28.404Z"
-    },
-    {
-      "id": "d4",
-      "unitId": "cg",
-      "score": 1,
-      "reason": "要求千斤顶锻件6月30日回厂完，实际回厂100台。原因原材料回厂晚，第50台锻件6月29日才开始外转，责任单位：采购部",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:22:00.476Z"
-    },
-    {
-      "id": "d5",
-      "unitId": "cg",
-      "score": 1,
-      "reason": "苏艾克按倒排计划要求，截至7月23日，苏艾克特殊架DN25胶管未按要求回厂完，影响联调支架组装。责任单位：采购部",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:26:14.452Z"
-    },
-    {
-      "id": "d6",
-      "unitId": "hr",
-      "score": 1,
-      "reason": "苏艾克杆类镀铬件要求7月16日转出32台，实际转出28台。未完成，责任单位：恒锐公司。",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:28:42.212Z"
-    },
-    {
-      "id": "d7",
-      "unitId": "hr",
-      "score": 1,
-      "reason": "苏艾克杆类镀铬件要求7月16日转出32台，实际转出28台。未完成，责任单位：恒锐公司",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T05:40:01.934Z"
-    },
-    {
-      "id": "d8",
-      "unitId": "sc",
-      "score": 1,
-      "reason": "苏艾克缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂（由生产管理部申诉转移）",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T07:18:18.088Z"
-    }
-  ],
-  "appeals": [
-    {
-      "id": "a1",
-      "deductionId": "d2",
-      "unitId": "scgl",
-      "reason": "1111",
-      "responsibleUnitId": "sc",
-      "status": "approved",
-      "time": "2026-07-30T07:14:35.657Z",
-      "votes": [
-        {
-          "userId": "u29",
-          "agree": true,
-          "time": "2026-07-30T07:16:34.537Z"
-        },
-        {
-          "userId": "u30",
-          "agree": false,
-          "time": "2026-07-30T07:16:52.288Z"
-        },
-        {
-          "userId": "u28",
-          "agree": true,
-          "time": "2026-07-30T07:17:47.720Z"
-        }
-      ],
-      "result": {
-        "note": "同意 2票 > 不同意 1票，扣分已转移至市场部"
-      },
-      "assignedExperts": [
-        "u28",
-        "u29",
-        "u30"
-      ]
-    }
-  ],
+  "deductions": [],
+  "appeals": [],
   "nextIds": {
-    "deduction": 9,
-    "appeal": 2,
-    "user": 51,
-    "bonus": 2
+    "deduction": 1,
+    "appeal": 1,
+    "user": 21,
+    "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "c2733dc95a83e5dbb1dd5038be2b701a180c451735054e9761aa858e7fb8efc950b3d7d40afa84fccabf95df7163b0d5d374b801e4e1ad5365858c5e9cc6e818cc56dc52",
-  "bonuses": [
-    {
-      "id": "b1",
-      "unitId": "hr",
-      "score": 1,
-      "reason": "苏艾克杆类镀铬件要求7月16日转出32台，实际转出28台。未完成，责任单位：恒锐公司",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-30T03:28:01.340Z"
-    }
-  ]
+  "bonuses": [],
+  "_encToken": "b0e880382e639817105cd233e97f20c3469b3ac83f9cb30a061ad2dc991215863c6183bcf2e6a603c285f38d4448d3144ddf61853928a6da3410856f7dd0d3c8b45f5c6e"
 }
