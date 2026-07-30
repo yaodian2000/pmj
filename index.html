@@ -465,7 +465,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607300830'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202607301600'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -686,9 +686,9 @@ async function _syncToCloud(data) {
       // File doesn't exist yet, that's fine
     }
 
-    // Clean data for upload (remove _updatedAt)
+    // Keep _updatedAt in cloud data so other devices can compare timestamps
     const cleanData = { ...data };
-    delete cleanData._updatedAt;
+    cleanData._updatedAt = data._updatedAt || Date.now();
 
     // Include encrypted token in cloud data for cross-device sharing
     if (config.token) {
@@ -802,7 +802,7 @@ async function syncNow() {
         // Local is newer or same — push to cloud
         updateSyncUI('syncing', '正在上传本地数据...');
         const cleanData = { ...localData };
-        delete cleanData._updatedAt;
+        cleanData._updatedAt = localData._updatedAt || Date.now();
         if (config.token) cleanData._encToken = await encryptToken(config.token);
         const content = base64Encode(JSON.stringify(cleanData, null, 2));
         const body = {
@@ -820,7 +820,7 @@ async function syncNow() {
       // No cloud data — push local
       updateSyncUI('syncing', '正在首次上传...');
       const cleanData = { ...localData };
-      delete cleanData._updatedAt;
+      cleanData._updatedAt = localData._updatedAt || Date.now();
       if (config.token) cleanData._encToken = await encryptToken(config.token);
       const content = base64Encode(JSON.stringify(cleanData, null, 2));
       const body = {
@@ -1002,7 +1002,7 @@ async function initCloudSync() {
         // Local is newer — push to cloud
         updateSyncUI('syncing', '正在上传本地数据...');
         const cleanData = { ...localData };
-        delete cleanData._updatedAt;
+        cleanData._updatedAt = localData._updatedAt || Date.now();
         if (config.token) cleanData._encToken = await encryptToken(config.token);
         const content = base64Encode(JSON.stringify(cleanData, null, 2));
         const body = {
@@ -1022,7 +1022,7 @@ async function initCloudSync() {
       updateSyncUI('syncing', '首次上传...');
       const localData = getStore();
       const cleanData = { ...localData };
-      delete cleanData._updatedAt;
+      cleanData._updatedAt = localData._updatedAt || Date.now();
       if (config.token) cleanData._encToken = await encryptToken(config.token);
       const content = base64Encode(JSON.stringify(cleanData, null, 2));
       const body = {
