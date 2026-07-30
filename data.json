@@ -225,15 +225,25 @@
       "password": "0000"
     }
   ],
-  "deductions": [],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "sc",
+      "score": 1,
+      "reason": "阳泉特殊架要求总装分厂7月2日交检完，阳泉主机要求总装分厂7月2日组装10台，未完成。原因是阳泉提供采购件未回厂完，无法组装。责任单位：市场开发部。",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:19:16.548Z"
+    }
+  ],
   "appeals": [],
   "nextIds": {
-    "deduction": 1,
+    "deduction": 2,
     "appeal": 1,
     "user": 51,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "98f84f9c40c0e0a6b51924502bd02d7ee4f712e838f0c469267f1934bde4e3fb2e900f644e7bba9af6f6f479d3306028f3f7d16bb8e2d9c70872c6e0c25b5d566680880d",
+  "_encToken": "fa7eb5cb7f65789e79b62a129f66b2f647778c8b1b17bcef9d4c373290ab79e1e1c435a75b8e3b7cca0186455434a21807599bfbffe5ea34fde803318be092b59fcf4d00",
   "bonuses": []
 }
