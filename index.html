@@ -785,8 +785,10 @@ async function syncNow() {
     const localTime = localData._updatedAt || 0;
 
     if (cloudResult) {
-      // Compare timestamps — use whichever is newer
-      if (cloudResult.data._updatedAt && cloudResult.data._updatedAt > localTime) {
+      // 数据版本号优先：云端版本更高时，强制使用云端数据
+      const cloudVersion = cloudResult.data._dataVersion || 0;
+      const localVersion = localData._dataVersion || 0;
+      if (cloudVersion > localVersion || (cloudResult.data._updatedAt && cloudResult.data._updatedAt > localTime)) {
         // Cloud is newer — use cloud data
         saveStoreRaw(cloudResult.data);
         showToast('已从云端加载最新数据');
@@ -985,13 +987,17 @@ async function initCloudSync() {
       const localTime = localData._updatedAt || 0;
       const cloudTime = cloudResult.data._updatedAt || 0;
 
-      if (cloudTime > localTime) {
-        // Cloud is newer — use cloud data
+      // 数据版本号检测：云端版本更高时，强制使用云端数据（防止旧设备覆盖清理后的数据）
+      const cloudVersion = cloudResult.data._dataVersion || 0;
+      const localVersion = localData._dataVersion || 0;
+
+      if (cloudVersion > localVersion || cloudTime > localTime) {
+        // Cloud is newer (by version or time) — use cloud data
         saveStoreRaw(cloudResult.data);
         updateSyncUI('synced', '已加载云端最新数据 ' + new Date().toLocaleTimeString('zh-CN'));
         config.lastSync = Date.now();
         saveSyncConfig(config);
-        console.log('Loaded newer data from cloud');
+        console.log('Loaded newer data from cloud (v' + cloudVersion + ' > v' + localVersion + ')');
       } else if (localTime > cloudTime) {
         // Local is newer — push to cloud
         updateSyncUI('syncing', '正在上传本地数据...');
@@ -1063,8 +1069,10 @@ async function autoPullFromCloud() {
     const localData = getStore();
     const localTime = localData._updatedAt || 0;
     const cloudTime = cloudResult.data._updatedAt || 0;
+    const cloudVersion = cloudResult.data._dataVersion || 0;
+    const localVersion = localData._dataVersion || 0;
 
-    if (cloudTime > localTime) {
+    if (cloudVersion > localVersion || cloudTime > localTime) {
       // Cloud has newer data — update locally
       saveStoreRaw(cloudResult.data);
       updateSyncUI('synced', '自动同步 ' + new Date().toLocaleTimeString('zh-CN'));
