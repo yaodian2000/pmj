@@ -1,129 +1,143 @@
 {
   "users": [
     {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
+    },
+    {
       "id": "u21",
+      "name": "王世博",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u22",
+      "name": "姜喜",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u23",
+      "name": "张伟",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u24",
+      "name": "潘富康",
+      "role": "admin",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u25",
       "name": "刘庆伟",
       "role": "expert",
       "unitId": null,
       "password": "0000"
     },
     {
-      "id": "u22",
-      "name": "洪亮",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
-      "id": "u23",
+      "id": "u26",
       "name": "刘国",
       "role": "expert",
       "unitId": null,
       "password": "0000"
     },
     {
-      "id": "u24",
+      "id": "u27",
       "name": "胡永峰",
       "role": "expert",
       "unitId": null,
       "password": "0000"
     },
     {
-      "id": "u25",
-      "name": "王跃功",
+      "id": "u28",
+      "name": "洪亮",
       "role": "expert",
       "unitId": null,
       "password": "0000"
     },
     {
-      "id": "u26",
-      "name": "姜喜",
-      "role": "admin",
-      "unitId": null,
-      "password": "0730"
-    },
-    {
-      "id": "u27",
-      "name": "张伟",
-      "role": "admin",
-      "unitId": null,
-      "password": "0730"
-    },
-    {
-      "id": "u28",
-      "name": "潘富康",
-      "role": "admin",
-      "unitId": null,
-      "password": "0730"
-    },
-    {
       "id": "u29",
-      "name": "王世博",
-      "role": "admin",
-      "unitId": null,
-      "password": "0730"
-    },
-    {
-      "id": "u30",
       "name": "谷兵",
       "role": "unit",
       "unitId": "jg",
       "password": "0000"
     },
     {
-      "id": "u31",
+      "id": "u30",
       "name": "王继辉",
       "role": "unit",
       "unitId": "xl",
       "password": "0000"
     },
     {
-      "id": "u32",
+      "id": "u31",
       "name": "李聚涛",
       "role": "unit",
       "unitId": "jjg",
       "password": "0000"
     },
     {
-      "id": "u33",
+      "id": "u32",
       "name": "刘国",
       "role": "unit",
       "unitId": "zz",
       "password": "0000"
     },
     {
-      "id": "u34",
+      "id": "u33",
       "name": "朱予滨",
       "role": "unit",
       "unitId": "jjg2",
       "password": "0000"
     },
     {
-      "id": "u35",
+      "id": "u34",
       "name": "董威",
       "role": "unit",
       "unitId": "sc",
       "password": "0000"
     },
     {
-      "id": "u36",
+      "id": "u35",
       "name": "刘伟波",
       "role": "unit",
       "unitId": "cg",
       "password": "0000"
     },
     {
-      "id": "u37",
+      "id": "u36",
       "name": "王跃功",
       "role": "unit",
       "unitId": "js",
       "password": "0000"
     },
     {
-      "id": "u38",
+      "id": "u37",
       "name": "杨晓峰",
       "role": "unit",
       "unitId": "yy",
+      "password": "0000"
+    },
+    {
+      "id": "u38",
+      "name": "洪亮",
+      "role": "unit",
+      "unitId": "zl",
       "password": "0000"
     },
     {
@@ -135,63 +149,232 @@
     },
     {
       "id": "u40",
-      "name": "洪亮",
-      "role": "unit",
-      "unitId": "zl",
-      "password": "0000"
-    },
-    {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
-      "id": "u41",
       "name": "刘法旺",
       "role": "unit",
       "unitId": "hr",
       "password": "0000"
     },
     {
-      "id": "u42",
+      "id": "u41",
       "name": "刘庆伟",
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
     },
     {
-      "id": "u_gys",
-      "name": "孙工艺",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
-    },
-    {
-      "id": "u43",
+      "id": "u42",
       "name": "姜喜",
       "role": "unit",
       "unitId": "scgl",
       "password": "0000"
     },
     {
+      "id": "u43",
+      "name": "王跃功",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
       "id": "u44",
+      "name": "吴陆洋",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u45",
+      "name": "彭育东",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u46",
       "name": "樊永斌",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u47",
+      "name": "刘伟波",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u48",
+      "name": "李聚涛",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u49",
+      "name": "谷兵",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u50",
+      "name": "王继辉",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u51",
+      "name": "刘法旺",
       "role": "expert",
       "unitId": null,
       "password": "0000"
     }
   ],
-  "deductions": [],
-  "appeals": [],
+  "deductions": [
+    {
+      "id": "d4",
+      "unitId": "scgl",
+      "score": 1,
+      "reason": "测试（由结构件分厂申诉转移）",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T09:11:13.324Z"
+    },
+    {
+      "id": "d5",
+      "unitId": "scgl",
+      "score": 5,
+      "reason": "测试11111（由生产管理部申诉转移）（由结构件分厂申诉转移）",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T09:11:18.324Z"
+    }
+  ],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "scgl",
+      "reason": "测试11111",
+      "responsibleUnitId": "jg",
+      "status": "approved",
+      "time": "2026-07-29T07:38:29.959Z",
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-07-29T07:40:07.670Z"
+        },
+        {
+          "userId": "u26",
+          "agree": false,
+          "time": "2026-07-29T07:40:30.542Z"
+        },
+        {
+          "userId": "u27",
+          "agree": true,
+          "time": "2026-07-29T07:40:43.422Z"
+        },
+        {
+          "userId": "u28",
+          "agree": false,
+          "time": "2026-07-29T07:40:56.942Z"
+        },
+        {
+          "userId": "u43",
+          "agree": true,
+          "time": "2026-07-29T07:41:09.958Z"
+        }
+      ],
+      "result": {
+        "note": "同意 3票 > 不同意 2票，扣分已转移至结构件分厂"
+      },
+      "assignedExperts": [
+        "u25",
+        "u26",
+        "u27",
+        "u28",
+        "u43"
+      ]
+    },
+    {
+      "id": "a2",
+      "deductionId": "d2",
+      "unitId": "jg",
+      "reason": "测试",
+      "responsibleUnitId": "scgl",
+      "status": "approved",
+      "time": "2026-07-29T09:08:52.796Z",
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-07-29T09:10:15.796Z"
+        },
+        {
+          "userId": "u26",
+          "agree": true,
+          "time": "2026-07-29T09:10:34.979Z"
+        },
+        {
+          "userId": "u27",
+          "agree": true,
+          "time": "2026-07-29T09:10:57.252Z"
+        }
+      ],
+      "result": {
+        "note": "同意 3票 > 不同意 0票，扣分已转移至生产管理部"
+      },
+      "assignedExperts": [
+        "u25",
+        "u26",
+        "u27"
+      ]
+    },
+    {
+      "id": "a3",
+      "deductionId": "d3",
+      "unitId": "jg",
+      "reason": "测试",
+      "responsibleUnitId": "scgl",
+      "status": "approved",
+      "time": "2026-07-29T09:09:13.747Z",
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-07-29T09:10:12.132Z"
+        },
+        {
+          "userId": "u26",
+          "agree": true,
+          "time": "2026-07-29T09:10:31.740Z"
+        },
+        {
+          "userId": "u27",
+          "agree": true,
+          "time": "2026-07-29T09:10:54.404Z"
+        }
+      ],
+      "result": {
+        "note": "同意 3票 > 不同意 0票，扣分已转移至生产管理部"
+      },
+      "assignedExperts": [
+        "u25",
+        "u26",
+        "u27"
+      ]
+    }
+  ],
   "nextIds": {
-    "deduction": 1,
-    "appeal": 1,
-    "user": 45,
+    "deduction": 6,
+    "appeal": 4,
+    "user": 52,
     "bonus": 1
   },
-  "_encToken": "0f928b876740ee804d24a469051f254dc97df206058fb669e9a3ce4023ef86e7d44032187036f440d9d04d503f1fa82664a301d43b0733aaca0371022a1597bb518db8ce",
-  "bonuses": [],
-  "_dataCleared": true
+  "_dataCleared": true,
+  "_encToken": "8c1508248714bfb2a5b05b224a43a2ecd3ef807736841acae9bea3d64f0de48cbebf6feca391e0ee81df7ea98588fee7803ca75f7e74b91db576ec2888643e7b9a054975",
+  "bonuses": []
 }
