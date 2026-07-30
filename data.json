@@ -234,16 +234,25 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T03:19:16.548Z"
+    },
+    {
+      "id": "d2",
+      "unitId": "scgl",
+      "score": 1,
+      "reason": "苏艾克缸筒镀铬前加工要求机加工分厂7月2日配套75台，实际立柱配套50台，小千斤顶配套完成。原因是立柱一次焊接头影响，中缸筒刮滚影响。责任单位：生产部、机加工分厂",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:21:04.860Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 2,
+    "deduction": 3,
     "appeal": 1,
     "user": 51,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "fa7eb5cb7f65789e79b62a129f66b2f647778c8b1b17bcef9d4c373290ab79e1e1c435a75b8e3b7cca0186455434a21807599bfbffe5ea34fde803318be092b59fcf4d00",
+  "_encToken": "cbb36d755a680ca8deb342bfc3c7af98db1a6146a9d4db994cd5df6be8ff8f7166f37001068f62140da3f36f69849dca12981c20722c6e946008a4eabd0cd722c72cf66d",
   "bonuses": []
 }
