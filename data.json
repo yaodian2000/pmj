@@ -132,6 +132,20 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u37",
+      "name": "谷兵",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
+    },
+    {
+      "id": "u38",
+      "name": "刘法旺",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -201,11 +215,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 37,
+    "user": 39,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "3df66593f8dea5fe1095e28171f150337a5e9cca6d8e3b4d6ce549a7d99e3e67ef0953cb6e73b415392d8fa1fdb3e206da73cad009043d6cb5d809bd0121abc94b927f27",
-  "_updatedAt": 1785400703751,
+  "_encToken": "0cb2ff80a22f0ab558ecd6df064ed1e6f60454417ecee29c4d4db16126cfcdda3117cfdc115ca463f4963fd93e94ff7d30ca1b507d5e76801023d3a5faf53ebafef96102",
+  "_updatedAt": 1785400735647,
   "bonuses": []
 }
