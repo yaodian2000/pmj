@@ -83,6 +83,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u31",
+      "name": "王继辉",
+      "role": "unit",
+      "unitId": "xl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -90,10 +97,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 31,
+    "user": 32,
     "bonus": 1
   },
-  "_encToken": "a454c762869f1f0567544e025789e4fbeddfc3d9fb865066b008e3abaf0a0d3a76c95caf14916f98275c93c71e5f767475d8931686669fe41e582e098c7fd7903aced1e0",
+  "_encToken": "8edb04437c66cfab41a85412d369fbbc2be215d4000ebc3093dead45e221ee861065af6db184552b6acdea5d9c7c086e454042e8235e74dffbb42413d14f9cfe874f6f95",
   "bonuses": [],
   "_dataCleared": true
 }
