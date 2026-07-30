@@ -128,7 +128,7 @@
     },
     {
       "id": "u37",
-      "name": "李聚涛",
+      "name": "谷兵",
       "role": "expert",
       "unitId": null,
       "password": "0000"
@@ -143,6 +143,6 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "c741ec473bd90e3848fa1c1b84a64e8269712c073bbb980f7d8ed1fcc41c119bb1d267bb4d490c7fcea246a6eb007fdbb5888e754b99dc300ec063ea516562eacded7c99",
+  "_encToken": "03f8229cdc9f74900a6522c189545016b84780eacb4311ccd6fba6869e11e663526c4a899ca57f7fbaf36759b5b72b8660125ed8a81498371770a75d0111d629a6c336e7",
   "bonuses": []
 }
