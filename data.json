@@ -121,7 +121,7 @@
     },
     {
       "id": "u23",
-      "name": "樊永斌",
+      "name": "刘国",
       "role": "expert",
       "unitId": null,
       "password": "0000"
@@ -135,7 +135,7 @@
     "user": 24,
     "bonus": 1
   },
-  "_encToken": "988af8c665fad608063dd8d2ffdd1bd3be4943bd8305956d21397d32c926595e7864702e42acc2b524bac206f52fdf19133e86182b542ad0551a9584ad8850eb059d8ccb",
+  "_encToken": "3603c68354876d749d59341f90d8bfba3dba309271a34802a44345f2469356206ff820e311de1260140f5376f25a2501cb5162cd3964f8cc5f7ea5e1917e298a0a982b9d",
   "bonuses": [],
   "_dataCleared": true
 }
