@@ -33,7 +33,7 @@
       "name": "张伟",
       "role": "admin",
       "unitId": null,
-      "password": "0000"
+      "password": "0730"
     },
     {
       "id": "u24",
@@ -375,6 +375,6 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "5fc75d6eca031b6789e85ce923fd0f88548159c366bb9fe6d63dec00e823a65d4b51b30fa3e5b32595fabc80ada863e91f11339a4310a96a5738c056621fd9ad93febdee",
+  "_encToken": "83fa73b44c22bee0a90c8dadd4aa4b39a320eb2835e970630769db49c0fc3b9ae1d88949591d5d0c2d3bca57c650c991d3c594240cf542cf75e2cf16c84786b93baf439c",
   "bonuses": []
 }
