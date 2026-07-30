@@ -141,25 +141,87 @@
       "password": "0000"
     }
   ],
-  "deductions": [],
-  "appeals": [],
-  "nextIds": {
-    "deduction": 1,
-    "appeal": 1,
-    "user": 21,
-    "bonus": 2
-  },
-  "_dataCleared": true,
-  "_encToken": "229467359689b1e65c42637eadc768107ab685d9472671c01517c531cea68cbc02d18b13049101306e8ca8a4d69187b13cf2e55496cca9ea376578c954f53147c37d7846",
-  "bonuses": [
+  "deductions": [
     {
-      "id": "b1",
-      "unitId": "scgl",
-      "score": 5,
+      "id": "d1",
+      "unitId": "jg",
+      "score": 20,
       "reason": "测试",
       "year": 2026,
       "month": 7,
-      "time": "2026-07-30T00:43:14.775Z"
+      "time": "2026-07-29T02:11:27.210Z"
+    },
+    {
+      "id": "d2",
+      "unitId": "xl",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:38.123Z"
+    },
+    {
+      "id": "d3",
+      "unitId": "zz",
+      "score": 22,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:47.658Z"
+    },
+    {
+      "id": "d4",
+      "unitId": "jjg2",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:18:19.891Z"
     }
-  ]
+  ],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "jg",
+      "reason": "测试",
+      "responsibleUnitId": "js",
+      "status": "pending",
+      "time": "2026-07-29T02:27:17.479Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": [
+        "u_exp1",
+        "u_exp2",
+        "u_exp3",
+        "u_exp4",
+        "u_exp5"
+      ]
+    },
+    {
+      "id": "a2",
+      "deductionId": "d3",
+      "unitId": "zz",
+      "reason": "此责任应该为结构件分厂周转延期造成的",
+      "responsibleUnitId": "jg",
+      "status": "pending",
+      "time": "2026-07-29T02:29:47.995Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": [
+        "u_exp5",
+        "u_exp4",
+        "u_exp3"
+      ]
+    }
+  ],
+  "nextIds": {
+    "deduction": 5,
+    "appeal": 3,
+    "user": 21,
+    "bonus": 1
+  },
+  "_dataCleared": true,
+  "_encToken": "56a6638065390d84dc23596ade37829d46ab2a57a866947fddb5b8858a313d50771a991216615ca2566557c3a9286eb58dda17f7b54fb2e4eb6d17da8b7c2ad0d9f0e77d",
+  "bonuses": []
 }
