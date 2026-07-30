@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607301600'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202607301616'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -586,8 +586,11 @@ function initStore() {
   return data;
 }
 
+let _lastLocalModify = 0; // 用户最后一次修改数据的时间戳
+
 function saveStore(data) {
   data._updatedAt = Date.now();
+  _lastLocalModify = data._updatedAt; // 记录最后修改时间
   localStorage.setItem('kpi_data', JSON.stringify(data));
   // Auto cloud sync (async, non-blocking)
   if (getSyncConfig().enabled) {
@@ -1064,6 +1067,15 @@ function stopAutoSyncInterval() {
 async function autoPullFromCloud() {
   const config = getSyncConfig();
   if (!config.enabled || !config.token) return;
+
+  // 如果用户最近 5 秒内刚修改过数据，跳过拉取，避免覆盖用户编辑
+  if (_lastLocalModify && (Date.now() - _lastLocalModify < 5000)) {
+    // 用户刚刚修改过，不拉取；同时清除旧的防抖定时器，立即推送
+    clearTimeout(_syncTimer);
+    const localData = getStore();
+    if (!_syncing) _syncToCloud(localData);
+    return;
+  }
 
   try {
     const cloudResult = await pullFromCloud();
