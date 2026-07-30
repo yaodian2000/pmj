@@ -92,13 +92,6 @@
       "password": "0000"
     },
     {
-      "id": "u_admin",
-      "name": "张管理",
-      "role": "admin",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u_gys",
       "name": "孙工艺",
       "role": "unit",
@@ -177,7 +170,7 @@
     "user": 30,
     "bonus": 1
   },
-  "_encToken": "35ad4c37983822da1c688e3c186b15ae33209dd06e482a4658144e7dfe6fdc4ff4600cdb3803cbba5cc4357e3a6253b25bcd4957f6e09197417a923c91dedbf90a9bcb81",
+  "_encToken": "d548175cfdb35fbe47aeb2fe76985668a4d2080fae1180dfad5decd8bb595d72e520eca3b20e6cd3a5cbef4381648d6e9aa2726b4473b86b1b55bb3e191955feeb973a17",
   "bonuses": [],
   "_dataCleared": true
 }
