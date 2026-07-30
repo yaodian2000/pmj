@@ -132,6 +132,13 @@
       "role": "unit",
       "unitId": "js",
       "password": "0000"
+    },
+    {
+      "id": "u38",
+      "name": "杨晓峰",
+      "role": "unit",
+      "unitId": "yy",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -139,10 +146,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 38,
+    "user": 39,
     "bonus": 1
   },
-  "_encToken": "5b1f6bcdd4f809ece9b2860af20c2c46cdafe52c806a4e38e3ae898ffc222e79db973cf179a8bc719f6de8690cc687d71ab668a4da8faa43bda9e4eb27a10cbb7a05c97a",
+  "_encToken": "eac7d67b388ec14709b21717743b5e597dd36be065e8d20089be7b0f9a8817a0b30a5ab98f59519dea436700c92516aadcb54c100fb7ca613b02c2fe353e2885c9dfd8e2",
   "bonuses": [],
   "_dataCleared": true
 }
