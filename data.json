@@ -71,17 +71,17 @@
       "password": "0000"
     },
     {
-      "id": "u_gys",
-      "name": "孙工艺",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
-    },
-    {
       "id": "u30",
       "name": "谷兵",
       "role": "unit",
       "unitId": "jg",
+      "password": "0000"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
       "password": "0000"
     }
   ],
@@ -93,7 +93,7 @@
     "user": 31,
     "bonus": 1
   },
-  "_encToken": "df0c461e9e76c863d00746a11f92bd04d27097962feea90f8a4afaf02976ae7dbbfa1d11eb2b954eb6acd337705351e6ce69ebd393ecac0008aec57dee4e4ba3580389c2",
+  "_encToken": "a454c762869f1f0567544e025789e4fbeddfc3d9fb865066b008e3abaf0a0d3a76c95caf14916f98275c93c71e5f767475d8931686669fe41e582e098c7fd7903aced1e0",
   "bonuses": [],
   "_dataCleared": true
 }
