@@ -139,6 +139,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u26",
+      "name": "姜喜",
+      "role": "admin",
+      "unitId": null,
+      "password": "0730"
     }
   ],
   "deductions": [],
@@ -146,10 +153,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 26,
+    "user": 27,
     "bonus": 1
   },
-  "_encToken": "3aa0809dfb097efea73955ea8b050faf867dfb3028030d8e21877e3633e0f4470f54b8033a9799ef7525531f631b8e5e4d88910dd790ec6cd2a9505e76202efae0078ce6",
+  "_encToken": "c8d6636cbb0f32686d798bf438845ecfa7f3d4a995b1301d8e163e65d3a3a86bb20a5171f943fc9930e9ead6913ab451e41b5ff4d6e297977ae482d662703c5fe5c6859e",
   "bonuses": [],
   "_dataCleared": true
 }
