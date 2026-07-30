@@ -157,9 +157,19 @@
     "deduction": 2,
     "appeal": 1,
     "user": 21,
-    "bonus": 1
+    "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "e337e2e80e2b967928c661da92994331fb629ad8511dae60f50d66ba4e39c9e0d16640b51be2e56ba3547488b7306a24bb84af2dec29b464c0a37217385a4c9b8a3ac347",
-  "bonuses": []
+  "_encToken": "d03edae70bce61aa5d4728f279bfa2b09f7471b0003c70f33983d90e2caa23b16afd65de36272d4d781c2040cca38abfb3832bc253d8c17773ef80d141b40c9f53215bcc",
+  "bonuses": [
+    {
+      "id": "b1",
+      "unitId": "scgl",
+      "score": 5,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T00:46:31.632Z"
+    }
+  ]
 }
