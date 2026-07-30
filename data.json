@@ -55,6 +55,13 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
+    },
+    {
+      "id": "u21",
+      "name": "黄长鹏",
+      "role": "admin",
+      "unitId": null,
+      "password": "0001"
     }
   ],
   "deductions": [
@@ -124,11 +131,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 21,
+    "user": 22,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "5f07f91696de35601704b75dca2840239bd02f9f61dcf9b313c2c3422c8beef5810515530daa6804b10884a3d868091d19a93678d94b3e10dfddfc3954d5fcb6f33ffe5e",
-  "_updatedAt": 1785400338830,
+  "_encToken": "e0c01f86b16efa7d3669dcd3a545b8cbce27f2d27681a114a6a9a2a1c8222ae8221d117afa16daaf2d0433e8303f4fb49b6a7fa994319d6462b499d23571cd0995aa4c51",
+  "_updatedAt": 1785400361041,
   "bonuses": []
 }
