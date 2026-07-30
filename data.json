@@ -104,6 +104,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u33",
+      "name": "王跃功",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -173,11 +180,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 33,
+    "user": 34,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "4d352cba38cb7c003008fa4869684b1d2ba47b331eee3dac10a9db8d77f62e405382f725abced0c812ac7913caa8d037c33fb83c8bce05db0e7e857d1ecd673d2f697208",
-  "_updatedAt": 1785400507504,
+  "_encToken": "55d06d2c4f379e0f63d9f336bb4c02212ff5ce09868e136315a30c80bd9fa539c73ffe95b39d887a3467a5732d17aa6ba8272f50012e4d3c39aa4b1aae84b8dc36e5f663",
+  "_updatedAt": 1785400678423,
   "bonuses": []
 }
