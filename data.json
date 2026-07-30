@@ -156,9 +156,9 @@
     },
     {
       "id": "u41",
-      "name": "姜喜",
+      "name": "刘法旺",
       "role": "unit",
-      "unitId": "scgl",
+      "unitId": "hr",
       "password": "0000"
     }
   ],
@@ -170,7 +170,7 @@
     "user": 42,
     "bonus": 1
   },
-  "_encToken": "93c86d1a582eac76e0026c533eebeda5db0d05f6717e7c836dd396e3ab45778565a7db3ffa565534799808d666d690343bf0fec07b30108a8cc6f68b381791a71aec1447",
+  "_encToken": "ec93c8ba61cdd4d06a5ea3a215e79de6d97cafef0e36bd2f1b416c25e49d106cfbcf7da3a8914f88b0f3996456e473f962587a014d1ab7a4a8094d5def037d44e2dacdc1",
   "bonuses": [],
   "_dataCleared": true
 }
