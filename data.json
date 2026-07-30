@@ -104,6 +104,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u34",
+      "name": "彭育东",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -111,10 +118,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 34,
+    "user": 35,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "f29db0f921e6fb1927adbb536a73e8e82d608a970fabee75bdc50bbb3605e85dd6276cf66bcd6ba4f617d2f52738c92521e604131e7c24c157b172a25105f302082653d6",
+  "_encToken": "c7fa2222a33368a4cbaad3878a783af9392ce36e9eef9f232820c9f0dafd93ebf98ee4e76b225281d39be6a10735c2038b25c3323fc977f13169ae20eafed00c5d972ef8",
   "bonuses": []
 }
