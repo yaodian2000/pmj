@@ -125,6 +125,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u36",
+      "name": "李聚涛",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -194,11 +201,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 36,
+    "user": 37,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "b8bc0ed1f6c9bd4f7cc5bb2352687727633572094f2ddcdcca10ea0faf72aca7aa6515485540626f5c19ad66f1047667f545990c61894a642fd0139a0e94db2e552db0ee",
-  "_updatedAt": 1785400692959,
+  "_encToken": "3df66593f8dea5fe1095e28171f150337a5e9cca6d8e3b4d6ce549a7d99e3e67ef0953cb6e73b415392d8fa1fdb3e206da73cad009043d6cb5d809bd0121abc94b927f27",
+  "_updatedAt": 1785400703751,
   "bonuses": []
 }
