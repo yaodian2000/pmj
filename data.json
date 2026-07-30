@@ -270,17 +270,26 @@
       "year": 2026,
       "month": 7,
       "time": "2026-07-30T03:26:14.452Z"
+    },
+    {
+      "id": "d6",
+      "unitId": "hr",
+      "score": 1,
+      "reason": "苏艾克杆类镀铬件要求7月16日转出32台，实际转出28台。未完成，责任单位：恒锐公司。",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-30T03:28:42.212Z"
     }
   ],
   "appeals": [],
   "nextIds": {
-    "deduction": 6,
+    "deduction": 7,
     "appeal": 1,
     "user": 51,
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "83f451bed7e21bb9f4ae417ec99698f3e0c3dd550e49b792df5e547ec2740ddc7dc556d3283ee1b0af7e2a3fdb129c09d900e7c19cb324ea1cd54bac4f6b58b510e58984",
+  "_encToken": "dcd6cf005ed4f8cd7eb88f12daf18ec86eabed2ec7932371d4ae41aa31e7e60b67b2f9879207748e09c6897dd515ffe9245a0d889fd480671592110d92b8c86a21628654",
   "bonuses": [
     {
       "id": "b1",
