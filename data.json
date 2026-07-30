@@ -48,6 +48,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0001"
+    },
+    {
+      "id": "u25",
+      "name": "洪亮",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -117,11 +124,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 25,
+    "user": 26,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "37c64ff3603ab97715b00cb69359bbbb6d41bdd1d375b8dc170c114250c3e79e43a903e2fe1f6d02453ede8f9ec81bec2424dc723ea1e175eb5e938397458bcc78d4a65a",
-  "_updatedAt": 1785400419069,
+  "_encToken": "dc1cc35d54768a82f73d24533960e32b741f40542f97cf1b5bd33fd3444df2406d16e5fb73198a2d121c2429a732f9aef524483e72a73ca01e2745be1298b4cb286158eb",
+  "_updatedAt": 1785400424033,
   "bonuses": []
 }
