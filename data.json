@@ -132,6 +132,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u38",
+      "name": "王继辉",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -139,10 +146,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 38,
+    "user": 39,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "03f8229cdc9f74900a6522c189545016b84780eacb4311ccd6fba6869e11e663526c4a899ca57f7fbaf36759b5b72b8660125ed8a81498371770a75d0111d629a6c336e7",
+  "_encToken": "4f6add533a4d6622eb448900e8de962ea82e303f0e5d3b207a3541a4fd3c9d39c55913c8de68b2c5bf0d1bd317cbc5fba71b5baaca979a691b6b51caec5c70bed5df086a",
   "bonuses": []
 }
