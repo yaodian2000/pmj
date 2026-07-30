@@ -62,6 +62,13 @@
       "role": "admin",
       "unitId": null,
       "password": "0001"
+    },
+    {
+      "id": "u22",
+      "name": "姜喜",
+      "role": "admin",
+      "unitId": null,
+      "password": "0001"
     }
   ],
   "deductions": [
@@ -131,11 +138,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 22,
+    "user": 23,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "e0c01f86b16efa7d3669dcd3a545b8cbce27f2d27681a114a6a9a2a1c8222ae8221d117afa16daaf2d0433e8303f4fb49b6a7fa994319d6462b499d23571cd0995aa4c51",
-  "_updatedAt": 1785400361041,
+  "_encToken": "6e4bc3496eafefab12d9061e5bea07a11cf041c7f1f18fb9349db616ac9d5a5a55cd994ee6d1b57e914e5797015c198542ca5ae17ae8e25543abb939a5f8ddea84b0770b",
+  "_updatedAt": 1785400379345,
   "bonuses": []
 }
