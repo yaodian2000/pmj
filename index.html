@@ -193,16 +193,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
     <span id="sync-status-text">云端同步未配置</span>
   </div>
 
-  <div class="stat-grid">
+  <div class="stat-grid" id="stat-grid">
     <div class="stat-card"><div class="num" id="stat-score">--</div><div class="label" id="stat-label1">本月得分</div></div>
     <div class="stat-card warning"><div class="num" id="stat-qscore">--</div><div class="label" id="stat-label2">季度考核分</div></div>
+    <div class="stat-card" id="stat-card3" style="display:none"><div class="num" id="stat-score3">--</div><div class="label" id="stat-label3"></div></div>
   </div>
 
     <div id="admin-dash" style="display:none">
       <div class="card">
         <div class="card-title">⚡ 快捷操作</div>
         <div class="btn-group" style="flex-wrap:wrap">
-          <button class="btn btn-primary" onclick="navTo('deduction-create')">➕ 新建扣分</button>
+          <button class="btn btn-primary" onclick="navTo('deduction-create')">➖ 新建扣分</button>
+          <button class="btn btn-primary" onclick="navTo('bonus-create')" style="background:var(--primary);opacity:.85">🌟 新增加分</button>
           <button class="btn btn-outline" onclick="navTo('members')">👥 人员管理</button>
         </div>
       </div>
@@ -301,7 +303,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
   <div class="card" style="text-align:center">
     <div style="font-size:48px;font-weight:700;color:var(--primary)" id="md-score">--</div>
     <div style="color:var(--text-secondary);font-size:14px">月度得分（满分30）</div>
-    <div style="margin-top:8px;font-size:13px;color:var(--text-light)">总扣分: <span id="md-total-deduct" style="color:var(--danger);font-weight:600">0</span></div>
+    <div style="margin-top:8px;font-size:13px;color:var(--text-light)">总扣分: <span id="md-total-deduct" style="color:var(--danger);font-weight:600">0</span><span id="md-bonus-info"></span></div>
   </div>
   <div class="section-title">扣分明细</div>
   <div id="md-deduction-list"></div>
@@ -351,6 +353,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 <div id="screen-deduction-detail" class="screen">
   <div class="header"><span class="back" onclick="navTo('deduction-list')">←</span><h1>扣分详情</h1><span></span></div>
   <div id="dd-content"></div>
+</div>
+
+<!-- ======================== BONUS LIST SCREEN ======================== -->
+<div id="screen-bonus-list" class="screen">
+  <div class="header"><span class="back" onclick="navTo('dashboard')">←</span><h1>加分管理</h1><span class="right-btn" id="bl-create-btn" onclick="navTo('bonus-create')">新建</span></div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchBonusTab('all')">全部</div>
+    <div class="tab" onclick="switchBonusTab('mine')">本单位</div>
+  </div>
+  <div id="bonus-list-content"></div>
+</div>
+
+<!-- ======================== BONUS CREATE SCREEN ======================== -->
+<div id="screen-bonus-create" class="screen">
+  <div class="header"><span class="back" onclick="navTo('bonus-list')">←</span><h1>新增加分</h1><span></span></div>
+  <div class="card">
+    <div class="form-group"><label>加分单位 <span class="required">*</span></label><select class="form-select" id="bc-unit"></select></div>
+    <div class="form-group"><label>加分值 <span class="required">*</span></label><input class="form-input" type="number" id="bc-score" placeholder="请输入加分值（不超过剩余分数）" min="0.1" max="30" step="0.1"></div>
+    <div class="form-group"><label>加分原因 <span class="required">*</span></label><textarea class="form-textarea" id="bc-reason" placeholder="请填写具体加分原因"></textarea></div>
+    <div class="form-group"><label>考核月份</label><input class="form-input" type="month" id="bc-month"></div>
+    <button class="btn btn-primary btn-block" onclick="createBonus()">提交加分</button>
+  </div>
+</div>
+
+<!-- ======================== BONUS DETAIL SCREEN ======================== -->
+<div id="screen-bonus-detail" class="screen">
+  <div class="header"><span class="back" onclick="navTo('bonus-list')">←</span><h1>加分详情</h1><span></span></div>
+  <div id="bd-content"></div>
 </div>
 
 <!-- ======================== APPEAL LIST SCREEN ======================== -->
@@ -413,7 +443,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
   <div class="nav-item active" onclick="navTo('dashboard')"><span class="nav-icon">🏠</span>首页</div>
   <div class="nav-item" onclick="navTo('monthly-score')"><span class="nav-icon">📅</span>月度评分</div>
   <div class="nav-item" onclick="navTo('quarterly-score')"><span class="nav-icon">📈</span>季度评分</div>
-  <div id="nav-deduction" class="nav-item" onclick="navTo('deduction-list')"><span class="nav-icon">📝</span>扣分管理</div>
+  <div id="nav-deduction" class="nav-item" onclick="navTo('deduction-list')"><span class="nav-icon">📝</span>扣分</div>
+  <div id="nav-bonus" class="nav-item" onclick="navTo('bonus-list')"><span class="nav-icon">🌟</span>加分</div>
   <div id="nav-appeal" class="nav-item badge" onclick="navTo('appeal-list')" data-count=""><span class="nav-icon">📢</span>申诉</div>
 </div>
 
@@ -434,7 +465,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607291342'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202607300830'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -460,6 +491,12 @@ const TOTAL_SCORE = 30; // 月度考核满分
 function getUnitName(id) { const u = UNITS.find(x => x.id === id); return u ? u.name : id; }
 function getQuarter(m) { return Math.ceil(m / 3); }
 function getQuarterMonths(q) { return [(q-1)*3+1, (q-1)*3+2, (q-1)*3+3]; }
+// 计算某单位某月的最终得分（扣分 + 加分）
+function calcMonthScore(store, unitId, year, month) {
+  const deduct = store.deductions.filter(d => d.unitId === unitId && d.year === year && d.month === month).reduce((s, d) => s + d.score, 0);
+  const bonus = store.bonuses.filter(b => b.unitId === unitId && b.year === year && b.month === month).reduce((s, b) => s + b.score, 0);
+  return { score: Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - deduct + bonus)), deduct, bonus };
+}
 const now = new Date();
 const currentYear = now.getFullYear();
 const currentMonth = now.getMonth() + 1;
@@ -500,6 +537,12 @@ function getStore() {
       store._dataCleared = true;
       migrated = true;
     }
+    // migration: add bonuses array and nextId if missing
+    if (!store.bonuses) {
+      store.bonuses = [];
+      if (!store.nextIds.bonus) store.nextIds.bonus = 1;
+      migrated = true;
+    }
     if (migrated) saveStore(store);
     return store;
   }
@@ -531,8 +574,9 @@ function initStore() {
       { id: 'u_admin', name: '张管理', role: ROLES.ADMIN, unitId: null, password: '0000' },
     ],
     deductions: [],
+    bonuses: [],
     appeals: [],
-    nextIds: { deduction: 1, appeal: 1, user: 20 },
+    nextIds: { deduction: 1, bonus: 1, appeal: 1, user: 20 },
     _updatedAt: Date.now(),
   };
   saveStore(data);
@@ -1012,7 +1056,7 @@ function doLogout() {
 // ==================== NAVIGATION ====================
 const NOT_AUTH_SCREENS = ['login'];
 let currentScreen = 'login';
-let dedTab = 'all', appealTab = 'all', memberTab = 'unit';
+let dedTab = 'all', appealTab = 'all', bonusTab = 'all', memberTab = 'unit';
 let scoreYear = currentYear, scoreMonth = currentMonth;
 let quarterYear = currentYear, quarterQuarter = currentQuarter;
 
@@ -1048,10 +1092,10 @@ function showScreen(name) {
 
   // navbar
   const nav = document.getElementById('navbar');
-  const mainScreens = ['dashboard','monthly-score','quarterly-score','deduction-list','appeal-list'];
+  const mainScreens = ['dashboard','monthly-score','quarterly-score','deduction-list','bonus-list','appeal-list'];
   nav.style.display = mainScreens.includes(name) ? 'flex' : 'none';
   document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-  const navMap = { dashboard: 0, 'monthly-score': 1, 'quarterly-score': 2, 'deduction-list': 3, 'appeal-list': 4 };
+  const navMap = { dashboard: 0, 'monthly-score': 1, 'quarterly-score': 2, 'deduction-list': 3, 'bonus-list': 4, 'appeal-list': 5 };
   if (navMap[name] !== undefined) {
     document.querySelectorAll('.nav-item')[navMap[name]].classList.add('active');
   }
@@ -1059,6 +1103,7 @@ function showScreen(name) {
   // hide admin-only elements
   const role = getRole();
   document.getElementById('nav-deduction').style.display = (role === ROLES.ADMIN) ? '' : 'none';
+  document.getElementById('nav-bonus').style.display = (role === ROLES.ADMIN) ? '' : 'none';
 
   // render screen
   renderFunctions[name] && renderFunctions[name]();
@@ -1080,6 +1125,9 @@ const renderFunctions = {
   'deduction-list': renderDeductionList,
   'deduction-create': renderDeductionCreate,
   'deduction-detail': renderDeductionDetail,
+  'bonus-list': renderBonusList,
+  'bonus-create': renderBonusCreate,
+  'bonus-detail': renderBonusDetail,
   'appeal-list': renderAppealList,
   'appeal-create': renderAppealCreate,
   'appeal-detail': renderAppealDetail,
@@ -1213,17 +1261,23 @@ function renderDashboard() {
 
   if (role === ROLES.ADMIN) {
     document.getElementById('admin-dash').style.display = '';
+    // Show 3 stat cards
+    document.getElementById('stat-card3').style.display = '';
+    document.getElementById('stat-grid').style.gridTemplateColumns = 'repeat(3,1fr)';
     renderSyncSettings();
     const allDeductions = store.deductions.filter(d => d.year === year && d.month === month);
     const totalDeduct = allDeductions.reduce((s, d) => s + d.score, 0);
-    document.getElementById('stat-score').textContent = '--';
+    const allBonuses = store.bonuses.filter(b => b.year === year && b.month === month);
+    const totalBonus = allBonuses.reduce((s, b) => s + b.score, 0);
+    document.getElementById('stat-score').textContent = totalDeduct.toFixed(1);
     document.getElementById('stat-label1').textContent = '本月总扣分';
     document.getElementById('stat-score').parentElement.className = 'stat-card danger';
-    document.getElementById('stat-score').textContent = totalDeduct.toFixed(1);
-    document.getElementById('stat-qscore').textContent = '--';
-    document.getElementById('stat-label2').textContent = '参与单位';
+    document.getElementById('stat-qscore').textContent = totalBonus.toFixed(1);
+    document.getElementById('stat-label2').textContent = '本月总加分';
     document.getElementById('stat-qscore').parentElement.className = 'stat-card';
-    document.getElementById('stat-qscore').textContent = UNITS.length;
+    document.getElementById('stat-score3').textContent = UNITS.length;
+    document.getElementById('stat-label3').textContent = '参与单位';
+    document.getElementById('stat-card3').className = 'stat-card';
 
     const pending = store.appeals.filter(a => a.status === 'pending');
     const unassigned = pending.filter(a => (a.assignedExperts || []).length === 0);
@@ -1236,14 +1290,17 @@ function renderDashboard() {
       reminder.style.display = 'none';
     }
   } else if (role === ROLES.UNIT) {
+    document.getElementById('stat-card3').style.display = 'none';
+    document.getElementById('stat-grid').style.gridTemplateColumns = 'repeat(2,1fr)';
     document.getElementById('unit-dash').style.display = '';
     const deductions = store.deductions.filter(d => d.unitId === user.unitId && d.year === year && d.month === month);
     const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
-    const myScore = Math.max(0, TOTAL_SCORE - totalDeduct);
+    const totalBonus = store.bonuses.filter(b => b.unitId === user.unitId && b.year === year && b.month === month).reduce((s, b) => s + b.score, 0);
+    const myScore = Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - totalDeduct + totalBonus));
 
     document.getElementById('stat-score').textContent = myScore.toFixed(1);
-    document.getElementById('stat-label1').textContent = '本月得分';
-    document.getElementById('stat-score').parentElement.className = 'stat-card' + (myScore < 27 ? ' danger' : '');
+    document.getElementById('stat-label1').textContent = '本月得分' + (totalBonus > 0 ? '（含加分+' + totalBonus.toFixed(1) + '）' : '');
+    document.getElementById('stat-score').parentElement.className = 'stat-card' + (myScore < TOTAL_SCORE * 0.9 ? ' danger' : '');
 
     // quarterly score
     const qmonths = getQuarterMonths(quarter);
@@ -1251,16 +1308,26 @@ function renderDashboard() {
     qmonths.forEach(m => {
       const dds = store.deductions.filter(d => d.unitId === user.unitId && d.year === year && d.month === m);
       const deduct = dds.reduce((s, d) => s + d.score, 0);
-      qTotal += Math.max(0, TOTAL_SCORE - deduct);
+      const bonus = store.bonuses.filter(b => b.unitId === user.unitId && b.year === year && b.month === m).reduce((s, b) => s + b.score, 0);
+      qTotal += Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - deduct + bonus));
     });
     const qScore = (qTotal / 3).toFixed(1);
     document.getElementById('stat-qscore').textContent = qScore;
     document.getElementById('stat-label2').textContent = '季度均分';
     document.getElementById('stat-qscore').parentElement.className = 'stat-card warning';
 
-    // deduction list
+    // deduction + bonus list
     let dhtml = '';
-    if (deductions.length === 0) dhtml = '<div class="empty"><div class="icon">✅</div>本月无扣分记录</div>';
+    const bonuses = store.bonuses.filter(b => b.unitId === user.unitId && b.year === year && b.month === month);
+    const bhtml = bonuses.map(b => `<div class="deduction-item" style="border-left:3px solid var(--primary)">
+        <div class="d-title">🌟 ${b.reason}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+          <span class="d-meta">${b.year}年${b.month}月</span>
+          <span class="d-score" style="color:var(--primary)">+${b.score}分</span>
+        </div>
+      </div>`).join('');
+    if (deductions.length === 0 && bonuses.length === 0) dhtml = '<div class="empty"><div class="icon">✅</div>本月无扣分/加分记录</div>';
+    else dhtml = bhtml;
     deductions.forEach(d => {
       dhtml += `<div class="deduction-item">
         <div class="d-title">${d.reason}</div>
@@ -1272,6 +1339,8 @@ function renderDashboard() {
     });
     document.getElementById('unit-deductions').innerHTML = dhtml;
   } else if (role === ROLES.EXPERT) {
+    document.getElementById('stat-card3').style.display = 'none';
+    document.getElementById('stat-grid').style.gridTemplateColumns = 'repeat(2,1fr)';
     document.getElementById('expert-dash').style.display = '';
     const assignedPending = store.appeals.filter(a => a.status === 'pending' && (a.assignedExperts || []).includes(user.id));
     const reminder = document.getElementById('expert-appeal-reminder');
@@ -1334,12 +1403,15 @@ function renderMonthlyScore() {
   UNITS.forEach(unit => {
     const deductions = store.deductions.filter(d => d.unitId === unit.id && d.year === year && d.month === month);
     const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
-    const score = Math.max(0, TOTAL_SCORE - totalDeduct);
-    const cls = score >= 28 ? '' : (score >= 25 ? 'mid' : 'low');
+    const totalBonus = store.bonuses.filter(b => b.unitId === unit.id && b.year === year && b.month === month).reduce((s, b) => s + b.score, 0);
+    const score = Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - totalDeduct + totalBonus));
+    const cls = score >= TOTAL_SCORE * 0.93 ? '' : (score >= TOTAL_SCORE * 0.83 ? 'mid' : 'low');
+    const bonusInfo = totalBonus > 0 ? ` ｜ 加分 +${totalBonus.toFixed(1)}` : '';
+    const bonusCount = store.bonuses.filter(b => b.unitId === unit.id && b.year === year && b.month === month).length;
     html += `<div class="list-item" onclick="navTo('monthly-detail',{unitId:'${unit.id}',year:${year},month:${month}})">
       <div class="info">
         <div class="title">${unit.name}</div>
-        <div class="sub">扣分 ${totalDeduct.toFixed(1)} 分 · ${deductions.length} 条记录</div>
+        <div class="sub">扣分 ${totalDeduct.toFixed(1)} · ${deductions.length}条${bonusInfo}</div>
       </div>
       <div class="extra"><span class="score ${cls}">${score.toFixed(1)}</span></div>
       <div class="arrow">›</div>
@@ -1355,12 +1427,31 @@ function renderMonthlyDetail() {
   document.getElementById('md-title').textContent = `${getUnitName(unitId)} - ${year}年${month}月`;
   const deductions = store.deductions.filter(d => d.unitId === unitId && d.year === year && d.month === month);
   const totalDeduct = deductions.reduce((s, d) => s + d.score, 0);
-  const score = Math.max(0, TOTAL_SCORE - totalDeduct);
+  const bonuses = store.bonuses.filter(b => b.unitId === unitId && b.year === year && b.month === month);
+  const totalBonus = bonuses.reduce((s, b) => s + b.score, 0);
+  const score = Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - totalDeduct + totalBonus));
 
   document.getElementById('md-score').textContent = score.toFixed(1);
   document.getElementById('md-total-deduct').textContent = totalDeduct.toFixed(1);
+  document.getElementById('md-bonus-info').textContent = totalBonus > 0 ? `  |  加分: +${totalBonus.toFixed(1)}` : '';
+
+  // bonus records
+  let bonusHtml = '';
+  if (bonuses.length > 0) {
+    bonuses.forEach(b => {
+      bonusHtml += `<div class="deduction-item" onclick="navTo('bonus-detail',{id:'${b.id}'})" style="border-left:3px solid var(--primary)">
+        <div class="d-title">${b.reason}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+          <span class="d-meta">${b.year}年${b.month}月</span>
+          <span class="d-score" style="color:var(--primary)">+${b.score}分</span>
+        </div>
+      </div>`;
+    });
+  }
 
   let html = '';
+  if (bonusHtml) html += `<div class="section-title">🌟 加分记录</div>${bonusHtml}`;
+  html += '<div class="section-title">扣分明细</div>';
   if (deductions.length === 0) html = '<div class="empty"><div class="icon">✅</div>该月无扣分记录</div>';
   deductions.forEach(d => {
     html += `<div class="deduction-item" onclick="navTo('deduction-detail',{id:'${d.id}'})">
@@ -1396,9 +1487,10 @@ function renderQuarterlyScore() {
     qmonths.forEach(m => {
       const dds = store.deductions.filter(d => d.unitId === unit.id && d.year === year && d.month === m);
       const deduct = dds.reduce((s, d) => s + d.score, 0);
-      const ms = Math.max(0, TOTAL_SCORE - deduct);
+      const bonus = store.bonuses.filter(b => b.unitId === unit.id && b.year === year && b.month === m).reduce((s, b) => s + b.score, 0);
+      const ms = Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - deduct + bonus));
       qTotal += ms;
-      monthDetails.push({ month: m, score: ms, deduct: deduct });
+      monthDetails.push({ month: m, score: ms, deduct: deduct, bonus: bonus });
     });
     const qScore = (qTotal / 3).toFixed(1);
 
@@ -1407,7 +1499,7 @@ function renderQuarterlyScore() {
       <div class="months">
         ${monthDetails.map(md => `<div class="month-item">
           <div class="m-score">${md.score.toFixed(1)}</div>
-          <div class="m-label">${md.month}月</div>
+          <div class="m-label">${md.month}月${md.bonus > 0 ? ' (+' + md.bonus.toFixed(1) + ')' : ''}</div>
         </div>`).join('')}
       </div>
       <div class="result">
@@ -1434,12 +1526,21 @@ function renderQuarterlyDetail() {
   qmonths.forEach(m => {
     const dds = store.deductions.filter(d => d.unitId === unitId && d.year === year && d.month === m);
     const deduct = dds.reduce((s, d) => s + d.score, 0);
-    const ms = Math.max(0, TOTAL_SCORE - deduct);
+    const bonus = store.bonuses.filter(b => b.unitId === unitId && b.year === year && b.month === m).reduce((s, b) => s + b.score, 0);
+    const ms = Math.min(TOTAL_SCORE, Math.max(0, TOTAL_SCORE - deduct + bonus));
     qTotal += ms;
 
+    const bonusText = bonus > 0 ? ` 加${bonus.toFixed(1)}分` : '';
     html += `<div class="card">
-      <div style="font-weight:600;margin-bottom:8px">📅 ${m}月 — 得分: ${ms.toFixed(1)} (扣${deduct.toFixed(1)}分)</div>`;
-    if (dds.length === 0) html += '<div style="color:var(--text-light);font-size:13px">无扣分记录</div>';
+      <div style="font-weight:600;margin-bottom:8px">📅 ${m}月 — 得分: ${ms.toFixed(1)} (扣${deduct.toFixed(1)}分${bonusText})</div>`;
+    if (dds.length === 0 && bonus === 0) html += '<div style="color:var(--text-light);font-size:13px">无扣分记录</div>';
+    const bonusRecords = store.bonuses.filter(b => b.unitId === unitId && b.year === year && b.month === m);
+    bonusRecords.forEach(b => {
+      html += `<div class="deduction-item" style="border-left:3px solid var(--primary)">
+        <div class="d-title">🌟 ${b.reason}</div>
+        <div class="d-meta" style="color:var(--primary)">加 ${b.score} 分</div>
+      </div>`;
+    });
     dds.forEach(d => {
       html += `<div class="deduction-item"><div class="d-title">${d.reason}</div><div class="d-meta">扣 ${d.score} 分</div></div>`;
     });
@@ -1556,6 +1657,96 @@ function renderDeductionDetail() {
   }
 
   document.getElementById('dd-content').innerHTML = html;
+}
+
+// ==================== BONUS LIST ====================
+function switchBonusTab(t) {
+  bonusTab = t;
+  document.querySelectorAll('#screen-bonus-list .tab').forEach(el => el.classList.remove('active'));
+  const idx = t === 'all' ? 0 : 1;
+  document.querySelectorAll('#screen-bonus-list .tab')[idx].classList.add('active');
+  renderBonusList();
+}
+
+function renderBonusList() {
+  const store = getStore();
+  const role = getRole();
+  const user = getCurrentUser();
+
+  let list = [...store.bonuses].reverse();
+
+  if (role === ROLES.UNIT || bonusTab === 'mine') {
+    list = list.filter(d => d.unitId === user.unitId);
+  }
+
+  document.getElementById('bl-create-btn').style.display = (role === ROLES.ADMIN) ? '' : 'none';
+
+  let html = '';
+  if (list.length === 0) html = '<div class="empty"><div class="icon">🌟</div>暂无加分记录</div>';
+  list.forEach(b => {
+    html += `<div class="list-item" onclick="navTo('bonus-detail',{id:'${b.id}'})">
+      <div class="info">
+        <div class="title">${getUnitName(b.unitId)} · ${b.reason}</div>
+        <div class="sub">${b.year}年${b.month}月</div>
+      </div>
+      <div class="extra"><span class="score" style="color:var(--primary);font-size:18px">+${b.score}</span></div>
+      <div class="arrow">›</div>
+    </div>`;
+  });
+  document.getElementById('bonus-list-content').innerHTML = html;
+}
+
+// ==================== BONUS CREATE ====================
+function renderBonusCreate() {
+  const store = getStore();
+  let uhtml = '';
+  UNITS.forEach(u => uhtml += `<option value="${u.id}">${u.name}</option>`);
+  document.getElementById('bc-unit').innerHTML = uhtml;
+  document.getElementById('bc-score').value = '';
+  document.getElementById('bc-reason').value = '';
+  const ym = `${currentYear}-${String(currentMonth).padStart(2,'0')}`;
+  document.getElementById('bc-month').value = ym;
+}
+
+function createBonus() {
+  const store = getStore();
+  const unitId = document.getElementById('bc-unit').value;
+  const score = parseFloat(document.getElementById('bc-score').value);
+  const reason = document.getElementById('bc-reason').value.trim();
+  let monthStr = document.getElementById('bc-month').value;
+
+  if (!unitId) { showToast('请选择单位'); return; }
+  if (!score || score <= 0) { showToast('请输入有效加分值'); return; }
+  if (!reason) { showToast('请填写加分原因'); return; }
+
+  let year = currentYear, month = currentMonth;
+  if (monthStr) {
+    const [y, m] = monthStr.split('-').map(Number);
+    year = y; month = m;
+  }
+
+  const id = 'b' + (store.nextIds.bonus++);
+  store.bonuses.push({ id, unitId, score, reason, year, month, time: new Date().toISOString() });
+  saveStore(store);
+  showToast('加分记录已创建');
+  navTo('bonus-list');
+}
+
+// ==================== BONUS DETAIL ====================
+function renderBonusDetail() {
+  const { id } = navParams;
+  const store = getStore();
+  const b = store.bonuses.find(x => x.id === id);
+  if (!b) { document.getElementById('bd-content').innerHTML = '<div class="empty">记录不存在</div>'; return; }
+
+  let html = `<div class="card">
+    <div style="font-size:24px;font-weight:700;color:var(--primary);text-align:center;margin-bottom:16px">+${b.score} 分</div>
+    <div class="form-group"><label>加分单位</label><div style="font-weight:500">${getUnitName(b.unitId)}</div></div>
+    <div class="form-group"><label>加分原因</label><div>${b.reason}</div></div>
+    <div class="form-group"><label>考核月份</label><div>${b.year}年${b.month}月</div></div>
+  </div>`;
+
+  document.getElementById('bd-content').innerHTML = html;
 }
 
 // ==================== APPEAL LIST ====================
