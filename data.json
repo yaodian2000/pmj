@@ -174,6 +174,13 @@
       "role": "unit",
       "unitId": "scgl",
       "password": "0000"
+    },
+    {
+      "id": "u44",
+      "name": "樊永斌",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -181,10 +188,10 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 44,
+    "user": 45,
     "bonus": 1
   },
-  "_encToken": "214816944b99b43e95f2c30ccd630430bf929c95211b142acee41f5b79a903551da47349fd45f496b96ef50fb76502a6e4c3bf9e58092157eb740c5e3cfca7accc6cd6ec",
+  "_encToken": "0f928b876740ee804d24a469051f254dc97df206058fb669e9a3ce4023ef86e7d44032187036f440d9d04d503f1fa82664a301d43b0733aaca0371022a1597bb518db8ce",
   "bonuses": [],
   "_dataCleared": true
 }
