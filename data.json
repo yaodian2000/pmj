@@ -62,6 +62,13 @@
       "role": "expert",
       "unitId": null,
       "password": "0000"
+    },
+    {
+      "id": "u27",
+      "name": "吴陆洋",
+      "role": "expert",
+      "unitId": null,
+      "password": "0000"
     }
   ],
   "deductions": [
@@ -131,11 +138,11 @@
   "nextIds": {
     "deduction": 5,
     "appeal": 3,
-    "user": 27,
+    "user": 28,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "70b7b18ad810f202f1d7fae312ab15e251207ee2bf5a90478f7034e934b4c1ee0262c10e0a2d965c026ec86f5155367164b43cc3fdd94b7c85b11fdb817f5e4dfa8093bb",
-  "_updatedAt": 1785400429089,
+  "_encToken": "0207a71d275c70ae902f30f8e5563ca36bd291a9cc09108966023b9a40a45c8c79b8af43cd8a464263978dc5b5aa7ac2f06da91d2fa83f0577f3248a780fc90380b5d790",
+  "_updatedAt": 1785400432881,
   "bonuses": []
 }
