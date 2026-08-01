@@ -22,20 +22,6 @@
       "password": "0001"
     },
     {
-      "id": "u23",
-      "name": "潘富康",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
-      "id": "u24",
-      "name": "张伟",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
       "id": "u25",
       "name": "洪亮",
       "role": "expert",
@@ -303,7 +289,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "8a45c2e45d88cff6a52d40c1b874632387e2d5d8d0511bba0ebe0c2cbe951c48f8de486fb67b5eb524202afcf016921fff4e98f6b3d0652458b7f8fa999bf17e5bd4aa2a",
-  "_updatedAt": 1785550212190,
+  "_encToken": "bbf9fdc150d0982b1c54774ddabdbe751ea44ddd7b7311db52ea8ea2ec1aab212d606fc4a91b573a37e101d0bf9630745511d328871a3d4dd441563755623b4baa9e6a7c",
+  "_updatedAt": 1785550220438,
   "bonuses": []
 }
