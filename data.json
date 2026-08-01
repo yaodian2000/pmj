@@ -15,13 +15,6 @@
       "password": "0000"
     },
     {
-      "id": "u22",
-      "name": "姜喜",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
       "id": "u25",
       "name": "洪亮",
       "role": "expert",
@@ -318,7 +311,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "f21df293e57b088ff9ebee11f51fe521eb0af49b89ea0aae02c7d881d1c2d7c2bb4834178716af067c97ac1a3dd1e19a904dc0ccc61da7c8daa3798f4f7a79b486b8acf0",
-  "_updatedAt": 1785550411503,
+  "_encToken": "2c29feb393beea50d68f02f7346ef3cfe50063818e90991903c90bd149c3fdd380d731c5eb4fc6eaf75482288b999f99af65e703c1206f9d5030599477854db86846640a",
+  "_updatedAt": 1785550455663,
   "bonuses": []
 }
