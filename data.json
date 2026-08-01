@@ -237,13 +237,6 @@
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
-    },
-    {
-      "id": "u53",
-      "name": "姜喜",
-      "role": "admin",
-      "unitId": null,
-      "password": "0002"
     }
   ],
   "deductions": [
@@ -317,7 +310,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "9df5773ec08af770e5f4dd5a4a6c71d1e8cd33fe85864a3c354412a2a305fb3cab97dbd57b67c0f1b1f6df4264091a260d4919fd95b855daacd2f2130b6ddb571af72978",
-  "_updatedAt": 1785549370976,
+  "_encToken": "5657c93ca7383cdeb9790c8348f5ee743fa3b8d5972650a9a687202016643f4bdafb554505a99f81daa5ebddb14e71c1ca49515468b18a0e0bbf3eb6b061e396e730a735",
+  "_updatedAt": 1785549402911,
   "bonuses": []
 }
