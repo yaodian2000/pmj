@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202608010954'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608010957'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -1239,6 +1239,7 @@ function renderLogin() {
   const store = getStore();
   // role options
   const roles = [
+    { value: 'superAdmin', name: '超级管理员', desc: '管理云端同步等全局配置', icon: 'admin', emoji: '👑' },
     { value: ROLES.ADMIN, name: '管理员', desc: '操作扣分，管理全部数据', icon: 'admin', emoji: '🔧' },
     { value: ROLES.UNIT, name: '单位人员', desc: '查看本单位分值，有权发起申诉', icon: 'unit', emoji: '🏭' },
     { value: ROLES.EXPERT, name: '专家', desc: '参与申诉评议投票', icon: 'expert', emoji: '🎓' },
@@ -1271,6 +1272,7 @@ function renderLogin() {
   let users = [];
   if (loginRole === ROLES.UNIT && loginUnit) users = store.users.filter(u => u.role === ROLES.UNIT && u.unitId === loginUnit);
   else if (loginRole === ROLES.EXPERT) users = store.users.filter(u => u.role === ROLES.EXPERT);
+  else if (loginRole === 'superAdmin') users = store.users.filter(u => u.role === ROLES.ADMIN && u.canManageSync);
   else if (loginRole === ROLES.ADMIN) users = store.users.filter(u => u.role === ROLES.ADMIN);
 
   let uhtml = '';
