@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202607301621'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608010945'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -546,6 +546,12 @@ function getStore() {
       if (!store.nextIds.bonus) store.nextIds.bonus = 1;
       migrated = true;
     }
+    // migration: mark first admin as superAdmin
+    const admins = store.users.filter(u => u.role === ROLES.ADMIN);
+    if (admins.length > 0 && !admins.some(a => a.superAdmin)) {
+      admins[0].superAdmin = true;
+      migrated = true;
+    }
     if (migrated) saveStore(store);
     return store;
   }
@@ -574,7 +580,7 @@ function initStore() {
       { id: 'u_exp3', name: '专家丙', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp4', name: '专家丁', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp5', name: '专家戊', role: ROLES.EXPERT, unitId: null, password: '0000' },
-      { id: 'u_admin', name: '张管理', role: ROLES.ADMIN, unitId: null, password: '0000' },
+      { id: 'u_admin', name: '张管理', role: ROLES.ADMIN, unitId: null, password: '0000', superAdmin: true },
     ],
     deductions: [],
     bonuses: [],
@@ -1339,7 +1345,10 @@ function renderDashboard() {
     // Show 3 stat cards
     document.getElementById('stat-card3').style.display = '';
     document.getElementById('stat-grid').style.gridTemplateColumns = 'repeat(3,1fr)';
-    renderSyncSettings();
+    // 只有超级管理员才能看到云端同步设置卡片
+    const isSuperAdmin = user && user.superAdmin;
+    document.getElementById('sync-settings-card').style.display = isSuperAdmin ? '' : 'none';
+    if (isSuperAdmin) renderSyncSettings();
     const allDeductions = store.deductions.filter(d => d.year === year && d.month === month);
     const totalDeduct = allDeductions.reduce((s, d) => s + d.score, 0);
     const allBonuses = store.bonuses.filter(b => b.year === year && b.month === month);
@@ -2169,13 +2178,17 @@ function renderMembers() {
   let html = '';
   if (users.length === 0) html = '<div class="empty"><div class="icon">📭</div>暂无人员</div>';
   users.forEach(u => {
+    const superBadge = u.superAdmin ? ' <span class="tag tag-blue" style="font-size:10px">超级管理员</span>' : '';
+    const delBtn = u.superAdmin
+      ? ''
+      : `<button class="btn btn-outline btn-sm" onclick="removeMember('${u.id}')">删除</button>`;
     html += `<div class="list-item">
       <div class="info">
-        <div class="title">${u.name}</div>
+        <div class="title">${u.name}${superBadge}</div>
         <div class="sub">${ROLE_NAMES[u.role]}${u.unitId ? ' · ' + getUnitName(u.unitId) : ''} · 密码: ${u.password ? '****' : '<span style="color:var(--danger)">未设置</span>'}</div>
       </div>
       <button class="btn btn-outline btn-sm" style="margin-right:4px" onclick="showSetPwd('${u.id}')">设密码</button>
-      <button class="btn btn-outline btn-sm" onclick="removeMember('${u.id}')">删除</button>
+      ${delBtn}
     </div>`;
   });
 
@@ -2220,8 +2233,10 @@ function addMember() {
 }
 
 function removeMember(userId) {
-  if (!confirm('确定删除该人员吗？')) return;
   const store = getStore();
+  const user = store.users.find(u => u.id === userId);
+  if (user && user.superAdmin) { showToast('超级管理员不可删除'); return; }
+  if (!confirm('确定删除该人员吗？')) return;
   store.users = store.users.filter(u => u.id !== userId);
   saveStore(store);
   renderMembers();
