@@ -236,7 +236,7 @@
       "name": "姜喜",
       "role": "admin",
       "unitId": null,
-      "password": "0000",
+      "password": "0001",
       "canManageSync": true
     }
   ],
@@ -311,7 +311,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "2c29feb393beea50d68f02f7346ef3cfe50063818e90991903c90bd149c3fdd380d731c5eb4fc6eaf75482288b999f99af65e703c1206f9d5030599477854db86846640a",
-  "_updatedAt": 1785550455663,
+  "_encToken": "5844ceed9a4bdd02d0d45dc41c7f88ef0341fe20e2a4bb6c6d3236e74ca7ba01fb7cc72a2759faf4a1dd13c2a052d7186e28658b4df31fce54674c8a8137c906c85c184d",
+  "_updatedAt": 1785550485814,
   "bonuses": []
 }
