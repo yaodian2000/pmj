@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202608010957'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608011002'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -546,7 +546,7 @@ function getStore() {
       if (!store.nextIds.bonus) store.nextIds.bonus = 1;
       migrated = true;
     }
-    // migration: remove old superAdmin flags, mark existing admins with canManageSync
+    // migration: remove old superAdmin flags, ensure only first admin has canManageSync
     const hadSuperAdmin = store.users.some(u => u.superAdmin);
     if (hadSuperAdmin) {
       store.users.forEach(u => { delete u.superAdmin; });
@@ -554,9 +554,11 @@ function getStore() {
     }
     const admins = store.users.filter(u => u.role === ROLES.ADMIN);
     if (admins.length > 0 && !admins.some(a => a.canManageSync)) {
-      admins.forEach(a => { a.canManageSync = true; });
+      admins[0].canManageSync = true;
       migrated = true;
     }
+    // ensure only the first admin keeps canManageSync
+    admins.forEach((a, i) => { if (i > 0) delete a.canManageSync; });
     if (migrated) saveStore(store);
     return store;
   }
@@ -585,7 +587,7 @@ function initStore() {
       { id: 'u_exp3', name: '专家丙', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp4', name: '专家丁', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp5', name: '专家戊', role: ROLES.EXPERT, unitId: null, password: '0000' },
-      { id: 'u_jx', name: '姜喜', role: ROLES.ADMIN, unitId: null, password: '0000', canManageSync: true },
+      { id: 'u_admin', name: 'Administrator', role: ROLES.ADMIN, unitId: null, password: '0000', canManageSync: true },
     ],
     deductions: [],
     bonuses: [],
