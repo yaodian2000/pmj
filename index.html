@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202608011008'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608011012'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -546,19 +546,40 @@ function getStore() {
       if (!store.nextIds.bonus) store.nextIds.bonus = 1;
       migrated = true;
     }
-    // migration: remove old superAdmin flags, ensure only first admin has canManageSync
+    // migration: remove old superAdmin flags
     const hadSuperAdmin = store.users.some(u => u.superAdmin);
     if (hadSuperAdmin) {
       store.users.forEach(u => { delete u.superAdmin; });
       migrated = true;
     }
-    // migration: ensure u_admin user is named 姜喜
-    const uadmin = store.users.find(u => u.id === 'u_admin');
-    if (uadmin && uadmin.name !== '姜喜') {
+    // migration: migrate old u_jx ID to u_admin
+    const oldJx = store.users.find(u => u.id === 'u_jx');
+    if (oldJx) {
+      const existingAdmin = store.users.find(u => u.id === 'u_admin');
+      if (!existingAdmin) {
+        oldJx.id = 'u_admin';
+      } else {
+        // both exist, remove the old u_jx entry
+        store.users = store.users.filter(u => u.id !== 'u_jx');
+      }
+      migrated = true;
+    }
+    // migration: ensure u_admin user exists and is named 姜喜
+    let uadmin = store.users.find(u => u.id === 'u_admin');
+    if (!uadmin) {
+      uadmin = { id: 'u_admin', name: '姜喜', role: ROLES.ADMIN, unitId: null, password: '0000' };
+      store.users.push(uadmin);
+      migrated = true;
+    }
+    if (uadmin.name !== '姜喜') {
       uadmin.name = '姜喜';
       migrated = true;
     }
-    // migration: ensure u_admin (姜喜) has canManageSync, others don't
+    if (uadmin.role !== ROLES.ADMIN) {
+      uadmin.role = ROLES.ADMIN;
+      migrated = true;
+    }
+    // migration: ensure only u_admin has canManageSync
     store.users.forEach(u => {
       if (u.role === ROLES.ADMIN) {
         if (u.id === 'u_admin') {
