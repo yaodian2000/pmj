@@ -15,13 +15,6 @@
       "password": "0000"
     },
     {
-      "id": "u21",
-      "name": "黄长鹏",
-      "role": "admin",
-      "unitId": null,
-      "password": "0001"
-    },
-    {
       "id": "u22",
       "name": "姜喜",
       "role": "admin",
@@ -310,7 +303,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "d2a34024b64e5dc0dfbf42ecda968df6710c90f3adeabf3250eab9e3b58daac81ca633cb97121fc5150d64beacf75fabc0b2536d1e67b24a60e21ad4c66ac31645a9cc45",
-  "_updatedAt": 1785550168050,
+  "_encToken": "8a45c2e45d88cff6a52d40c1b874632387e2d5d8d0511bba0ebe0c2cbe951c48f8de486fb67b5eb524202afcf016921fff4e98f6b3d0652458b7f8fa999bf17e5bd4aa2a",
+  "_updatedAt": 1785550212190,
   "bonuses": []
 }
