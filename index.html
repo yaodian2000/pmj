@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202608010951'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608010954'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -546,10 +546,15 @@ function getStore() {
       if (!store.nextIds.bonus) store.nextIds.bonus = 1;
       migrated = true;
     }
-    // migration: remove old superAdmin flags
+    // migration: remove old superAdmin flags, mark existing admins with canManageSync
     const hadSuperAdmin = store.users.some(u => u.superAdmin);
     if (hadSuperAdmin) {
       store.users.forEach(u => { delete u.superAdmin; });
+      migrated = true;
+    }
+    const admins = store.users.filter(u => u.role === ROLES.ADMIN);
+    if (admins.length > 0 && !admins.some(a => a.canManageSync)) {
+      admins.forEach(a => { a.canManageSync = true; });
       migrated = true;
     }
     if (migrated) saveStore(store);
@@ -580,7 +585,7 @@ function initStore() {
       { id: 'u_exp3', name: '专家丙', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp4', name: '专家丁', role: ROLES.EXPERT, unitId: null, password: '0000' },
       { id: 'u_exp5', name: '专家戊', role: ROLES.EXPERT, unitId: null, password: '0000' },
-      { id: 'u_jx', name: '姜喜', role: ROLES.ADMIN, unitId: null, password: '0000' },
+      { id: 'u_jx', name: '姜喜', role: ROLES.ADMIN, unitId: null, password: '0000', canManageSync: true },
     ],
     deductions: [],
     bonuses: [],
@@ -1345,8 +1350,8 @@ function renderDashboard() {
     // Show 3 stat cards
     document.getElementById('stat-card3').style.display = '';
     document.getElementById('stat-grid').style.gridTemplateColumns = 'repeat(3,1fr)';
-    // 只有姜喜才能看到云端同步设置卡片
-    const isSyncAdmin = user && user.id === 'u_jx';
+    // 只有已标记的管理员才能看到云端同步设置卡片
+    const isSyncAdmin = user && user.canManageSync;
     document.getElementById('sync-settings-card').style.display = isSyncAdmin ? '' : 'none';
     if (isSyncAdmin) renderSyncSettings();
     const allDeductions = store.deductions.filter(d => d.year === year && d.month === month);
@@ -2178,7 +2183,7 @@ function renderMembers() {
   let html = '';
   if (users.length === 0) html = '<div class="empty"><div class="icon">📭</div>暂无人员</div>';
   users.forEach(u => {
-    const isSyncAdmin = u.id === 'u_jx';
+    const isSyncAdmin = u.canManageSync;
     const syncBadge = isSyncAdmin ? ' <span class="tag tag-blue" style="font-size:10px">同步管理</span>' : '';
     const delBtn = isSyncAdmin
       ? ''
@@ -2236,7 +2241,7 @@ function addMember() {
 function removeMember(userId) {
   const store = getStore();
   const user = store.users.find(u => u.id === userId);
-  if (user && user.id === 'u_jx') { showToast('同步管理员不可删除'); return; }
+  if (user && user.canManageSync) { showToast('同步管理员不可删除'); return; }
   if (!confirm('确定删除该人员吗？')) return;
   store.users = store.users.filter(u => u.id !== userId);
   saveStore(store);
