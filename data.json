@@ -19,28 +19,32 @@
       "name": "黄长鹏",
       "role": "admin",
       "unitId": null,
-      "password": "0001"
+      "password": "0001",
+      "canManageSync": true
     },
     {
       "id": "u22",
       "name": "姜喜",
       "role": "admin",
       "unitId": null,
-      "password": "0001"
+      "password": "0001",
+      "canManageSync": true
     },
     {
       "id": "u23",
       "name": "潘富康",
       "role": "admin",
       "unitId": null,
-      "password": "0001"
+      "password": "0001",
+      "canManageSync": true
     },
     {
       "id": "u24",
       "name": "张伟",
       "role": "admin",
       "unitId": null,
-      "password": "0001"
+      "password": "0001",
+      "canManageSync": true
     },
     {
       "id": "u25",
@@ -310,7 +314,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "5657c93ca7383cdeb9790c8348f5ee743fa3b8d5972650a9a687202016643f4bdafb554505a99f81daa5ebddb14e71c1ca49515468b18a0e0bbf3eb6b061e396e730a735",
-  "_updatedAt": 1785549402911,
+  "_encToken": "bd3b2a05a4a6dfcd266f9836ef59bb4068c1476151c4be3bbac4f8a127bb344f1e9352052b884912408fea0fa7cbd404571d81bbb3bcfcbd96877da7d7b0eab68948d352",
+  "_updatedAt": 1785549525463,
   "bonuses": []
 }
