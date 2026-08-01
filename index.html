@@ -468,7 +468,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hira
 
 <script>
 // ==================== CONSTANTS ====================
-const APP_VERSION = '202608011007'; // 每次修改代码后更新此版本号
+const APP_VERSION = '202608011008'; // 每次修改代码后更新此版本号
 const ROLES = { UNIT: 'unit', EXPERT: 'expert', ADMIN: 'admin' };
 const ROLE_NAMES = { unit: '单位人员', expert: '专家', admin: '管理员' };
 
@@ -558,11 +558,15 @@ function getStore() {
       uadmin.name = '姜喜';
       migrated = true;
     }
-    // migration: ensure only first admin has canManageSync
-    const admins = store.users.filter(u => u.role === ROLES.ADMIN);
-    admins.forEach((a, i) => {
-      if (i === 0) { if (!a.canManageSync) { a.canManageSync = true; migrated = true; } }
-      else { if (a.canManageSync) { delete a.canManageSync; migrated = true; } }
+    // migration: ensure u_admin (姜喜) has canManageSync, others don't
+    store.users.forEach(u => {
+      if (u.role === ROLES.ADMIN) {
+        if (u.id === 'u_admin') {
+          if (!u.canManageSync) { u.canManageSync = true; migrated = true; }
+        } else {
+          if (u.canManageSync) { delete u.canManageSync; migrated = true; }
+        }
+      }
     });
     if (migrated) saveStore(store);
     return store;
