@@ -338,6 +338,11 @@
           "userId": "u26",
           "agree": true,
           "time": "2026-08-04T08:03:09.445Z"
+        },
+        {
+          "userId": "u27",
+          "agree": true,
+          "time": "2026-08-04T08:03:54.293Z"
         }
       ],
       "result": null,
@@ -355,7 +360,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "582e7459e4b52e749a77b2312b42bb75bdfabf5e7d3dd9a92c196d5f628089c2d17828992dab7cab25373ad8ae9aced82a28b2692ac05a1d077b00db02095ae9abb1b1c1",
-  "_updatedAt": 1785830621365,
+  "_encToken": "444fe139179b3f5eaf59c556a835a56ec56ed1433c796f6b90c8000612450ef9a14d14d6b55b69b503e0ad6c003d71cc4fc2ef2e11a264dd2ed1f744e60c77e42a02ee37",
+  "_updatedAt": 1785830634293,
   "bonuses": []
 }
