@@ -296,7 +296,13 @@
       "responsibleUnitId": "js",
       "status": "pending",
       "time": "2026-07-29T02:27:17.479Z",
-      "votes": [],
+      "votes": [
+        {
+          "userId": "u25",
+          "agree": true,
+          "time": "2026-08-04T08:02:53.373Z"
+        }
+      ],
       "result": null,
       "assignedExperts": [
         "u25",
@@ -334,7 +340,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "0e5196f59d357a64539855e84ea3c4b0a8a027a7ebe6867088daa224eb24113b3692f8abd99f06a6de05ea39f65e09fdc5e1fa45e46a71558a345419e3f29627ec5b61b8",
-  "_updatedAt": 1785830570982,
+  "_encToken": "e10a04d90c0bf60415e78d69607423ac1bd3423151f57b7a37d97a5f7b8a3efb9cea3342c32575431ea88ee1e150771a5bb3e540dbe8418e12e3bfb76125f9195afb9f41",
+  "_updatedAt": 1785830573373,
   "bonuses": []
 }
