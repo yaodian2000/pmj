@@ -303,9 +303,9 @@
           "time": "2026-08-04T08:02:53.373Z"
         },
         {
-          "userId": "u26",
+          "userId": "u27",
           "agree": true,
-          "time": "2026-08-04T08:03:12.325Z"
+          "time": "2026-08-04T08:03:25.429Z"
         }
       ],
       "result": null,
@@ -333,11 +333,6 @@
           "userId": "u26",
           "agree": true,
           "time": "2026-08-04T08:03:09.445Z"
-        },
-        {
-          "userId": "u27",
-          "agree": true,
-          "time": "2026-08-04T08:03:23.069Z"
         }
       ],
       "result": null,
@@ -355,7 +350,7 @@
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "01df5e4acfa152f1ae67f7b021df653729f6c913475ea8f128ac668f188a8d63dc89065dfe4dc98c16443beff783a01eb62542497d4b92268adeb3dd2fc4ff7423eb0c23",
-  "_updatedAt": 1785830603069,
+  "_encToken": "e2e275157ec16fbd2475f16e35553f759b66b5da46cc9c3cd2321e9219a0d2a07e53f78a58711c72a0eb97eb722c805c3a64c556fd02dca2740a274eaf74922b9fe3016c",
+  "_updatedAt": 1785830605429,
   "bonuses": []
 }
