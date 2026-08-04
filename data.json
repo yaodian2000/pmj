@@ -361,11 +361,11 @@
     "deduction": 8,
     "appeal": 3,
     "user": 53,
-    "bonus": 2
+    "bonus": 3
   },
   "_dataCleared": true,
-  "_encToken": "ba2a62b8d13c9d4bb0f5d2e1772de1bd5271c5296730a0c3df856d27e01548c27bc286850ff3f2c315dd02dc4fc4acb606df8cae56d0c12454e4a7273b256b4758b2a5fc",
-  "_updatedAt": 1785830721044,
+  "_encToken": "354d62de2690da11f561d5c643f00a7d63ec23d42324b487c6711180391653f1a5eac2e6c53dc72c719b8ac326ef0c4dcaca933ddc72128f15c9e4ce96ccde0a3b2e38ca",
+  "_updatedAt": 1785830739900,
   "bonuses": [
     {
       "id": "b1",
@@ -375,6 +375,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:05:21.044Z"
+    },
+    {
+      "id": "b2",
+      "unitId": "xl",
+      "score": 21,
+      "reason": "测试用",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:05:39.900Z"
     }
   ]
 }
