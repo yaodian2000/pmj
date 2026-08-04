@@ -339,6 +339,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:09:45.842Z"
+    },
+    {
+      "id": "d14",
+      "unitId": "hr",
+      "score": 1,
+      "reason": "7月30日外圆镀铬件配套82台，实际配套70台，未完成。",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:10:01.450Z"
     }
   ],
   "appeals": [
@@ -412,14 +421,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 14,
+    "deduction": 15,
     "appeal": 3,
     "user": 53,
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "5ecd3edad07b4528ab79e67cdc243f44c7d859f51f23ef58af8c268a2889603fbb902a037e34df45b77c12f0fdf1ed9b2867c115dd588deb9ea07f62b71ee134a191f5a3",
-  "_updatedAt": 1785830985842,
+  "_encToken": "96565a582ae7468e545d4090a1e4aba0748aa48e30bb6c5eba4f0067e4890681723e510af9921cb16f26749499bd626d06a7aa90de27f9dcec33b091cb522785de4f557d",
+  "_updatedAt": 1785831001450,
   "bonuses": [
     {
       "id": "b1",
