@@ -330,6 +330,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:09:31.522Z"
+    },
+    {
+      "id": "d13",
+      "unitId": "cg",
+      "score": 1,
+      "reason": "按倒排计划要求，截至7月30日，苏艾克主阀反冲洗、推移传感器要求回厂完，实际回厂20台",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:09:45.842Z"
     }
   ],
   "appeals": [
@@ -403,14 +412,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 13,
+    "deduction": 14,
     "appeal": 3,
     "user": 53,
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "693e0f350994fcfeafe01f56b209e7ea183b740241d684b4f1b2b841667cefa05575372dce1170b71da29d68ba68ab81595dbc82138e52f4116bd0cc11c1d5ecdb051e30",
-  "_updatedAt": 1785830971522,
+  "_encToken": "5ecd3edad07b4528ab79e67cdc243f44c7d859f51f23ef58af8c268a2889603fbb902a037e34df45b77c12f0fdf1ed9b2867c115dd588deb9ea07f62b71ee134a191f5a3",
+  "_updatedAt": 1785830985842,
   "bonuses": [
     {
       "id": "b1",
