@@ -364,17 +364,17 @@
     "bonus": 2
   },
   "_dataCleared": true,
-  "_encToken": "014db29c400fa4225874118c540a006b556bc514f865f0bf5131aeb4a3a70bd89189104c003af0703dc9757ab8cd4992c43cee2dcd1f99f52560dc27324b56aa8e5fba70",
-  "_updatedAt": 1785830691789,
+  "_encToken": "ba2a62b8d13c9d4bb0f5d2e1772de1bd5271c5296730a0c3df856d27e01548c27bc286850ff3f2c315dd02dc4fc4acb606df8cae56d0c12454e4a7273b256b4758b2a5fc",
+  "_updatedAt": 1785830721044,
   "bonuses": [
     {
       "id": "b1",
-      "unitId": "js",
-      "score": 20,
+      "unitId": "jg",
+      "score": 22,
       "reason": "测试用",
       "year": 2026,
       "month": 7,
-      "time": "2026-08-04T08:04:51.789Z"
+      "time": "2026-08-04T08:05:21.044Z"
     }
   ]
 }
