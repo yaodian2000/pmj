@@ -242,15 +242,6 @@
   ],
   "deductions": [
     {
-      "id": "d1",
-      "unitId": "jg",
-      "score": 20,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:27.210Z"
-    },
-    {
       "id": "d2",
       "unitId": "xl",
       "score": 21,
@@ -285,6 +276,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:04:09.421Z"
+    },
+    {
+      "id": "d7",
+      "unitId": "js",
+      "score": 20,
+      "reason": "测试（由结构件分厂申诉转移）",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:04:26.573Z"
     }
   ],
   "appeals": [
@@ -294,7 +294,7 @@
       "unitId": "jg",
       "reason": "测试",
       "responsibleUnitId": "js",
-      "status": "pending",
+      "status": "approved",
       "time": "2026-07-29T02:27:17.479Z",
       "votes": [
         {
@@ -313,7 +313,9 @@
           "time": "2026-08-04T08:03:41.365Z"
         }
       ],
-      "result": null,
+      "result": {
+        "note": "同意 3票 > 不同意 0票，扣分已转移至技术中心"
+      },
       "assignedExperts": [
         "u25",
         "u26",
@@ -356,13 +358,13 @@
     }
   ],
   "nextIds": {
-    "deduction": 7,
+    "deduction": 8,
     "appeal": 3,
     "user": 53,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "210b1e123785e013c8ca3b8375b7659d4d1f62df8457f3f1d24c8c714da09b8682d236c5338995bcefee15391a592fb901d0b1a29ad515ddf463a0ef44d148771aaac3e7",
-  "_updatedAt": 1785830649421,
+  "_encToken": "a7d93d502f3b95b901c4e6fa29c8c2ccebe74c3b5cc61ac01b13ebc3784bbf0cd22f40a66425d94f859ad5049bf4479d3b3f152895abe8d781909946ec3d12b615969f48",
+  "_updatedAt": 1785830666573,
   "bonuses": []
 }
