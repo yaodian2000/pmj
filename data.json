@@ -260,15 +260,6 @@
       "time": "2026-07-29T02:11:38.123Z"
     },
     {
-      "id": "d3",
-      "unitId": "zz",
-      "score": 22,
-      "reason": "测试",
-      "year": 2026,
-      "month": 7,
-      "time": "2026-07-29T02:11:47.658Z"
-    },
-    {
       "id": "d4",
       "unitId": "jjg2",
       "score": 21,
@@ -285,6 +276,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T07:46:55.812Z"
+    },
+    {
+      "id": "d6",
+      "unitId": "jg",
+      "score": 22,
+      "reason": "测试（由总装分厂申诉转移）",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:04:09.421Z"
     }
   ],
   "appeals": [
@@ -326,7 +326,7 @@
       "unitId": "zz",
       "reason": "此责任应该为结构件分厂周转延期造成的",
       "responsibleUnitId": "jg",
-      "status": "pending",
+      "status": "approved",
       "time": "2026-07-29T02:29:47.995Z",
       "votes": [
         {
@@ -345,7 +345,9 @@
           "time": "2026-08-04T08:03:54.293Z"
         }
       ],
-      "result": null,
+      "result": {
+        "note": "同意 3票 > 不同意 0票，扣分已转移至结构件分厂"
+      },
       "assignedExperts": [
         "u25",
         "u26",
@@ -354,13 +356,13 @@
     }
   ],
   "nextIds": {
-    "deduction": 6,
+    "deduction": 7,
     "appeal": 3,
     "user": 53,
     "bonus": 1
   },
   "_dataCleared": true,
-  "_encToken": "444fe139179b3f5eaf59c556a835a56ec56ed1433c796f6b90c8000612450ef9a14d14d6b55b69b503e0ad6c003d71cc4fc2ef2e11a264dd2ed1f744e60c77e42a02ee37",
-  "_updatedAt": 1785830634293,
+  "_encToken": "210b1e123785e013c8ca3b8375b7659d4d1f62df8457f3f1d24c8c714da09b8682d236c5338995bcefee15391a592fb901d0b1a29ad515ddf463a0ef44d148771aaac3e7",
+  "_updatedAt": 1785830649421,
   "bonuses": []
 }
