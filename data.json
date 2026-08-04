@@ -312,6 +312,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:08:38.683Z"
+    },
+    {
+      "id": "d11",
+      "unitId": "cg",
+      "score": 1,
+      "reason": "按照倒排计划，截至7月23日，苏艾克特殊架DN25胶管未按要求回厂完",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:09:05.187Z"
     }
   ],
   "appeals": [
@@ -385,14 +394,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 11,
+    "deduction": 12,
     "appeal": 3,
     "user": 53,
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "fa776dabd1a0a03ac81ffa8ab8d3436d421223c4c95552049776a80fcd8dcf8b7914993e209e6dc23639f22739438830ee35b2e335c522ec8beae8ed56530211d95a280b",
-  "_updatedAt": 1785830918683,
+  "_encToken": "9da6beb3acefe0499af79bdf3f3529f30af05e7b99d9eaaf326807d51aea1d9d75ee6471c038f60767874bd727b969e92ac9318fa60c18e04c0d7ecd93efb65ba99f926e",
+  "_updatedAt": 1785830945187,
   "bonuses": [
     {
       "id": "b1",
