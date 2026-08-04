@@ -321,6 +321,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:09:05.187Z"
+    },
+    {
+      "id": "d12",
+      "unitId": "scgl",
+      "score": 1,
+      "reason": "外协返修镀铬和熔碳钢未回厂配套",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:09:31.522Z"
     }
   ],
   "appeals": [
@@ -394,14 +403,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 12,
+    "deduction": 13,
     "appeal": 3,
     "user": 53,
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "9da6beb3acefe0499af79bdf3f3529f30af05e7b99d9eaaf326807d51aea1d9d75ee6471c038f60767874bd727b969e92ac9318fa60c18e04c0d7ecd93efb65ba99f926e",
-  "_updatedAt": 1785830945187,
+  "_encToken": "693e0f350994fcfeafe01f56b209e7ea183b740241d684b4f1b2b841667cefa05575372dce1170b71da29d68ba68ab81595dbc82138e52f4116bd0cc11c1d5ecdb051e30",
+  "_updatedAt": 1785830971522,
   "bonuses": [
     {
       "id": "b1",
