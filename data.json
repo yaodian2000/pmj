@@ -303,6 +303,15 @@
       "year": 2026,
       "month": 8,
       "time": "2026-08-04T08:07:41.283Z"
+    },
+    {
+      "id": "d10",
+      "unitId": "hr",
+      "score": 1,
+      "reason": "杆类镀铬件要求7月16日转出32台，实际转出28台，未完成。",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-08-04T08:08:38.683Z"
     }
   ],
   "appeals": [
@@ -376,14 +385,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 10,
+    "deduction": 11,
     "appeal": 3,
     "user": 53,
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "c577d65e372fb66b4a7b7de1533f41078f537080467ebcaa9dce5a1beda60a422b7008f407766a6ba722284dc63fa096593bccc02174083f013c7a21b4ba4b1fee5f1e61",
-  "_updatedAt": 1785830861283,
+  "_encToken": "fa776dabd1a0a03ac81ffa8ab8d3436d421223c4c95552049776a80fcd8dcf8b7914993e209e6dc23639f22739438830ee35b2e335c522ec8beae8ed56530211d95a280b",
+  "_updatedAt": 1785830918683,
   "bonuses": [
     {
       "id": "b1",
