@@ -133,6 +133,13 @@
       "role": "unit",
       "unitId": "ah",
       "password": "0000"
+    },
+    {
+      "id": "u32",
+      "name": "姜喜",
+      "role": "unit",
+      "unitId": "scgl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -140,11 +147,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 32,
+    "user": 33,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "bb0586b24b8177c848ced383b70aa77ea81f33df8b9f4300372b69225f0464e0a13d3411e367aeec99f742c171c1c27069004081eab3d042c1e90effad8ca4aa792f29c9",
-  "_updatedAt": 1785918000512
+  "_encToken": "2d2bb02b71bc4f11c3b11eb08192c0cac028ed673475eb05f942ab6c36e6282a5939d18965adba2ee93bb3d771491d0fde990b0fa1964dff08bb2501437a4e4fcda70875",
+  "_updatedAt": 1785918024384
 }
