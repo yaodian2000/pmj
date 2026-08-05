@@ -64,13 +64,6 @@
       "password": "0000"
     },
     {
-      "id": "u29",
-      "name": "刘法旺",
-      "role": "expert",
-      "unitId": null,
-      "password": "0000"
-    },
-    {
       "id": "u30",
       "name": "刘国",
       "role": "expert",
@@ -420,8 +413,8 @@
     "bonus": 6
   },
   "_dataCleared": true,
-  "_encToken": "b6051e937af50ca318fced54749c92acb380c570b6a958ff52a33c7f322f4b99054c36ab1614bffa7e1f612424ac28f25187149d62a5b270c2a3d2f0829b249eac3d53d4",
-  "_updatedAt": 1785917342369,
+  "_encToken": "c9993e72a087ff8cb259afd788785df1b55dedbd7c9d3804850a14dbaa7815f9bf03c10d3a7d8480909af0ba7945b946d8c280af61fc0ae870bfed349f407149c22e197a",
+  "_updatedAt": 1785917352249,
   "bonuses": [
     {
       "id": "b1",
