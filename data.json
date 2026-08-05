@@ -98,6 +98,13 @@
       "role": "unit",
       "unitId": "sc",
       "password": "0000"
+    },
+    {
+      "id": "u27",
+      "name": "刘伟波",
+      "role": "unit",
+      "unitId": "cg",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -105,11 +112,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 27,
+    "user": 28,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "fed0ab844a9332489521d108a97f1cccda15073105cb6b618e4193a40b94e082edd0180d72f815d161934f472e4c07e2a20eb802fceae195b0e34f6547722a6645cc812a",
-  "_updatedAt": 1785917949385
+  "_encToken": "16c39063ad96662f20126fa170da483256d8cc130215c3f3a242f056036408b21b8398e7a5f946ff958ed7d28e80654df18dd81186836376dcecde17bab39fb04957c87c",
+  "_updatedAt": 1785917957545
 }
