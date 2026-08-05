@@ -70,6 +70,13 @@
       "role": "unit",
       "unitId": "xl",
       "password": "0000"
+    },
+    {
+      "id": "u23",
+      "name": "李聚涛",
+      "role": "unit",
+      "unitId": "jjg",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -77,11 +84,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 23,
+    "user": 24,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "0e178d7aa3633fce235d7c3ac4ad79563dfa1057680f371769d29776974cab76aff99a14a67af7eafc438e1a3dda8532c0d42ee67dd6d15c5d967167393ac84c3ac4f896",
-  "_updatedAt": 1785917901809
+  "_encToken": "67ec8ac445a91d8e035430b81411795ad717b071f508693aad035764dc9c452aba00c106a572f2004e0a798dcb8671f73ffeac6bbeb6fa09a81baee3ff072b6605c3a871",
+  "_updatedAt": 1785917918393
 }
