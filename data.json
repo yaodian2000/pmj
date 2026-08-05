@@ -119,6 +119,13 @@
       "role": "unit",
       "unitId": "yy",
       "password": "0000"
+    },
+    {
+      "id": "u30",
+      "name": "洪亮",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -126,11 +133,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 30,
+    "user": 31,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "d6d1d035a6de95727c44bd235855520269c3bf718894b53c65b9c1c6fd4ee8d24aabce62d5f2171076b6d11fe4c24f9bb6cf32b234b7dc4b2a5a5801ccb1766b2c98d661",
-  "_updatedAt": 1785917981360
+  "_encToken": "13e870707a9bacdc00460968e93d9ffba0a4bb12d4f87f190bf76a8431c77bdbdd2897858b45571a2bd440a4213d0ce5a242a968c2e79039b8074f2e9fd16978f0a87fc6",
+  "_updatedAt": 1785917988313
 }
