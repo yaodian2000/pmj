@@ -1,104 +1,6 @@
 {
   "users": [
     {
-      "id": "u_jg",
-      "name": "李结构件",
-      "role": "unit",
-      "unitId": "jg",
-      "password": "0000"
-    },
-    {
-      "id": "u_xl",
-      "name": "王下料",
-      "role": "unit",
-      "unitId": "xl",
-      "password": "0000"
-    },
-    {
-      "id": "u_jjg",
-      "name": "赵机加工",
-      "role": "unit",
-      "unitId": "jjg",
-      "password": "0000"
-    },
-    {
-      "id": "u_zz",
-      "name": "陈总装",
-      "role": "unit",
-      "unitId": "zz",
-      "password": "0000"
-    },
-    {
-      "id": "u_jjg2",
-      "name": "刘机二",
-      "role": "unit",
-      "unitId": "jjg2",
-      "password": "0000"
-    },
-    {
-      "id": "u_sc",
-      "name": "周市场",
-      "role": "unit",
-      "unitId": "sc",
-      "password": "0000"
-    },
-    {
-      "id": "u_cg",
-      "name": "吴采购",
-      "role": "unit",
-      "unitId": "cg",
-      "password": "0000"
-    },
-    {
-      "id": "u_js",
-      "name": "郑技术",
-      "role": "unit",
-      "unitId": "js",
-      "password": "0000"
-    },
-    {
-      "id": "u_yy",
-      "name": "冯运营",
-      "role": "unit",
-      "unitId": "yy",
-      "password": "0000"
-    },
-    {
-      "id": "u_zl",
-      "name": "褚质量",
-      "role": "unit",
-      "unitId": "zl",
-      "password": "0000"
-    },
-    {
-      "id": "u_ah",
-      "name": "卫安环",
-      "role": "unit",
-      "unitId": "ah",
-      "password": "0000"
-    },
-    {
-      "id": "u_scgl",
-      "name": "蒋生产",
-      "role": "unit",
-      "unitId": "scgl",
-      "password": "0000"
-    },
-    {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
-      "id": "u_gys",
-      "name": "孙工艺",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
-    },
-    {
       "id": "u_exp1",
       "name": "专家甲",
       "role": "expert",
@@ -140,6 +42,20 @@
       "unitId": null,
       "password": "0000",
       "canManageSync": true
+    },
+    {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
+    },
+    {
+      "id": "u_gys",
+      "name": "孙工艺",
+      "role": "unit",
+      "unitId": "gys",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -147,11 +63,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 20,
+    "user": 21,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "0093a6467ee0d8da3a727bcbba9eb827c91a12705e65a1107c01277232c335551579227fe669ec0a0f0306a7814b17962239ec36447c54cc58825708072052e502fd7a9d",
-  "_updatedAt": 1785917624539
+  "_encToken": "1c72f30adb11d601488bff95b33c48614b861a55ac60db360e1ec081524473355a9d1953502c5e2bed77f0518d43238a1cc1929779870299bfb92f6978ef947a933182cf",
+  "_updatedAt": 1785917875055
 }
