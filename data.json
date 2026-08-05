@@ -1,6 +1,97 @@
 {
   "users": [
     {
+      "id": "u_jg",
+      "name": "李结构件",
+      "role": "unit",
+      "unitId": "jg",
+      "password": "0000"
+    },
+    {
+      "id": "u_xl",
+      "name": "王下料",
+      "role": "unit",
+      "unitId": "xl",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg",
+      "name": "赵机加工",
+      "role": "unit",
+      "unitId": "jjg",
+      "password": "0000"
+    },
+    {
+      "id": "u_zz",
+      "name": "陈总装",
+      "role": "unit",
+      "unitId": "zz",
+      "password": "0000"
+    },
+    {
+      "id": "u_jjg2",
+      "name": "刘机二",
+      "role": "unit",
+      "unitId": "jjg2",
+      "password": "0000"
+    },
+    {
+      "id": "u_sc",
+      "name": "周市场",
+      "role": "unit",
+      "unitId": "sc",
+      "password": "0000"
+    },
+    {
+      "id": "u_cg",
+      "name": "吴采购",
+      "role": "unit",
+      "unitId": "cg",
+      "password": "0000"
+    },
+    {
+      "id": "u_js",
+      "name": "郑技术",
+      "role": "unit",
+      "unitId": "js",
+      "password": "0000"
+    },
+    {
+      "id": "u_yy",
+      "name": "冯运营",
+      "role": "unit",
+      "unitId": "yy",
+      "password": "0000"
+    },
+    {
+      "id": "u_zl",
+      "name": "褚质量",
+      "role": "unit",
+      "unitId": "zl",
+      "password": "0000"
+    },
+    {
+      "id": "u_ah",
+      "name": "卫安环",
+      "role": "unit",
+      "unitId": "ah",
+      "password": "0000"
+    },
+    {
+      "id": "u_scgl",
+      "name": "蒋生产",
+      "role": "unit",
+      "unitId": "scgl",
+      "password": "0000"
+    },
+    {
+      "id": "u_hr",
+      "name": "恒锐",
+      "role": "unit",
+      "unitId": "hr",
+      "password": "0000"
+    },
+    {
       "id": "u_exp1",
       "name": "专家甲",
       "role": "expert",
@@ -44,128 +135,95 @@
       "canManageSync": true
     },
     {
-      "id": "u_hr",
-      "name": "恒锐",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
       "id": "u_gys",
       "name": "孙工艺",
       "role": "unit",
       "unitId": "gys",
       "password": "0000"
-    },
-    {
-      "id": "u21",
-      "name": "谷兵",
-      "role": "unit",
-      "unitId": "jg",
-      "password": "0000"
-    },
-    {
-      "id": "u22",
-      "name": "王继辉",
-      "role": "unit",
-      "unitId": "xl",
-      "password": "0000"
-    },
-    {
-      "id": "u23",
-      "name": "李聚涛",
-      "role": "unit",
-      "unitId": "jjg",
-      "password": "0000"
-    },
-    {
-      "id": "u24",
-      "name": "刘刚",
-      "role": "unit",
-      "unitId": "zz",
-      "password": "0000"
-    },
-    {
-      "id": "u25",
-      "name": "朱予滨",
-      "role": "unit",
-      "unitId": "jjg2",
-      "password": "0000"
-    },
-    {
-      "id": "u26",
-      "name": "董威",
-      "role": "unit",
-      "unitId": "sc",
-      "password": "0000"
-    },
-    {
-      "id": "u27",
-      "name": "刘伟波",
-      "role": "unit",
-      "unitId": "cg",
-      "password": "0000"
-    },
-    {
-      "id": "u28",
-      "name": "王跃功",
-      "role": "unit",
-      "unitId": "js",
-      "password": "0000"
-    },
-    {
-      "id": "u29",
-      "name": "杨晓峰",
-      "role": "unit",
-      "unitId": "yy",
-      "password": "0000"
-    },
-    {
-      "id": "u30",
-      "name": "洪亮",
-      "role": "unit",
-      "unitId": "zl",
-      "password": "0000"
-    },
-    {
-      "id": "u31",
-      "name": "黄海涛",
-      "role": "unit",
-      "unitId": "ah",
-      "password": "0000"
-    },
-    {
-      "id": "u32",
-      "name": "姜喜",
-      "role": "unit",
-      "unitId": "scgl",
-      "password": "0000"
-    },
-    {
-      "id": "u33",
-      "name": "刘法旺",
-      "role": "unit",
-      "unitId": "hr",
-      "password": "0000"
-    },
-    {
-      "id": "u34",
-      "name": "刘庆伟",
-      "role": "unit",
-      "unitId": "gys",
-      "password": "0000"
     }
   ],
-  "deductions": [],
-  "appeals": [],
+  "deductions": [
+    {
+      "id": "d1",
+      "unitId": "jg",
+      "score": 20,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:27.210Z"
+    },
+    {
+      "id": "d2",
+      "unitId": "xl",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:38.123Z"
+    },
+    {
+      "id": "d3",
+      "unitId": "zz",
+      "score": 22,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:11:47.658Z"
+    },
+    {
+      "id": "d4",
+      "unitId": "jjg2",
+      "score": 21,
+      "reason": "测试",
+      "year": 2026,
+      "month": 7,
+      "time": "2026-07-29T02:18:19.891Z"
+    }
+  ],
+  "appeals": [
+    {
+      "id": "a1",
+      "deductionId": "d1",
+      "unitId": "jg",
+      "reason": "测试",
+      "responsibleUnitId": "js",
+      "status": "pending",
+      "time": "2026-07-29T02:27:17.479Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": [
+        "u_exp1",
+        "u_exp2",
+        "u_exp3",
+        "u_exp4",
+        "u_exp5"
+      ]
+    },
+    {
+      "id": "a2",
+      "deductionId": "d3",
+      "unitId": "zz",
+      "reason": "此责任应该为结构件分厂周转延期造成的",
+      "responsibleUnitId": "jg",
+      "status": "pending",
+      "time": "2026-07-29T02:29:47.995Z",
+      "votes": [],
+      "result": null,
+      "assignedExperts": [
+        "u_exp5",
+        "u_exp4",
+        "u_exp3"
+      ]
+    }
+  ],
   "nextIds": {
-    "deduction": 1,
-    "appeal": 1,
-    "user": 35,
+    "deduction": 5,
+    "appeal": 3,
+    "user": 21,
     "bonus": 1
   },
   "_dataCleared": true,
-  "bonuses": [],
-  "_encToken": "961598dde159ea886c80c3882dcdade96165782d7488caeef2551bdc12720e232fac738c31d57dcb0dbafb88283cf5ad539ee9d17b107d0190d4c6604d2722362c4a585f",
-  "_updatedAt": 1785918103392
+  "_encToken": "f14691dd25e1443d493a167347baea6afe5b6513a511f51b0ed501222c296f78759770ede654dbe726e69485ffbbb016b8f4d97b93a7ce8e6d84f175af35b96176f3e503",
+  "_updatedAt": 1785918162647,
+  "bonuses": []
 }
