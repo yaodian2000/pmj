@@ -84,6 +84,13 @@
       "role": "unit",
       "unitId": "zz",
       "password": "0000"
+    },
+    {
+      "id": "u25",
+      "name": "朱予滨",
+      "role": "unit",
+      "unitId": "jjg2",
+      "password": "0000"
     }
   ],
   "deductions": [],
@@ -91,11 +98,11 @@
   "nextIds": {
     "deduction": 1,
     "appeal": 1,
-    "user": 25,
+    "user": 26,
     "bonus": 1
   },
   "_dataCleared": true,
   "bonuses": [],
-  "_encToken": "5255d46e4e73ebb06c00a224b8e2ff2de15b5ff54e9b1fa3e80c0170cc646a4504d48ce6a0528bbd9927d571ceff8afe904b51faef2d8b1fb207e64bee023c4ff43be14a",
-  "_updatedAt": 1785917926673
+  "_encToken": "743e0319136f35d83ffae3ff5a221bc2e10a8829d6e60ee4eb869d1d3e457c9aa1b5cac64e8d67d9ca48234344e6e934641384f44dde936e2cae48866ccefa2794d21ea9",
+  "_updatedAt": 1785917936657
 }
