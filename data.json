@@ -366,6 +366,15 @@
       "year": 2026,
       "month": 9,
       "time": "2026-09-21T00:20:17.408Z"
+    },
+    {
+      "id": "d17",
+      "unitId": "zz",
+      "score": 2,
+      "reason": "上条加分错误，这条抵消。",
+      "year": 2026,
+      "month": 9,
+      "time": "2026-09-21T00:21:18.993Z"
     }
   ],
   "appeals": [
@@ -439,14 +448,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 17,
+    "deduction": 18,
     "appeal": 3,
     "user": 53,
     "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "27f0a12cc24f1eb13327385be5650bb337065c76e6c77a440fe29924a2239aafeefbf6686459ae03c499b6142cd170bd592696308ce4aca61e41e22b7a1c2f8f5c6f6709",
-  "_updatedAt": 1789950017408,
+  "_encToken": "97ff3521ea362e7819be3404dc6697de39bfc37c2f6dfdfa7639127a143f296a25392daa5dc1d0c631b47efb6048da97f85ffe884ea21e3cf97076d3315b3c4e4d6a81d5",
+  "_updatedAt": 1789950078993,
   "bonuses": [
     {
       "id": "b1",
