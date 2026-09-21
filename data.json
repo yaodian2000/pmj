@@ -402,6 +402,15 @@
       "year": 2026,
       "month": 8,
       "time": "2026-09-21T00:25:56.051Z"
+    },
+    {
+      "id": "d21",
+      "unitId": "js",
+      "score": 1,
+      "reason": "越南样机项目，技术中心临时改图，无法按期组装。扣1分",
+      "year": 2026,
+      "month": 8,
+      "time": "2026-09-21T00:26:28.787Z"
     }
   ],
   "appeals": [
@@ -475,14 +484,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 21,
+    "deduction": 22,
     "appeal": 3,
     "user": 53,
     "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "10ca3d928461050428cf7f9c2d384228f59161cb8f83e5e3e87ab4a640ef45888ff0be72935aaecf09e0011187808ed7a5b9170b42e7e2e0b957b8a74e9b42de36e7b979",
-  "_updatedAt": 1789950356051,
+  "_encToken": "1df059be30b77a968fd259701b50a0cf67c24df0e1415ff9148a40d17beb52db966b2e67dbced60762c907884aadda17ded8a5f902e88d2d37d264d1da191f465a73ccf5",
+  "_updatedAt": 1789950388787,
   "bonuses": [
     {
       "id": "b1",
