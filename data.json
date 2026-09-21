@@ -384,6 +384,15 @@
       "year": 2026,
       "month": 9,
       "time": "2026-09-21T00:22:33.313Z"
+    },
+    {
+      "id": "d19",
+      "unitId": "sc",
+      "score": 1,
+      "reason": "1、黄陶结构件已经交检完毕，兖矿监理通知场地受限暂停发货；\n2、智德公司金沙金泰结构件已清磨完，交检发货2车，剩余1车监理通知场地受限暂停发货。由于发货不及时，占用生产场地，扣1分。",
+      "year": 2026,
+      "month": 8,
+      "time": "2026-09-21T00:25:06.284Z"
     }
   ],
   "appeals": [
@@ -457,14 +466,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 19,
+    "deduction": 20,
     "appeal": 3,
     "user": 53,
     "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "a6bc808e90fdb9fd9452a2340b470ed68f6a9bc84269be150f1f9a131bd1cd3a2acc75b7ed1627d4a41bc41011d8193551544460a1607df3796824baf353566c259f7872",
-  "_updatedAt": 1789950153313,
+  "_encToken": "6ff3256581d26b5621cdd62a307aa27a26c57b161bca68fdf6a209c8b7669448511ddd4cdca91bf529b006ab2095320babd4b4eebae61a7f497b2bad50db861cb81fb034",
+  "_updatedAt": 1789950306284,
   "bonuses": [
     {
       "id": "b1",
