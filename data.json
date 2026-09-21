@@ -348,6 +348,15 @@
       "year": 2026,
       "month": 7,
       "time": "2026-08-04T08:10:01.450Z"
+    },
+    {
+      "id": "d15",
+      "unitId": "cg",
+      "score": 1,
+      "reason": "开封70台面漆，因招标晚，导致油漆回厂影响使用。9月10日需要喷面漆，截至9月12日下午面漆才回厂，影响结构件喷漆发货。",
+      "year": 2026,
+      "month": 9,
+      "time": "2026-09-21T00:19:37.569Z"
     }
   ],
   "appeals": [
@@ -421,14 +430,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 15,
+    "deduction": 16,
     "appeal": 3,
     "user": 53,
     "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "947bbffa37af6f8519de2ee9c8ac67c3773e0fb2d2e8d73cf0252c5719f39fbb1122c20fef970173f4b0b0dc92fe227f554077e24770e2140af0f260e220d4df1274da6d",
-  "_updatedAt": 1789949792977,
+  "_encToken": "55f3340351a6261932ffb9fc88446a120542d126b385ed6d3d966841ff4f331b170f0f22cdaf2a573bbfdd03259196c4e05074ab5005c27a0acdf053d8962f1b117a1e9c",
+  "_updatedAt": 1789949977569,
   "bonuses": [
     {
       "id": "b1",
