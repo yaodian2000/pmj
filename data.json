@@ -393,6 +393,15 @@
       "year": 2026,
       "month": 8,
       "time": "2026-09-21T00:25:06.284Z"
+    },
+    {
+      "id": "d20",
+      "unitId": "js",
+      "score": 1,
+      "reason": "三伸缩支架计划9月8日到榆林会展中心参展，技术中心临时通知压架取安标（因第一次压架后不符合安标中心技术要求，需要二次压架），打乱原有参展安排。扣1分。",
+      "year": 2026,
+      "month": 8,
+      "time": "2026-09-21T00:25:56.051Z"
     }
   ],
   "appeals": [
@@ -466,14 +475,14 @@
     }
   ],
   "nextIds": {
-    "deduction": 20,
+    "deduction": 21,
     "appeal": 3,
     "user": 53,
     "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "6ff3256581d26b5621cdd62a307aa27a26c57b161bca68fdf6a209c8b7669448511ddd4cdca91bf529b006ab2095320babd4b4eebae61a7f497b2bad50db861cb81fb034",
-  "_updatedAt": 1789950306284,
+  "_encToken": "10ca3d928461050428cf7f9c2d384228f59161cb8f83e5e3e87ab4a640ef45888ff0be72935aaecf09e0011187808ed7a5b9170b42e7e2e0b957b8a74e9b42de36e7b979",
+  "_updatedAt": 1789950356051,
   "bonuses": [
     {
       "id": "b1",
