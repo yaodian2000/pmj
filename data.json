@@ -424,11 +424,11 @@
     "deduction": 15,
     "appeal": 3,
     "user": 53,
-    "bonus": 7
+    "bonus": 8
   },
   "_dataCleared": true,
-  "_encToken": "c28d9b5c5aa395dc00511a9c7b70de9a8c6f3be0ad278e8e0bd228b99070ff06f4342e056ac595d321d0cae795680055b548892a4893111db7db3cf9d2334d3cd8ce627f",
-  "_updatedAt": 1789949230092,
+  "_encToken": "947bbffa37af6f8519de2ee9c8ac67c3773e0fb2d2e8d73cf0252c5719f39fbb1122c20fef970173f4b0b0dc92fe227f554077e24770e2140af0f260e220d4df1274da6d",
+  "_updatedAt": 1789949792977,
   "bonuses": [
     {
       "id": "b1",
@@ -483,6 +483,15 @@
       "year": 2026,
       "month": 9,
       "time": "2026-09-21T00:07:10.090Z"
+    },
+    {
+      "id": "b7",
+      "unitId": "zz",
+      "score": 1,
+      "reason": "开封70台面漆，因招标晚，导致油漆回厂影响使用。9月10日需要喷面漆，截至9月12日下午面漆才回厂，影响结构件喷漆发货。",
+      "year": 2026,
+      "month": 9,
+      "time": "2026-09-21T00:16:32.977Z"
     }
   ],
   "_dataVersion": 2
